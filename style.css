@@ -263,7 +263,6 @@ body {
   text-align: justify;
   margin-right: 8%;
   width: 440px;
-  word-spacing: 2px;
   color: var(--secondary-background-color);
 }
 
@@ -686,7 +685,8 @@ input[name="r"] {
   }
 
   .about-me-card p,
-  ul li {
+  .about-me-card ul,
+  .about-me-card li {
     font-size: 18px;
   }
 
@@ -729,8 +729,6 @@ input[name="r"] {
   /* Body */
   body {
     line-height: 1.2;
-    margin-right: 1%;
-    margin-left: 1%;
   }
 
   .social-links {
@@ -744,6 +742,12 @@ input[name="r"] {
     padding-top: 75%;
   }
 
+  .main-section h1,
+  .main-section h2,
+  .main-section p {
+    text-align: center;
+  }
+
   .main-section h1 {
     font-size: 50px;
   }
@@ -753,11 +757,16 @@ input[name="r"] {
   }
 
   .main-section p {
-    max-width: 70%;
+    max-width: 100%;
+    margin-left: 8%;
+    margin-right: 8%;
     font-size: 16px;
   }
 
   .main-section a {
+    left: 50%;
+    transform: translate(-50%, 0%);
+    position: absolute;
     font-size: 16px;
     height: 80px;
     width: 150px;
@@ -768,8 +777,22 @@ input[name="r"] {
     width: 30px;
   }
 
-  #about-me {
-    width: 95%;
+  .scroll-arrow {
+    position: absolute;
+    left: 46%;
+    transform: translate(-50%, -50%);
+  }
+
+  .about-me-card {
+    margin-right: 0;
+  }
+
+  .about-me-section {
+    margin-right: 0;
+  }
+
+  .profile-photo img {
+    margin-left: 5%;
   }
 
   /* project.html */
@@ -782,7 +805,7 @@ input[name="r"] {
 
   .project {
     height: 400px;
-    width: 350px;
+    width: 320px;
   }
 
   /* Socials */
