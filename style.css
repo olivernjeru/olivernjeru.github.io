@@ -778,8 +778,7 @@ input[name="r"] {
   }
 
   .scroll-arrow {
-    position: absolute;
-    left: 46%;
+    left: 45%;
     transform: translate(-50%, -50%);
   }
 
