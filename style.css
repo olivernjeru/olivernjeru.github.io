@@ -238,7 +238,9 @@ body {
 }
 
 .scroll-arrow {
-  height: 30vh;
+  position: absolute;
+  top: 95%;
+  left: 49%;
   animation: fadeBounce 5s infinite;
 }
 
@@ -744,7 +746,7 @@ input[name="r"] {
   }
 
   #home-page {
-    padding-top: 30%;
+    padding-top: 25%;
   }
 
   .main-section h1 {
@@ -775,7 +777,7 @@ input[name="r"] {
   }
 
   .scroll-arrow {
-    margin-top: -5%;
+    left: 46%;
   }
 
   #education ul li {
