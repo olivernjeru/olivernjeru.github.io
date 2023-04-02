@@ -244,19 +244,22 @@ body {
   animation: fadeBounce 5s infinite;
 }
 
-#education {
+#education,
+#work-experience {
   background-color: var(--light-navy);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#education ul li {
+#education ul li,
+#work-experience ul li {
   list-style-type: circle;
   margin: 0% 0% 0% 5%;
 }
 
-#usiu-africa,
+.usiu-africa,
 #strathmore-university {
   margin: 0% 5% 0% 5%;
+  padding: 1%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -474,33 +477,18 @@ input[name="r"] {
 
 #work-experience {
   /* min-height: 100vh; */
-  margin-bottom: 5%;
-}
+  margin: 5% 0% 5% 0%;
+  padding: 3% 0% 5% 0%;
 
-.work {
-  /* background-color: red; */
-  /* opacity: 0;
-  filter: blur(5px);
-  transition: all 3s; */
-  display: flex;
-  /* align-items: center; */
-  padding: 0.5% 0%;
-  color: var(--color);
-}
-
-.company {
-  width: 30%;
-  padding: 1%;
-  /* background-color: black; */
-}
-
-.role-details {
-  width: 70%;
 }
 
 .tasks ul {
   /* background-color: red; */
   padding-left: 3%;
+}
+
+.tasks p {
+  padding-left: 6%;
 }
 
 .footer {
