@@ -183,7 +183,10 @@ body {
 #home-page {
   /* max-width: 450px; */
   height: 100vh;
-  padding-top: 10%;
+  /* padding-top: 10%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-section {
@@ -217,7 +220,7 @@ body {
   border-style: solid;
   border-width: 1px;
   border-radius: 3%;
-  border-color: var(--lighter-tertiary-color);
+  border-color: var(--slate);
   height: 75px;
   width: 150px;
   text-decoration: none;
@@ -244,6 +247,34 @@ body {
   animation: fadeBounce 5s infinite;
 }
 
+#education a:link,
+#software-creations a:link,
+#certificates a:link,
+.footer a:link {
+  color: var(--secondary-background-color);
+}
+
+#education a:hover,
+#software-creations a:hover,
+#certificates a:hover,
+.footer a:link {
+  color: var(--lighter-tertiary-color);
+}
+
+#education a:active,
+#software-creations a:active,
+#certificates a:active,
+.footer a:link {
+  color: var(--light-navy);
+}
+
+#education a:visited,
+#software-creations a:visited,
+#certificates a:visited,
+.footer a:link {
+  color: var(--lighter-tertiary-color);
+}
+
 #education,
 #work-experience {
   background-color: var(--light-navy);
@@ -254,6 +285,15 @@ body {
 #work-experience ul li {
   list-style-type: circle;
   margin: 0% 0% 0% 5%;
+  padding: 1%;
+}
+
+#education p {
+  color: var(--lighter-tertiary-color);
+}
+
+.usiu-africa h2 {
+  font-size: 25px;
 }
 
 .usiu-africa,
@@ -327,6 +367,7 @@ body {
 #skills section {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 5%;
 }
 
 #skills section p {
@@ -334,6 +375,11 @@ body {
   margin: 1% 1% 1% 1%;
   padding: 10px 20px 10px 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#awards-and-honors,
+#certificates {
+  margin-bottom: 5%;
 }
 
 #awards-and-honors section p,
@@ -350,7 +396,7 @@ body {
   border-style: solid;
   border-width: 1px;
   border-radius: 3%;
-  border-color: var(--lighter-tertiary-color);
+  border-color: var(--slate);
   height: 75px;
   width: 150px;
   text-decoration: none;
@@ -496,7 +542,7 @@ input[name="r"] {
   place-items: center;
   align-content: center;
   margin-bottom: 5%;
-  color: var(--secondary-background-color);
+  color: var(--color);
 }
 
 .footer a:hover {
@@ -553,7 +599,7 @@ input[name="r"] {
   }
 
   #home-page {
-    padding-top: 30%;
+    /* padding-top: 30%; */
   }
 
   .main-section a {
@@ -659,7 +705,7 @@ input[name="r"] {
   }
 
   #home-page {
-    padding-top: 30%;
+    /* padding-top: 30%; */
   }
 
   .main-section h1 {
@@ -734,7 +780,7 @@ input[name="r"] {
   }
 
   #home-page {
-    padding-top: 25%;
+    /* padding-top: 25%; */
   }
 
   .main-section h1 {
