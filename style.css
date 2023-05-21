@@ -250,6 +250,7 @@ body {
 #education a:link,
 #software-creations a:link,
 #certificates a:link,
+#work-experience a:link,
 .footer a:link {
   color: var(--secondary-background-color);
 }
@@ -257,21 +258,24 @@ body {
 #education a:hover,
 #software-creations a:hover,
 #certificates a:hover,
-.footer a:link {
+#work-experience a:hover,
+.footer a:hover {
   color: var(--lighter-tertiary-color);
 }
 
 #education a:active,
 #software-creations a:active,
 #certificates a:active,
-.footer a:link {
+#work-experience a:active,
+.footer a:active {
   color: var(--light-navy);
 }
 
 #education a:visited,
 #software-creations a:visited,
 #certificates a:visited,
-.footer a:link {
+#work-experience a:visited
+.footer a:visited {
   color: var(--lighter-tertiary-color);
 }
 
