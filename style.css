@@ -846,13 +846,3 @@ input[name="r"] {
     margin-top: 30%;
   }
 }
-
-/* ANIMATION */
-.aboutmesection-sb-animation,
-.work-sb-animation,
-.project-sb-animation {
-  opacity: 1;
-  filter: blur(0);
-  animation: fadeinUp 0.8s ease-in-out;
-  animation-fill-mode: both;
-}
