@@ -296,7 +296,7 @@ body {
   color: var(--color);
 }
 
-#ibm, 
+#ibm h2,
 #usiu-africa h2 {
   font-size: 25px;
 }
