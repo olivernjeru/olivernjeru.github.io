@@ -296,11 +296,13 @@ body {
   color: var(--color);
 }
 
-.usiu-africa h2 {
+#ibm, 
+#usiu-africa h2 {
   font-size: 25px;
 }
 
-.usiu-africa,
+#ibm,
+#usiu-africa,
 #strathmore-university {
   margin: 0% 5% 0% 5%;
   padding: 1%;
