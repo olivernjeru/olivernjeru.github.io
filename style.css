@@ -248,9 +248,9 @@ body {
 }
 
 #education a:link,
+#work-experience a:link,
 #software-creations a:link,
 #certificates a:link,
-#work-experience a:link,
 .footer a:link {
   color: var(--secondary-background-color);
 }
