@@ -111,7 +111,7 @@ h2 {
   position: fixed;
   /* margin: 0 10%; */
   z-index: 1;
-  width: 1274px;
+  width: 70%;
   display: flex;
   text-align: center;
   align-items: center;
@@ -396,113 +396,6 @@ body {
   margin-left: 15%;
 }
 
-/*================================================================================================ */
-/* resizing the image */
-.slidershow {
-  margin-top: 2%;
-  margin-bottom: 2%;
-  margin-left: 15%;
-  width: 700px;
-  height: 400px;
-  overflow: hidden;
-  border-radius: 2%;
-}
-
-/* positioning the images and also putting it at the center */
-.middle {
-  /* left: 50%; */
-  transform: translate(0%, 0%);
-}
-
-/* styling the navigation div */
-.navigation {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-}
-
-/* styling the navigation bars */
-.bar {
-  width: 50px;
-  height: 10px;
-  border: 2px solid #fff;
-  margin: 6px;
-  cursor: pointer;
-  transform: 0.4s;
-}
-
-/* make the bars turn white when hovered over */
-.bar:hover {
-  background: #fff;
-}
-
-/* hide the radion buttons */
-input[name="r"] {
-  position: absolute;
-  visibility: hidden;
-}
-
-.slides {
-  width: 500%;
-  height: 100%;
-  display: flex;
-}
-
-/* to control the transition */
-.slide {
-  width: 20%;
-  transition: 0.6s;
-}
-
-/* to make images display in their original size */
-.slide img {
-  width: 100%;
-  height: 100%;
-}
-
-/* to establish where IMG-01 is */
-#r1:checked ~ .s1 {
-  margin-left: 0;
-}
-
-/* to move IMG-02 to where IMG-01 was */
-#r2:checked ~ .s1 {
-  margin-left: -20%;
-}
-
-/* to move IMG-03 to where IMG-02 was */
-#r3:checked ~ .s1 {
-  margin-left: -40%;
-}
-
-/* to move IMG-04 to where IMG-03 was */
-#r4:checked ~ .s1 {
-  margin-left: -60%;
-}
-
-/* to move IMG-05 to where IMG-04 was */
-#r5:checked ~ .s1 {
-  margin-left: -80%;
-}
-
-#school-activities {
-  /* min-height: 100vh; */
-  margin-bottom: 5%;
-}
-
-.activity {
-  /* background-color: red; */
-  /* opacity: 0;
-  filter: blur(5px);
-  transition: all 3s; */
-  display: flex;
-  /* align-items: center; */
-  padding: 0.5% 0%;
-  color: var(--color);
-}
-
 #work-experience {
   /* min-height: 100vh; */
   margin: 5% 0% 5% 0%;
@@ -568,6 +461,20 @@ input[name="r"] {
 
 /* Media Query for smaller screens */
 @media (max-width: 1068px) {
+  .navbar {
+    width: 80%;
+  }
+
+  .nav-links ul li a {
+    padding: 0 4px;
+  }
+
+  .social-links a img {
+    height: 18px;
+    width: 18px;
+    margin: 0 4px;
+  }
+
   /* Body */
   body {
     line-height: 1.7;
@@ -575,29 +482,20 @@ input[name="r"] {
     margin-right: 10%;
   }
 
-  .social-links a img {
-    height: 18px;
-    width: 21px;
-  }
-
-  #home-page {
-    /* padding-top: 30%; */
-  }
-
   .main-section a {
     font-size: 20px;
   }
 
   .main-section h1 {
-    font-size: 70px;
+    font-size: 65px;
   }
 
   .main-section h2 {
-    font-size: 35px;
+    font-size: 30px;
   }
 
   .main-section p {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   .link-box a {
@@ -622,35 +520,12 @@ input[name="r"] {
   }
 
   .project h3 {
-    font-size: 20px;
+    font-size: 15px;
   }
 
   .project ul li,
   p {
-    font-size: 18px;
-  }
-
-  .slidershow {
-    margin-left: 5%;
-    width: 500px;
-    height: 300px;
-  }
-
-  /* Socials */
-  .socials {
-    width: 99.9%;
-  }
-
-  .socials a {
-    font-size: 24px;
-    margin-bottom: 20%;
-    padding-top: 1.5%;
-    height: 75px;
-    width: 200px;
-  }
-
-  .socials a:first-child {
-    margin-top: 20%;
+    font-size: 15px;
   }
 }
 
@@ -662,6 +537,23 @@ input[name="r"] {
     }
   }
 
+  .navbar {
+    width: 90%; /* Adjust the width to fit the screen */
+  }
+
+  .nav-links ul li a {
+    padding: 0 4px;
+  }
+
+  .social-links a img {
+    margin: 0 4px;
+  }
+
+  .scroll-arrow {
+    left: 50%; /* Center the scroll arrow */
+    transform: translateX(-50%); /* Adjust based on your design */
+  }
+
   /* Body */
   body {
     line-height: 1.4;
@@ -669,37 +561,16 @@ input[name="r"] {
     margin-right: 5%;
   }
 
-  /* Navigation */
-  .nav-links {
-    display: none;
-  }
-
-  .social-links {
-    display: none;
-    /* flex-direction: column;
-    top: 70%;
-    left: 95%; */
-  }
-
-  /* Mobile Menu */
-  #menu a {
-    font-size: 18px;
-  }
-
-  #home-page {
-    /* padding-top: 30%; */
-  }
-
   .main-section h1 {
-    font-size: 80px;
+    font-size: 50px;
   }
 
   .main-section h2 {
-    font-size: 40px;
+    font-size: 30px;
   }
 
   .main-section p {
-    font-size: 25px;
+    font-size: 20px;
     max-width: 70%;
   }
 
@@ -722,23 +593,6 @@ input[name="r"] {
   p {
     font-size: 14px;
   }
-
-  .slidershow {
-    display: none;
-  }
-
-  /* Socials */
-  .socials a {
-    font-size: 20px;
-    padding-top: 1.5%;
-    margin-bottom: 32%;
-    height: 50px;
-    width: 150px;
-  }
-
-  .socials a:first-child {
-    margin-top: 32%;
-  }
 }
 
 @media (max-width: 450px) {
@@ -747,6 +601,20 @@ input[name="r"] {
       opacity: 0;
       transform: translateY(50%);
     }
+  }
+
+  .navbar {
+    width: 90%; /* Adjust the width to fit the screen */
+  }
+
+  .nav-links ul li a {
+    padding: 0 4px;
+  }
+
+  .social-links a img {
+    height: 18px;
+    width: 18px;
+    margin: 0 4px;
   }
 
   /* Body */
@@ -759,10 +627,6 @@ input[name="r"] {
     /* flex-direction: column;
     top: 80%;
     left: 90%; */
-  }
-
-  #home-page {
-    /* padding-top: 25%; */
   }
 
   .main-section h1 {
