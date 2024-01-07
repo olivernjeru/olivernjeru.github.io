@@ -287,26 +287,26 @@ body {
 
 #software-creations {
   display: block;
+  background-color: var(--light-navy);
   /* min-height: 100vh; */
   color: var(--color);
   margin-bottom: 5%;
+}
+
+.projects-title {
+  margin: 0 0 3% 0;
 }
 
 .projects-grid-display {
   /* height: 168vh; */
   /* background-color: #000; */
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-  padding-top: 0.5%;
-  padding-bottom: 1%;
-  /* margin-left: .5%; */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 0.5% 0.5% 1% 0.5%;
 }
 
 .project {
-  /* opacity: 0;
-  filter: blur(5px);
-  transition: all 2s; */
   background-color: var(--light-navy);
   height: 350px;
   width: 300px;
