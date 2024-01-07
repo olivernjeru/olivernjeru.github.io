@@ -303,7 +303,7 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  padding: 0.5% 0.5% 1% 0.5%;
+  padding: 0.5% 0.5% 3% 0.5%;
 }
 
 .project {
@@ -346,10 +346,15 @@ body {
   /* background-color: green; */
 }
 
+#skills {
+  background-color: var(--light-navy);
+}
+
 #skills section {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 5%;
+  padding-bottom: 2%;
 }
 
 #skills section p {
@@ -362,6 +367,12 @@ body {
 #awards-and-honors,
 #certificates {
   margin-bottom: 5%;
+  background-color: var(--light-navy);
+}
+
+#awards-and-honors section,
+#certificates section {
+  padding: 0 1% 1% 1%;
 }
 
 #awards-and-honors section p,
