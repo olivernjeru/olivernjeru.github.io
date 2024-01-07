@@ -254,7 +254,11 @@ body {
 }
 
 #education,
-#work-experience {
+#work-experience,
+#software-creations,
+#skills,
+#awards-and-honors,
+#certificates {
   background-color: var(--light-navy);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -264,10 +268,6 @@ body {
   list-style-type: circle;
   margin: 0% 0% 0% 5%;
   padding: 1%;
-}
-
-#education p {
-  color: var(--color);
 }
 
 #ibm h2,
@@ -287,7 +287,6 @@ body {
 
 #software-creations {
   display: block;
-  background-color: var(--light-navy);
   /* min-height: 100vh; */
   color: var(--color);
   margin-bottom: 5%;
@@ -307,7 +306,6 @@ body {
 }
 
 .project {
-  background-color: var(--light-navy);
   height: 350px;
   width: 300px;
   border-radius: 4%;
@@ -346,10 +344,6 @@ body {
   /* background-color: green; */
 }
 
-#skills {
-  background-color: var(--light-navy);
-}
-
 #skills section {
   display: flex;
   flex-wrap: wrap;
@@ -367,7 +361,6 @@ body {
 #awards-and-honors,
 #certificates {
   margin-bottom: 5%;
-  background-color: var(--light-navy);
 }
 
 #awards-and-honors section,
@@ -414,11 +407,8 @@ body {
 
 }
 
-.tasks ul {
-  /* background-color: red; */
-  padding-left: 3%;
-}
-
+.usiu-africa p,
+.amplifyme p,
 .tasks p {
   padding-left: 6%;
 }
