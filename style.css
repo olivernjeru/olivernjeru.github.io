@@ -275,13 +275,15 @@ body {
 }
 
 #ibm h2,
-.usiu-africa h2 {
+.usiu-africa h2,
+.usiusst-ra h2 {
   font-size: 25px;
   margin-top: 3%;
 }
 
 #ibm,
 .usiu-africa,
+.usiusst-ra,
 .amplifyme,
 #strathmore-university,
 #research {
@@ -413,6 +415,7 @@ body {
 }
 
 .usiu-africa p,
+.usiusst-ra p,
 .amplifyme p,
 .tasks p {
   padding-left: 6%;
