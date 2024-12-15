@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Box, Grid, Link, List, ListItem } from "@mui/material";
+import { Typography, Box, Link, List, ListItem } from "@mui/material";
 
 const Education = () => {
   return (
