@@ -20,16 +20,14 @@ const HomePage = () => {
             }}
         >
             <Typography variant="h3" gutterBottom>
-                Hi, I am Oliver Njeru.
+                Hi there! I am Oliver Njeru.
             </Typography>
             <Typography variant="h5" gutterBottom>
-                A Software Engineering & Research Enthusiast.
+                A Software Engineer, Research Enthusiast & Innovator.
             </Typography>
             <Typography variant="body1" paragraph>
                 I am an undergraduate student at USIU-Africa pursuing a BSc in Applied Computer Technology with a concentration
-                in Software Engineering. I am interested in Software Engineering and Research. In my free time, I enjoy creating
-                and sharing my art & creations on Unsplash & Dribbble. I occasionally travel, swim, and game. Please check out
-                my personal projects, honors & awards, and experience below!
+                in Software Engineering. I enjoy interacting in a diverse environment and thrive in collaboration and team work.  In my free time, you’ll often find me traveling, swimming, gaming, or simply seeking inspiration from the world around me. Feel free to explore my personal projects, honors & awards, and experience below!
             </Typography>
 
             {/* Resume Button */}
