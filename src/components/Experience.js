@@ -1,5 +1,6 @@
 import React from 'react';
-import { Typography, Box, Container, List, ListItem, Link } from '@mui/material';
+import { Typography, Box, Container, List, ListItem } from '@mui/material';
+import { NoUnderlineLink } from './utilities/formats/NoUnderlineLink';
 
 const Experience = () => {
   return (
@@ -59,15 +60,15 @@ const Experience = () => {
           </Typography>
           <List>
             <ListItem>
-              Listed approximately a little above 50% of Professor{' '}
-              <Link href="https://en.wikipedia.org/wiki/Paul_Tiyambe_Zeleza" target="_blank" rel="noopener">
+              Listed approximately a little above 50% of Professor
+              &nbsp;{" "} <NoUnderlineLink href="https://en.wikipedia.org/wiki/Paul_Tiyambe_Zeleza" target="_blank" rel="noopener">
                 Paul Tiyambe Zeleza's
-              </Link>
-              $1 Million{' '}
-              <Link href="https://allafrica.com/stories/202108200101.html" target="_blank" rel="noopener">
+              </NoUnderlineLink>
+              &nbsp;{" "} $1 Million{' '}
+              &nbsp;{" "} <NoUnderlineLink href="https://allafrica.com/stories/202108200101.html" target="_blank" rel="noopener">
                 personal library donation
-              </Link>{' '}
-              in a team of three as of December 2022.
+              </NoUnderlineLink>{' '}
+              &nbsp;{" "} in a team of three as of December 2022.
             </ListItem>
             <ListItem>Performed Exploratory Data Analysis and Visualization with Microsoft Excel.</ListItem>
             <ListItem>Digitized records of Journal Articles, reports, reviews, and USIU-Africa’s alumni Masters Thesis.</ListItem>
