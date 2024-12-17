@@ -69,7 +69,7 @@ const Navbar = () => {
                 <a href="#work" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('work'); }}>Experience</a>
                 <a href="#projects" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('projects'); }}>Projects</a>
                 <a href="#skills" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('skills'); }}>Skills</a>
-                <a href="#awards-and-honors" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('awards-and-honors'); }}>Awards & Honors</a>
+                <a href="#awards" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('awards'); }}>Awards</a>
                 <a href="#certificates" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('certificates'); }}>Certificates</a>
               </div>
             </div>
@@ -163,8 +163,8 @@ const Navbar = () => {
             <ListItem button onClick={() => handleNavigation('skills')}>
               <ListItemText primary="Skills" sx={drawerLinkStyle} />
             </ListItem>
-            <ListItem button onClick={() => handleNavigation('awards-and-honors')}>
-              <ListItemText primary="Awards & Honors" sx={drawerLinkStyle} />
+            <ListItem button onClick={() => handleNavigation('awards')}>
+              <ListItemText primary="Awards" sx={drawerLinkStyle} />
             </ListItem>
             <ListItem button onClick={() => handleNavigation('certificates')}>
               <ListItemText primary="Certificates" sx={drawerLinkStyle} />

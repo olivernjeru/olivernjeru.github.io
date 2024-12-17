@@ -12,10 +12,10 @@ const awards = [
   "11-time feature on Unsplash, 2021-2022"
 ];
 
-const AwardsAndHonors = () => {
+const Awards = () => {
   return (
     <Box
-      id="awards-and-honors"
+      id="awards"
       sx={{
         minHeight: '100vh', // Ensure the box covers the full viewport height
         display: 'flex', // Flexbox layout
@@ -49,4 +49,4 @@ const AwardsAndHonors = () => {
   );
 };
 
-export default AwardsAndHonors;
+export default Awards;

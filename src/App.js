@@ -6,7 +6,7 @@ import Education from "./components/Education";
 import Experience from "./components/Experience";
 import ProjectList from "./components/Projects";
 import Skills from "./components/Skills";
-import AwardsAndHonors from "./components/AwardsandHonors";
+import Awards from "./components/Awards";
 import Certificates from "./components/Certificates";
 import Footer from "./components/Footer";
 
@@ -62,7 +62,7 @@ function App() {
         <Experience />
         <ProjectList />
         <Skills />
-        <AwardsAndHonors />
+        <Awards />
         <Certificates />
         <Footer />
       </div>
