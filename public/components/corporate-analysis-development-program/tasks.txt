@@ -1,0 +1,12 @@
+Tasks
+Have loan-to-value ratios below 80(so they have significant equity in their homes)
+Have homes in locations with a high minority population(which would enable JPMorgan Chase & Co to increase support to those communities which is both a regularoty & a strategic requirement)>=70
+Have annual incomes over a certain threshold(so they are more likely to be able to afford more financial products & services) threshold=200K
+Have homes worth an amount over a certain threshold(so they are more likely to want to invest in them further or borrow against them)threshold=700000
+
+Analysis & charts could include:
+No. of borrowers with loan-to-value ratios in ranges
+No. of borrowers with %minority homeowners in their area in ranges
+No. of borrowers in annual income ranges
+No. of borrowers in appraised home value ranges
+And various combinations thereof
