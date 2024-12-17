@@ -3,7 +3,7 @@ import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import Navbar from "./components/Navbar";
 import HomePage from "./components/HomePage";
 import Education from "./components/Education";
-import WorkExperience from "./components/Work";
+import Experience from "./components/Experience";
 import ProjectList from "./components/Projects";
 import Skills from "./components/Skills";
 import AwardsAndHonors from "./components/AwardsandHonors";
@@ -59,7 +59,7 @@ function App() {
         <Navbar />
         <HomePage />
         <Education />
-        <WorkExperience />
+        <Experience />
         <ProjectList />
         <Skills />
         <AwardsAndHonors />

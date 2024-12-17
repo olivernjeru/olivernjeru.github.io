@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Box, Container, List, ListItem, Link } from '@mui/material';
 
-const WorkExperience = () => {
+const Experience = () => {
   return (
     <Box
       id="work"
@@ -81,4 +81,4 @@ const WorkExperience = () => {
   );
 };
 
-export default WorkExperience;
+export default Experience;
