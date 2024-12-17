@@ -66,7 +66,7 @@ const Navbar = () => {
               <div style={navLinksContainerStyle}>
                 <a href="#home" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('home'); }}>Home</a>
                 <a href="#education" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('education'); }}>Education</a>
-                <a href="#work" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('work'); }}>Work Experience</a>
+                <a href="#work" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('work'); }}>Experience</a>
                 <a href="#projects" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('projects'); }}>Projects</a>
                 <a href="#skills" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('skills'); }}>Skills</a>
                 <a href="#awards-and-honors" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('awards-and-honors'); }}>Awards & Honors</a>
@@ -155,7 +155,7 @@ const Navbar = () => {
               <ListItemText primary="Education" sx={drawerLinkStyle} />
             </ListItem>
             <ListItem button onClick={() => handleNavigation('work')}>
-              <ListItemText primary="Work Experience" sx={drawerLinkStyle} />
+              <ListItemText primary="Experience" sx={drawerLinkStyle} />
             </ListItem>
             <ListItem button onClick={() => handleNavigation('projects')}>
               <ListItemText primary="Projects" sx={drawerLinkStyle} />
