@@ -1,6 +1,7 @@
 import React from 'react';
-import { Typography, Box, Link } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 import { certificates } from './dataStores/Certificates';
+import { NoUnderlineLink } from '../components/utilities/formats/NoUnderlineLink';
 
 const Certificates = () => {
   return (
@@ -32,9 +33,9 @@ const Certificates = () => {
             fontSize: { xs: '0.875rem', sm: '1rem' }, // Adjust font size for small screens
           }}
         >
-          <Link href={certificate.url} target="_blank" rel="noopener" color="primary">
+          <NoUnderlineLink href={certificate.url} target="_blank" rel="noopener" color="primary">
             {certificate.name}
-          </Link>
+          </NoUnderlineLink>
         </Typography>
       ))}
     </Box>
