@@ -50,8 +50,8 @@ const Navbar = () => {
             <a href="https://figma.com/@olivernjeru" target="blank" rel="noopener">
               <img src="assets/socials/figma.svg" alt="Figma" style={socialIconStyle} />
             </a>
-            <a href="https://dribbble.com/olivernjeru" target="blank" rel="noopener">
-              <img src="assets/socials/dribbble.svg" alt="Dribbble" style={socialIconStyle} />
+            <a href="https://scholar.google.com/citations?user=V9-eteEAAAAJ&hl=en" target="blank" rel="noopener">
+              <img src="assets/socials/google-scholar.svg" alt="Google Scholar" style={socialIconStyle} />
             </a>
             <a href="https://unsplash.com/olivernjeru" target="blank" rel="noopener noreferrer">
               <img src="assets/socials/unsplash.svg" alt="Unsplash" style={socialIconStyle} />
@@ -88,8 +88,8 @@ const Navbar = () => {
             <a href="https://figma.com/@olivernjeru" target="blank" rel="noopener">
               <img src="assets/socials/figma.svg" alt="Figma" style={socialIconStyle} />
             </a>
-            <a href="https://dribbble.com/olivernjeru" target="blank" rel="noopener">
-              <img src="assets/socials/dribbble.svg" alt="Dribbble" style={socialIconStyle} />
+            <a href="https://scholar.google.com/citations?user=V9-eteEAAAAJ&hl=en" target="blank" rel="noopener">
+              <img src="assets/socials/google-scholar.svg" alt="Google Scholar" style={socialIconStyle} />
             </a>
             <a href="https://unsplash.com/olivernjeru" target="blank" rel="noopener noreferrer">
               <img src="assets/socials/unsplash.svg" alt="Unsplash" style={socialIconStyle} />
