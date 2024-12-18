@@ -23,7 +23,7 @@ const HomePage = () => {
                 Hi there! I am Oliver Njeru.
             </Typography>
             <Typography variant="h5" gutterBottom>
-                A Software Engineer, Research Enthusiast & Innovator.
+                A Software Engineer, Research Enthusiast and Innovator.
             </Typography>
             <Typography variant="body1" paragraph>
                 I am an undergraduate student at USIU-Africa pursuing a BSc in Applied Computer Technology with a concentration
