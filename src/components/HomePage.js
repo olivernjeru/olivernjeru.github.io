@@ -34,7 +34,7 @@ const HomePage = () => {
             <Box sx={{ margin: "1rem 0" }}>
                 <Button
                     variant="contained"
-                    href="assets/Resume/Njeru Oliver USIU-Africa Résumé.pdf"
+                    href="assets/Resume/Oliver Njeru Résumé.pdf"
                     target="_blank"
                     rel="noopener"
                     startIcon={<ArticleIcon />}
