@@ -51,14 +51,16 @@ const ProjectList = () => {
                   >
                     GitHub
                   </Link>
-                  <Link
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener"
-                    sx={{ color: 'secondary.main' }}
-                  >
-                    Live Demo
-                  </Link>
+                  {project.live && ( // Conditional rendering for the "Live" link
+                    <Link
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener"
+                      sx={{ color: 'secondary.main' }}
+                    >
+                      Live Demo
+                    </Link>
+                  )}
                 </Box>
               </Paper>
             </Grid>
