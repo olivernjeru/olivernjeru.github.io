@@ -39,7 +39,7 @@ const projects = [
       "A calculator for the visually impaired that uses event listeners in JavaScript to provide audio feedback for button clicks.",
     technologies: "JavaScript, HTML, CSS",
     github: "https://github.com/olivernjeru/blindr",
-    live: "https://olivernjeru.github.io/blindr/blindr.html",
+    live: "components/blindr/index.html",
   },
   {
     name: "Parking Lot Management System",
