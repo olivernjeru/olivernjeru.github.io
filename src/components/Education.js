@@ -85,8 +85,7 @@ const Education = () => {
             Commodities, Currencies, Fixed Income.
           </ListItem>
           <ListItem>
-            Placed second in trading simulations, scoring 90% in trades and
-            commissions.
+            Topped Sales & Trading leaderboard.
           </ListItem>
         </List>
       </Box>
