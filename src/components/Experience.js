@@ -28,7 +28,7 @@ const Experience = () => {
             USIU-Africa School of Sciences & Technology
           </Typography>
           <Typography variant="h6" gutterBottom>
-            Research Assistant (May 2024 - Current)
+            Research Assistant (Oct 2023 - Current)
           </Typography>
           <List>
             <ListItem>Machine Learning</ListItem>
