@@ -9,7 +9,6 @@ const Education = () => {
       sx={{
         minHeight: "100vh", // Full viewport height
         padding: { xs: "1rem", md: "2rem" }, // Adjust padding for mobile and desktop
-        backgroundColor: "#1e1e1e",
         color: "#fff",
         display: "flex", // Flexbox for centering content
         flexDirection: "column", // Stack children vertically
