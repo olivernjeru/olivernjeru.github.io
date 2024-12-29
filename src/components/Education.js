@@ -1,6 +1,7 @@
 import React from "react";
-import { Typography, Box, List, ListItem } from "@mui/material";
+import { Typography, Box, List, ListItem, Container } from "@mui/material";
 import { NoUnderlineLink } from "./utilities/formats/NoUnderlineLink";
+import { educationData } from "./dataStores/Education";
 
 const Education = () => {
   return (
@@ -9,107 +10,98 @@ const Education = () => {
       sx={{
         minHeight: "100vh", // Full viewport height
         padding: { xs: "1rem", md: "2rem" }, // Adjust padding for mobile and desktop
-        color: "#fff",
         display: "flex", // Flexbox for centering content
         flexDirection: "column", // Stack children vertically
-        justifyContent: "center", // Center content vertically
+        justifyContent: 'flex-start', // Start content at the top
         alignItems: "center", // Optional: Center horizontally
         overflowY: "auto", // Handle overflow if content exceeds 100vh
       }}
     >
+          <Container>
       {/* Section Title */}
       <Typography variant="h3" align="center" gutterBottom>
         Education & Research
       </Typography>
 
-      {/* USIU-Africa */}
-      <Box sx={{ marginBottom: "2rem", textAlign: { xs: "left", md: "center" }, width: "100%" }}>
-        <Typography variant="h5" gutterBottom>
-          <NoUnderlineLink
-            href="https://www.usiu.ac.ke/history/"
-            color="inherit"
-          >
-            United States International University-Africa
-          </NoUnderlineLink>
-        </Typography>
-        <Typography variant="body1">
-          BSc in Applied Computer Technology, Concentration in Software Engineering
-        </Typography>
-        <List>
-          <ListItem>
-            Classes: Data Structures & Algorithms, Database Systems, Operating
-            Systems, Discrete Mathematics, Object Oriented Analysis, Mobile
-            Programming, Machine Learning, Business Data Analytics.
-          </ListItem>
-          <ListItem>
-            Volunteered for various events, including the &nbsp;{" "}
-            <NoUnderlineLink
-              href="https://www.usiu.ac.ke/2500/pictorial-culture-week-2022/"
-            >
-              Culture Week
+      {/* Map through the education data */}
+      {educationData.map((education, index) => (
+        <Box
+          key={index}
+          sx={{
+            marginBottom: "2rem",
+            textAlign: { xs: "left", md: "center" },
+            width: "100%",
+          }}
+        >
+          {/* Education Name */}
+          <Typography variant="h5" gutterBottom>
+            <NoUnderlineLink href={education.link} color="inherit">
+              {education.name}
             </NoUnderlineLink>
-            ,{" "}
-            &nbsp;{" "} <NoUnderlineLink
-              href="https://www.usiu.ac.ke/2616/endowment-dinner-success-its-touching-impact-financially-needy-students/"
-            >
-              Endowment Dinner
-            </NoUnderlineLink>
-            , and
-            &nbsp;{" "} <NoUnderlineLink
-              href="https://www.usiu.ac.ke/2647/placement-career-services-pacs-hosts-annual-fair/"
-            >
-              Career Fair
-            </NoUnderlineLink>
-            .
-          </ListItem>
-        </List>
-      </Box>
+          </Typography>
+          {/* Degree/Certification */}
+          <Typography variant="body1" gutterBottom>
+            {education.degree}
+          </Typography>
 
-      {/* AmplifyMe */}
-      <Box sx={{ marginBottom: "2rem", textAlign: { xs: "left", md: "center" }, width: "100%" }}>
-        <Typography variant="h5" gutterBottom>
-          <NoUnderlineLink
-            href="https://amplifyme.com"
-            color="inherit"
-          >
-            AmplifyMe
-          </NoUnderlineLink>
-        </Typography>
-        <Typography variant="body1">
-          Diploma in Investment Bank Sales & Trading (Awarded March 2023)
-        </Typography>
-        <List>
-          <ListItem>
-            Modules: Investment Strategies, Equities (Apple, Tesla),
-            Commodities, Currencies, Fixed Income.
-          </ListItem>
-          <ListItem>
-            Topped Sales & Trading leaderboard.
-          </ListItem>
-        </List>
-      </Box>
+          {/* Classes or Modules List */}
+          {education.name === "AmplifyMe" ? (
+            // For AmplifyMe, use 'Modules'
+            education.classes.length > 0 && (
+              <List>
+                <ListItem>
+                  Modules: {education.classes.join(", ")}.
+                </ListItem>
+              </List>
+            )
+          ) : (
+            // For other institutions, use 'Classes'
+            education.classes.length > 0 && (
+              <List>
+                <ListItem>
+                  Classes: {education.classes.join(", ")}.
+                </ListItem>
+              </List>
+            )
+          )}
 
-      {/* Strathmore University */}
-      <Box sx={{ textAlign: { xs: "left", md: "center" }, width: "100%" }}>
-        <Typography variant="h5" gutterBottom>
-          <NoUnderlineLink
-            href="https://strathmore.edu/about-strathmore-2/"
-            color="inherit"
-          >
-            Strathmore University
-          </NoUnderlineLink>
-        </Typography>
-        <Typography variant="body1">
-          Diploma in Business Information Technology (Graduated September 2021)
-        </Typography>
-        <List>
-          <ListItem>Classes: Accounting, Business Finance & Economics.</ListItem>
-          <ListItem>
-            Activities: IEEE (Vice President), Developer Club (Social Media
-            Manager), IT Students Association.
-          </ListItem>
-        </List>
-      </Box>
+          {/* Events List (Volunteered Events) */}
+          {education.events.length > 0 && (
+            <List>
+              <ListItem>
+                Volunteered for various events, including
+                {education.events.map((event, index) => (
+                  <span key={index}>
+                    <NoUnderlineLink href={event.link} color="inherit">
+                      {event.name}
+                    </NoUnderlineLink>
+                    {index < education.events.length - 1 ? ", " : "."}
+                  </span>
+                ))}
+              </ListItem>
+            </List>
+          )}
+
+          {/* Achievements List */}
+          {education.achievements && education.achievements.length > 0 && (
+            <List>
+              {education.achievements.map((achievement, index) => (
+                <ListItem key={index}>{achievement}</ListItem>
+              ))}
+            </List>
+          )}
+
+          {/* Activities List */}
+          {education.activities && education.activities.length > 0 && (
+            <List>
+              {education.activities.map((activity, index) => (
+                <ListItem key={index}>{activity}</ListItem>
+              ))}
+            </List>
+          )}
+        </Box>
+      ))}
+            </Container>
     </Box>
   );
 };
