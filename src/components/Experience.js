@@ -25,7 +25,7 @@ const Experience = () => {
         {/* USIU-Africa School of Sciences & Technology */}
         <Box mb={{ xs: 3, md: 4 }} sx={{ textAlign: { xs: "left", md: "center" } }}>
           <Typography variant="h5" gutterBottom>
-            USIU-Africa School of Sciences & Technology
+            USIU-Africa School of Science & Technology
           </Typography>
           <Typography variant="h6" gutterBottom>
             Research Assistant (Oct 2023 - Current)
