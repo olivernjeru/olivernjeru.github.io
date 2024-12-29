@@ -9,6 +9,7 @@ import Skills from "./components/Skills";
 import Awards from "./components/Awards";
 import Certificates from "./components/Certificates";
 import Footer from "./components/Footer";
+import Divider from '@mui/material/Divider';
 
 const theme = createTheme({
   palette: {
@@ -58,11 +59,17 @@ function App() {
       <div style={{ overflowX: "hidden", marginTop: "50px" }}>
         <Navbar />
         <HomePage />
+        <Divider />
         <Education />
+        <Divider />
         <Experience />
+        <Divider />
         <ProjectList />
+        <Divider />
         <Skills />
+        <Divider />
         <Awards />
+        <Divider />
         <Certificates />
         <Footer />
       </div>
