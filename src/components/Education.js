@@ -17,91 +17,91 @@ const Education = () => {
         overflowY: "auto", // Handle overflow if content exceeds 100vh
       }}
     >
-          <Container>
-      {/* Section Title */}
-      <Typography variant="h3" align="center" gutterBottom>
-        Education & Research
-      </Typography>
+      <Container>
+        {/* Section Title */}
+        <Typography variant="h3" align="center" gutterBottom>
+          Education & Research
+        </Typography>
 
-      {/* Map through the education data */}
-      {educationData.map((education, index) => (
-        <Box
-          key={index}
-          sx={{
-            marginBottom: "2rem",
-            textAlign: { xs: "left", md: "center" },
-            width: "100%",
-          }}
-        >
-          {/* Education Name */}
-          <Typography variant="h5" gutterBottom>
-            <NoUnderlineLink href={education.link} color="inherit">
-              {education.name}
-            </NoUnderlineLink>
-          </Typography>
-          {/* Degree/Certification */}
-          <Typography variant="body1" gutterBottom>
-            {education.degree}
-          </Typography>
+        {/* Map through the education data */}
+        {educationData.map((education, index) => (
+          <Box
+            key={index}
+            sx={{
+              marginBottom: "2rem",
+              textAlign: { xs: "left", md: "center" },
+              width: "100%",
+            }}
+          >
+            {/* Education Name */}
+            <Typography variant="h5" gutterBottom>
+              <NoUnderlineLink href={education.link} color="inherit">
+                {education.name}
+              </NoUnderlineLink>
+            </Typography>
+            {/* Degree/Certification */}
+            <Typography variant="body1" gutterBottom>
+              {education.degree}
+            </Typography>
 
-          {/* Classes or Modules List */}
-          {education.name === "AmplifyMe" ? (
-            // For AmplifyMe, use 'Modules'
-            education.classes.length > 0 && (
+            {/* Classes or Modules List */}
+            {education.name === "AmplifyMe" ? (
+              // For AmplifyMe, use 'Modules'
+              education.classes.length > 0 && (
+                <List>
+                  <ListItem>
+                    Modules: {education.classes.join(", ")}.
+                  </ListItem>
+                </List>
+              )
+            ) : (
+              // For other institutions, use 'Classes'
+              education.classes.length > 0 && (
+                <List>
+                  <ListItem>
+                    Classes: {education.classes.join(", ")}.
+                  </ListItem>
+                </List>
+              )
+            )}
+
+            {/* Events List (Volunteered Events) */}
+            {education.events.length > 0 && (
               <List>
                 <ListItem>
-                  Modules: {education.classes.join(", ")}.
+                  Volunteered for various events, including
+                  {education.events.map((event, index) => (
+                    <span key={index}>
+                      <NoUnderlineLink href={event.link} color="inherit">
+                        {event.name}
+                      </NoUnderlineLink>
+                      {index < education.events.length - 1 ? ", " : "."}
+                    </span>
+                  ))}
                 </ListItem>
               </List>
-            )
-          ) : (
-            // For other institutions, use 'Classes'
-            education.classes.length > 0 && (
-              <List>
-                <ListItem>
-                  Classes: {education.classes.join(", ")}.
-                </ListItem>
-              </List>
-            )
-          )}
+            )}
 
-          {/* Events List (Volunteered Events) */}
-          {education.events.length > 0 && (
-            <List>
-              <ListItem>
-                Volunteered for various events, including
-                {education.events.map((event, index) => (
-                  <span key={index}>
-                    <NoUnderlineLink href={event.link} color="inherit">
-                      {event.name}
-                    </NoUnderlineLink>
-                    {index < education.events.length - 1 ? ", " : "."}
-                  </span>
+            {/* Achievements List */}
+            {education.achievements && education.achievements.length > 0 && (
+              <List>
+                {education.achievements.map((achievement, index) => (
+                  <ListItem key={index}>{achievement}</ListItem>
                 ))}
-              </ListItem>
-            </List>
-          )}
+              </List>
+            )}
 
-          {/* Achievements List */}
-          {education.achievements && education.achievements.length > 0 && (
-            <List>
-              {education.achievements.map((achievement, index) => (
-                <ListItem key={index}>{achievement}</ListItem>
-              ))}
-            </List>
-          )}
-
-          {/* Activities List */}
-          {education.activities && education.activities.length > 0 && (
-            <List>
-              {education.activities.map((activity, index) => (
-                <ListItem key={index}>{activity}</ListItem>
-              ))}
-            </List>
-          )}
-        </Box>
-      ))}
-            </Container>
+            {/* Activities List */}
+            {education.activities && education.activities.length > 0 && (
+              <List>
+                {education.activities.map((activity, index) => (
+                  <ListItem key={index}>{activity}</ListItem>
+                ))}
+              </List>
+            )}
+          </Box>
+        ))}
+      </Container>
     </Box>
   );
 };
