@@ -109,7 +109,6 @@ const Navbar = () => {
         <Box
           sx={{
             width: 250,
-            color: 'white',
             position: 'relative',
             height: '100%',
           }}
@@ -130,7 +129,7 @@ const Navbar = () => {
             <Typography
               variant="h6"
               component="div"
-              sx={{ flexGrow: 1, textAlign: 'center', color: 'white' }}
+              sx={{ flexGrow: 1, textAlign: 'center' }}
             >
               Oliver Njeru
             </Typography>
@@ -140,7 +139,6 @@ const Navbar = () => {
                 position: 'absolute',
                 top: '8px',
                 right: '8px',
-                color: 'white',
                 zIndex: 3, // Ensure button is above everything
               }}
             >
@@ -178,7 +176,6 @@ const Navbar = () => {
 // CSS styles in JavaScript
 const linkStyle = {
   textDecoration: 'none',
-  color: 'white',
   fontWeight: 'bold',
   padding: '10px 20px',
   borderRadius: '5px',
@@ -201,7 +198,6 @@ const navLinksContainerStyle = {
 };
 
 const drawerLinkStyle = {
-  color: 'white',
   fontSize: '16px',
   fontWeight: 'bold',
   padding: '12px 0',
