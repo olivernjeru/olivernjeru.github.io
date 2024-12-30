@@ -37,7 +37,7 @@ const Skills = () => {
                             {categorizedSkills[category].map((skill, skillIndex) => (
                                 <Grid item key={skillIndex} xs={6} sm={4} md={4}>
                                     <Paper
-                                        elevation={6}
+                                        elevation={3}
                                         sx={{
                                             padding: '0.5rem',
                                             textAlign: 'center',
