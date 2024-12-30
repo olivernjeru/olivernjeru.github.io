@@ -1,6 +1,7 @@
 import React from 'react';
-import { Typography, Box, Container, Grid, Paper, Link } from '@mui/material';
+import { Typography, Box, Container, Grid, Paper } from '@mui/material';
 import { projects } from './dataStores/Projects';
+import { NoUnderlineLink } from './utilities/formats/NoUnderlineLink';
 
 const Projects = () => {
   return (
@@ -40,24 +41,14 @@ const Projects = () => {
                 <Typography variant="caption" display="block" mt={1}>
                   <strong>Technologies:</strong> {project.technologies}
                 </Typography>
-                <Box mt={2}>
-                  <Link
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener"
-                    sx={{ marginRight: 2, color: 'secondary.main' }}
-                  >
+                <Box mt={2} sx={{ display: 'flex', justifyContent: 'space-between' }}> {/* Added flex and gap for spacing */}
+                  <NoUnderlineLink href={project.github}>
                     GitHub
-                  </Link>
+                  </NoUnderlineLink>
                   {project.live && ( // Conditional rendering for the "Live" link
-                    <Link
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener"
-                      sx={{ color: 'secondary.main' }}
-                    >
+                    <NoUnderlineLink href={project.live}>
                       Live Demo
-                    </Link>
+                    </NoUnderlineLink>
                   )}
                 </Box>
               </Paper>
