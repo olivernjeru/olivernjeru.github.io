@@ -1,7 +1,13 @@
 const projects = [
   {
+    name: 'Senior Year Project: Fat Finger Error Detection System',
+    description: 'Created a detection and mitigation system for financial transaction errors to minimize market disruptions.',
+    technologies: 'JavaScript',
+    github: 'https://replicanttrader.com',
+  },
+  {
     name: 'Ecommerce Website',
-    description: 'A merch store I created for my best friend to increase his sales and customer engagement.',
+    description: 'Merchandise store created to increase his sales and customer engagement.',
     technologies: 'Django, Vuejs, Bulma, HTML',
     github: 'https://github.com/olivernjeru/ecommercewebsite',
   },
