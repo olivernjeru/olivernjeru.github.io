@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import React, { useEffect, useState } from "react";
+import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import Navbar from "./components/Navbar";
 import HomePage from "./components/HomePage";
 import Education from "./components/Education";
@@ -9,15 +9,37 @@ import Skills from "./components/Skills";
 import Awards from "./components/Awards";
 import Certificates from "./components/Certificates";
 import Footer from "./components/Footer";
-import Divider from '@mui/material/Divider';
-
-const theme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-});
+import Divider from "@mui/material/Divider";
 
 function App() {
+  const [themeMode, setThemeMode] = useState("light");
+
+  useEffect(() => {
+    // Detect system color scheme
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = () => {
+      setThemeMode(mediaQuery.matches ? "dark" : "light");
+    };
+
+    // Set the initial theme
+    handleChange();
+
+    // Add listener to detect changes
+    mediaQuery.addEventListener("change", handleChange);
+
+    // Clean up the event listener
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, []);
+
+  // Create theme dynamically
+  const theme = createTheme({
+    palette: {
+      mode: themeMode,
+    },
+  });
+
   useEffect(() => {
     // Add styles to prevent overflow and make Watson Assistant responsive
     const style = document.createElement("style");
@@ -71,6 +93,7 @@ function App() {
         <Awards />
         <Divider />
         <Certificates />
+        <Divider />
         <Footer />
       </div>
     </ThemeProvider>
