@@ -15,8 +15,6 @@ const HomePage = () => {
                 alignItems: "center", // Center content horizontally
                 textAlign: "center",
                 padding: "2rem",
-                backgroundColor: "#121212",
-                color: "#fff",
             }}
         >
             <Container>
