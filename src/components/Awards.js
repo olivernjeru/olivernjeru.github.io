@@ -1,40 +1,113 @@
 import React from 'react';
-import { Typography, Box } from '@mui/material';
-import { awards } from './dataStores/Awards';
+import { Typography, Box, Container, Grid, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
+import SchoolIcon from "@mui/icons-material/School";
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
+import EventIcon from "@mui/icons-material/Event";
+import { categorizedAwards } from './dataStores/AwardsObject';
 
 const Awards = () => {
   return (
     <Box
       id="awards"
       sx={{
-        minHeight: '100vh', // Ensure the box covers the full viewport height
-        display: 'flex', // Flexbox layout
-        flexDirection: 'column', // Stack elements vertically
-        justifyContent: 'center', // Center elements vertically
-        alignItems: 'center', // Center elements horizontally
-        padding: { xs: '1rem', sm: '2rem' }, // Responsive padding based on screen size
-        overflowY: 'auto', // Enable scrolling if content overflows
-        backgroundColor: 'background.default', // Dark mode-compatible background
-        color: 'text.primary', // Dark mode-compatible text color
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        padding: { xs: "1rem", sm: "2rem" },
+        overflowY: "auto",
       }}
     >
-      <Typography variant="h4" align="center" gutterBottom>
-        Awards & Honors
-      </Typography>
-      {awards.map((award, index) => (
-        <Typography
-          key={index}
-          variant="body1"
-          paragraph
-          align="center"
-          sx={{
-            maxWidth: '90%', // Limit the width for better readability on mobile
-            fontSize: { xs: '0.875rem', sm: '1rem' }, // Adjust font size for smaller screens
-          }}
-        >
-          {award}
+      <Container>
+        <Typography variant="h4" align="center" gutterBottom>
+          Awards and Honors
         </Typography>
-      ))}
+
+        {/* Academic Honors */}
+        <Box sx={{ marginBottom: "2rem" }}>
+          <Typography variant="h5" gutterBottom>
+            🎓 Academic Honors
+          </Typography>
+          <List>
+            {categorizedAwards.academicHonors.map((honor, index) => (
+              <ListItem key={index}>
+                <ListItemIcon>
+                  <SchoolIcon />
+                </ListItemIcon>
+                <ListItemText primary={honor} />
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+
+        {/* Hackathons & Competitions */}
+        <Box sx={{ marginBottom: "2rem" }}>
+          <Typography variant="h5" gutterBottom>
+            🏆 Hackathons & Competitions
+          </Typography>
+          <List>
+            {categorizedAwards.hackathonsCompetitions.map((competition, index) => (
+              <ListItem key={index}>
+                <ListItemIcon>
+                  <EmojiEventsIcon />
+                </ListItemIcon>
+                <ListItemText primary={competition} />
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+
+        {/* Photography Achievements */}
+        <Box sx={{ marginBottom: "2rem" }}>
+          <Typography variant="h5" gutterBottom>
+            📸 Photography Achievements
+          </Typography>
+          <List>
+            {categorizedAwards.photographyAchievements.map((achievement, index) => (
+              <ListItem key={index}>
+                <ListItemIcon>
+                  <CameraAltIcon />
+                </ListItemIcon>
+                <ListItemText primary={achievement} />
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+
+        {/* Invited Events */}
+        <Box>
+          <Typography variant="h5" gutterBottom>
+            📅 Invited Events
+          </Typography>
+          {categorizedAwards.invitedEvents.map((event, index) => (
+            <Box key={index} sx={{ marginBottom: "1rem" }}>
+              <Typography
+                variant="h6"
+                component="a"
+                href={event.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ textDecoration: "none", color: "#1976d2" }}
+              >
+                {event.name}
+              </Typography>
+              {event.details.length > 0 && (
+                <List>
+                  {event.details.map((detail, detailIndex) => (
+                    <ListItem key={detailIndex}>
+                      <ListItemIcon>
+                        <EventIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={detail} />
+                    </ListItem>
+                  ))}
+                </List>
+              )}
+            </Box>
+          ))}
+        </Box>
+      </Container>
     </Box>
   );
 };
