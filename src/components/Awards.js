@@ -4,6 +4,7 @@ import SchoolIcon from "@mui/icons-material/School";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import EventIcon from "@mui/icons-material/Event";
+import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
 import { categorizedAwards } from './dataStores/AwardsObject';
 import { NoUnderlineLink } from './utilities/formats/NoUnderlineLink';
 
@@ -100,6 +101,31 @@ const Awards = () => {
                   ))}
                 </List>
               )}
+            </Box>
+          ))}
+        </Box>
+
+         {/* Volunteering */}
+         <Box>
+          <Typography variant="h5" gutterBottom>
+            🤝 Volunteering
+          </Typography>
+          {categorizedAwards.volunteering.map((volunteer, index) => (
+            <Box key={index} sx={{ marginBottom: "1rem" }}>
+              <Typography variant="h6">{volunteer.role}</Typography>
+              <Typography variant="body2" color="text.secondary">
+                {volunteer.organization} ({volunteer.period})
+              </Typography>
+              <List>
+                {volunteer.details.map((detail, detailIndex) => (
+                  <ListItem key={detailIndex}>
+                    <ListItemIcon>
+                      <VolunteerActivismIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={detail} />
+                  </ListItem>
+                ))}
+              </List>
             </Box>
           ))}
         </Box>
