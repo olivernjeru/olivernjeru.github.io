@@ -1,11 +1,7 @@
 import React from 'react';
-import { Typography, Box, Grid } from '@mui/material';
-
-const skills = [
-    'Python', 'C++', 'Java', 'JavaScript', 'R', 'Pandas', 'Numpy',
-    'Scikit-learn', 'Matplotlib', 'GGPlot', 'Bash', 'MYSQL', 'HTML', 'CSS',
-    'Photography', 'Spanish (Beginner)', 'Swahili (Bilingual)',
-];
+import { Typography, Box, Grid, Container } from '@mui/material';
+import { categorizedSkills } from './dataStores/SkillsObject';
+import Paper from '@mui/material/Paper';
 
 const Skills = () => {
     return (
@@ -15,27 +11,46 @@ const Skills = () => {
                 minHeight: '100vh', // Use minHeight for better responsiveness
                 display: 'flex', // Flexbox for layout
                 flexDirection: 'column', // Stack content vertically
-                justifyContent: 'center', // Center vertically
+                justifyContent: 'flex-start', // Center vertically
                 alignItems: 'center', // Center horizontally
                 padding: { xs: '1rem', sm: '2rem' }, // Adjust padding for small screens
                 overflowY: 'auto', // Enable scrolling if content exceeds height
-                backgroundColor: 'background.default', // Dark mode-compatible background
-                color: 'text.primary', // Dark mode-compatible text color
             }}
         >
-            <Typography variant="h4" align="center" gutterBottom>
-                Skills
-            </Typography>
+            <Container>
+                <Typography variant="h4" align="center" gutterBottom>
+                    Skills
+                </Typography>
 
-            <Grid container spacing={2} justifyContent="center">
-                {skills.map((skill, index) => (
-                    <Grid item key={index} xs={6} sm={4} md={3}>
-                        <Typography variant="body1" align="center">
-                            {skill}
+                {Object.keys(categorizedSkills).map((category, categoryIndex) => (
+                    <Box key={categoryIndex} sx={{ marginBottom: '2rem' }}>
+                        <Typography
+                            variant="h5"
+                            align="center"
+                            gutterBottom
+                            sx={{ marginBottom: '1rem', textTransform: 'capitalize' }}
+                        >
+                            {category.replace(/([A-Z])/g, ' $1').trim()}
                         </Typography>
-                    </Grid>
+
+                        <Grid container spacing={2} justifyContent="center">
+                            {categorizedSkills[category].map((skill, skillIndex) => (
+                                <Grid item key={skillIndex} xs={6} sm={4} md={4}>
+                                    <Paper
+                                        elevation={6}
+                                        sx={{
+                                            padding: '0.5rem',
+                                            textAlign: 'center',
+                                        }}
+                                    >
+                                        {skill}
+                                    </Paper>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </Box>
                 ))}
-            </Grid>
+            </Container>
         </Box>
     );
 };
