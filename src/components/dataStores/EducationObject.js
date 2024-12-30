@@ -1,5 +1,5 @@
-export const educationData = [
-    {
+const educationData = {
+    usiu: {
         name: "United States International University-Africa",
         degree: "BSc in Applied Computer Technology, Concentration in Software Engineering",
         link: "https://www.usiu.ac.ke/history/",
@@ -27,8 +27,10 @@ export const educationData = [
             "Business Data Analytics",
             "Software Design & Architecture",
         ],
+        achievements: [],
+        activities: [],
     },
-    {
+    libf: {
         name: "London Institute of Banking & Finance",
         degree: "Level 4 Diploma in Investment Bank Sales & Trading (Awarded March 2023 by AmplifyMe)",
         link: "https://www.libf.ac.uk/",
@@ -40,18 +42,48 @@ export const educationData = [
             "Currencies",
             "Fixed Income",
         ],
-        achievements: ["Ranked first in Sales & Trading", "Sponsored by AmplifyMe in partnership with Morgan Stanley"],
+        achievements: [
+            "Ranked first in Sales & Trading",
+            "Sponsored by AmplifyMe in partnership with Morgan Stanley",
+        ],
+        activities: [],
     },
-    {
+    strathmore: {
         name: "Strathmore University",
         degree: "Diploma in Business Information Technology (Graduated September 2021)",
         link: "https://strathmore.edu/about-strathmore-2/",
         events: [],
         classes: ["Accounting", "Business Finance & Economics"],
+        achievements: [],
         activities: [
             "IEEE, Vice President and Member",
             "Google Developer Student Club, Social Media Manager and Member",
             "Information Technology Students Association Club, Member",
         ],
     },
+};
+
+const publications = [
+    {
+        title: "SPARK: Harnessing Human-Centered Workflows with Biomedical Foundation Models for Drug Discovery. ",
+        description:
+            "Peer-reviewed publication, Authors: Bum Chul Kwon, Simona Rabinovici-Cohen, Beldine Moturi, Ruth Mwaura, Kezia Wahome, Oliver Njeru, et al.",
+        link: "https://www.ijcai.org/proceedings/2024/1015.pdf",
+        conference: {
+            name: "International Joint Conference on Artificial Intelligence",
+            date: "Aug 8, 2024",
+        },
+    },
+    {
+        title: "DbAPI: A Backend-as-a-Service Platform for Rapid Deployment of Cloud Services. ",
+        description:
+            "Peer-reviewed publication, Authors: Paul Okanda, Ankit Chhatbar, Oliver Njeru.",
+        link: "http://www.ist-africa.org/Conference2025/outbox/ISTAfrica_Paper_ref_87_13712.pdf",
+        conference: {
+            name: "International Science and Technology for Africa",
+            date: "May 22, 2024",
+        },
+    },
 ];
+
+export { educationData, publications };
