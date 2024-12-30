@@ -28,7 +28,7 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="fixed" sx={{ backgroundColor: '#333', zIndex: (theme) => theme.zIndex.drawer + 1, top: 0 }}>
+    <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, top: 0 }}>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         {/* Mobile Hamburger Menu Icon */}
         {isMobile && (
@@ -109,7 +109,6 @@ const Navbar = () => {
         <Box
           sx={{
             width: 250,
-            backgroundColor: '#333',
             color: 'white',
             position: 'relative',
             height: '100%',
