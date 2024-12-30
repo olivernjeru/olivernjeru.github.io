@@ -8,7 +8,7 @@ const Footer = () => {
     <Box component="footer" sx={{ backgroundColor: '#333', padding: 2, textAlign: 'center' }}>
       <Typography variant="h6">Built by Oliver Njeru</Typography>
       <Typography variant="body2" sx={{ marginTop: 1 }}>
-        All rights reserved &copy; 2021 - {currentYear}
+        All rights reserved &copy; 2020 - {currentYear}
       </Typography>
     </Box>
   );
