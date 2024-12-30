@@ -5,6 +5,7 @@ import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import EventIcon from "@mui/icons-material/Event";
 import { categorizedAwards } from './dataStores/AwardsObject';
+import { NoUnderlineLink } from './utilities/formats/NoUnderlineLink';
 
 const Awards = () => {
   return (
@@ -82,16 +83,11 @@ const Awards = () => {
           </Typography>
           {categorizedAwards.invitedEvents.map((event, index) => (
             <Box key={index} sx={{ marginBottom: "1rem" }}>
-              <Typography
-                variant="h6"
-                component="a"
+              <NoUnderlineLink
                 href={event.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{ textDecoration: "none", color: "#1976d2" }}
               >
                 {event.name}
-              </Typography>
+              </NoUnderlineLink>
               {event.details.length > 0 && (
                 <List>
                   {event.details.map((detail, detailIndex) => (
