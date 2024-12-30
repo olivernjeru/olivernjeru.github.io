@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography, Box, Container, Grid, Paper, Link } from '@mui/material';
 import { projects } from './dataStores/Projects';
 
-const ProjectList = () => {
+const Projects = () => {
   return (
     <Box
       id="projects"
@@ -13,8 +13,6 @@ const ProjectList = () => {
         justifyContent: 'flex-start', // Start content at the top
         overflowY: 'auto', // Allow scrolling for long content
         padding: { xs: '1rem', sm: '2rem' }, // Responsive padding for mobile and larger screens
-        backgroundColor: 'background.default', // Dark mode-compatible background
-        color: 'text.primary', // Dark mode-compatible text color
       }}
     >
       <Container>
@@ -71,4 +69,4 @@ const ProjectList = () => {
   );
 };
 
-export default ProjectList;
+export default Projects;
