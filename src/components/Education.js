@@ -19,8 +19,8 @@ const Education = () => {
     >
       <Container>
         {/* Section Title */}
-        <Typography variant="h3" align="center" gutterBottom>
-          Education & Research
+        <Typography variant="h4" align="center" gutterBottom>
+          Education and Research
         </Typography>
 
         {/* Map through the education data */}
