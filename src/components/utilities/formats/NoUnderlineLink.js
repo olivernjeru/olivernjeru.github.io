@@ -7,7 +7,7 @@ const NoUnderlineLink = ({ href, children }) => (
     href={href}
     target="_blank"
     rel="noopener"
-    style={{ textDecoration: 'none' }}
+    style={{ textDecoration: 'none', color: "#1976d2" }}
   >
     {children}
   </Link>
