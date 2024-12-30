@@ -27,8 +27,7 @@ const HomePage = () => {
                     A Software Engineer, Research Enthusiast and Innovator.
                 </Typography>
                 <Typography variant="body1" paragraph>
-                    I am an undergraduate student at USIU-Africa pursuing a BSc in Applied Computer Technology with a concentration
-                    in Software Engineering. I enjoy interacting in a diverse environment and thrive in collaboration and team work.  In my free time, you’ll often find me traveling, swimming, gaming, or simply seeking inspiration from the world around me. Feel free to explore my personal projects, honors & awards, and experience below!
+                    I am very much interested in Research in the following areas, Optimization, Game Theory, Machine Learning, Algorithmic Economics and Stochastic Optimization. I enjoy diverse interactions and thrive in collaboration and team work.  In my free time, you’ll often find me traveling, swimming, gaming, or simply seeking inspiration from the world around me. Feel free to explore my experience, projects and more below!
                 </Typography>
 
                 {/* Resume Button */}
