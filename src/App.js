@@ -12,22 +12,28 @@ import Footer from "./components/Footer";
 import Divider from "@mui/material/Divider";
 
 function App() {
-  const [themeMode, setThemeMode] = useState("light");
+  const [themeMode, setThemeMode] = useState(() => {
+    // Check if there's a saved theme in localStorage
+    const savedTheme = localStorage.getItem("themeMode");
+    if (savedTheme) return savedTheme;
+
+    // If not, check the system's color scheme
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    return mediaQuery.matches ? "dark" : "light";
+  });
 
   useEffect(() => {
-    // Detect system color scheme
+    // Detect system color scheme and set theme
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleChange = () => {
-      setThemeMode(mediaQuery.matches ? "dark" : "light");
+      const newTheme = mediaQuery.matches ? "dark" : "light";
+      setThemeMode(newTheme);
+      localStorage.setItem("themeMode", newTheme); // Save to localStorage
     };
 
-    // Set the initial theme
-    handleChange();
-
-    // Add listener to detect changes
+    handleChange(); // Set initial theme based on system preference
     mediaQuery.addEventListener("change", handleChange);
 
-    // Clean up the event listener
     return () => {
       mediaQuery.removeEventListener("change", handleChange);
     };
