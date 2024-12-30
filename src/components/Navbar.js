@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, top: 0 }}>
-      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <Toolbar sx={{ display: 'flex', alignItems: 'center' }}>
         {/* Mobile Hamburger Menu Icon */}
         {isMobile && (
           <IconButton color="inherit" edge="start" onClick={toggleMenu}>
@@ -39,23 +39,12 @@ const Navbar = () => {
 
         {/* Mobile Home and Social Links */}
         {isMobile && (
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <a href="#home" style={linkStyle}>Home</a>
-            <a href="https://github.com/olivernjeru" target="blank" rel="noopener">
-              <img src="assets/socials/github.png" alt="GitHub" style={socialIconStyle} />
-            </a>
-            <a href="https://linkedin.com/in/olivernjeru" target="blank" rel="noopener">
-              <img src="assets/socials/linkedin.svg" alt="LinkedIn" style={socialIconStyle} />
-            </a>
-            <a href="https://figma.com/@olivernjeru" target="blank" rel="noopener">
-              <img src="assets/socials/figma.svg" alt="Figma" style={socialIconStyle} />
-            </a>
-            <a href="https://scholar.google.com/citations?user=V9-eteEAAAAJ&hl=en" target="blank" rel="noopener">
-              <img src="assets/socials/google-scholar.svg" alt="Google Scholar" style={socialIconStyle} />
-            </a>
-            <a href="https://unsplash.com/olivernjeru" target="blank" rel="noopener noreferrer">
-              <img src="assets/socials/unsplash.svg" alt="Unsplash" style={socialIconStyle} />
-            </a>
+          <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
+            <a href="#home" style={linkStyle} onClick={(e) => {
+              e.preventDefault(); // Prevent default anchor behavior
+              handleNavigation('home'); // Call the handleNavigation function
+            }}>Home</a>
+            <SocialLinks />
           </Box>
         )}
 
@@ -64,38 +53,23 @@ const Navbar = () => {
           <Box sx={{ display: 'flex', justifyContent: 'left', width: '100%' }}>
             <div className="nav-links" style={{ margin: 0, padding: 0 }}>
               <div style={navLinksContainerStyle}>
-                <a href="#home" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('home'); }}>Home</a>
-                <a href="#education" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('education'); }}>Education</a>
-                <a href="#work" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('work'); }}>Experience</a>
-                <a href="#projects" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('projects'); }}>Projects</a>
-                <a href="#skills" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('skills'); }}>Skills</a>
-                <a href="#awards" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('awards'); }}>Awards</a>
-                <a href="#certificates" style={linkStyle} onClick={(e) => { e.preventDefault(); handleNavigation('certificates'); }}>Certificates</a>
+                {['home', 'education', 'work', 'projects', 'skills', 'awards', 'certificates'].map((section) => (
+                  <a
+                    href={`#${section}`}
+                    style={linkStyle}
+                    key={section}
+                    onClick={(e) => { e.preventDefault(); handleNavigation(section); }}
+                  >
+                    {capitalizeFirstLetter(section)}
+                  </a>
+                ))}
               </div>
             </div>
           </Box>
         )}
 
         {/* Social Links Section - Desktop */}
-        {!isMobile && (
-          <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
-            <a href="https://github.com/olivernjeru" target="blank" rel="noopener">
-              <img src="assets/socials/github.png" alt="GitHub" style={socialIconStyle} />
-            </a>
-            <a href="https://linkedin.com/in/olivernjeru" target="blank" rel="noopener">
-              <img src="assets/socials/linkedin.svg" alt="LinkedIn" style={socialIconStyle} />
-            </a>
-            <a href="https://figma.com/@olivernjeru" target="blank" rel="noopener">
-              <img src="assets/socials/figma.svg" alt="Figma" style={socialIconStyle} />
-            </a>
-            <a href="https://scholar.google.com/citations?user=V9-eteEAAAAJ&hl=en" target="blank" rel="noopener">
-              <img src="assets/socials/google-scholar.svg" alt="Google Scholar" style={socialIconStyle} />
-            </a>
-            <a href="https://unsplash.com/olivernjeru" target="blank" rel="noopener noreferrer">
-              <img src="assets/socials/unsplash.svg" alt="Unsplash" style={socialIconStyle} />
-            </a>
-          </Box>
-        )}
+        {!isMobile && <SocialLinks />}
       </Toolbar>
 
       {/* Mobile Navigation Drawer */}
@@ -115,63 +89,48 @@ const Navbar = () => {
           role="presentation"
         >
           {/* Drawer Header */}
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '16px',
-              borderBottom: '1px solid #444',
-              position: 'relative',
-              zIndex: 2, // Ensure this is above everything else
-            }}
-          >
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{ flexGrow: 1, textAlign: 'center' }}
-            >
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px', borderBottom: '1px solid #444', position: 'relative' }}>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'center' }}>
               Oliver Njeru
             </Typography>
-            <IconButton
-              onClick={toggleMenu}
-              sx={{
-                position: 'absolute',
-                top: '8px',
-                right: '8px',
-                zIndex: 3, // Ensure button is above everything
-              }}
-            >
+            <IconButton onClick={toggleMenu} sx={{ position: 'absolute', top: '8px', right: '8px' }}>
               <CloseIcon />
             </IconButton>
           </Box>
 
           {/* Drawer Links */}
           <List>
-            <ListItem button onClick={() => handleNavigation('education')}>
-              <ListItemText primary="Education" sx={drawerLinkStyle} />
-            </ListItem>
-            <ListItem button onClick={() => handleNavigation('work')}>
-              <ListItemText primary="Experience" sx={drawerLinkStyle} />
-            </ListItem>
-            <ListItem button onClick={() => handleNavigation('projects')}>
-              <ListItemText primary="Projects" sx={drawerLinkStyle} />
-            </ListItem>
-            <ListItem button onClick={() => handleNavigation('skills')}>
-              <ListItemText primary="Skills" sx={drawerLinkStyle} />
-            </ListItem>
-            <ListItem button onClick={() => handleNavigation('awards')}>
-              <ListItemText primary="Awards" sx={drawerLinkStyle} />
-            </ListItem>
-            <ListItem button onClick={() => handleNavigation('certificates')}>
-              <ListItemText primary="Certificates" sx={drawerLinkStyle} />
-            </ListItem>
+            {['education', 'work', 'projects', 'skills', 'awards', 'certificates'].map((section) => (
+              <ListItem button onClick={() => handleNavigation(section)} key={section}>
+                <ListItemText primary={capitalizeFirstLetter(section)} sx={drawerLinkStyle} />
+              </ListItem>
+            ))}
           </List>
         </Box>
       </Drawer>
     </AppBar>
   );
 };
+
+// Social Links Component
+const SocialLinks = () => (
+  <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
+    {[
+      { href: 'https://github.com/olivernjeru', src: 'assets/socials/github.png', alt: 'GitHub' },
+      { href: 'https://linkedin.com/in/olivernjeru', src: 'assets/socials/linkedin.svg', alt: 'LinkedIn' },
+      { href: 'https://figma.com/@olivernjeru', src: 'assets/socials/figma.svg', alt: 'Figma' },
+      { href: 'https://scholar.google.com/citations?user=V9-eteEAAAAJ&hl=en', src: 'assets/socials/google-scholar.svg', alt: 'Google Scholar' },
+      { href: 'https://unsplash.com/olivernjeru', src: 'assets/socials/unsplash.svg', alt: 'Unsplash' }
+    ].map((social) => (
+      <a href={social.href} target="blank" rel="noopener" key={social.alt}>
+        <img src={social.src} alt={social.alt} style={socialIconStyle} />
+      </a>
+    ))}
+  </Box>
+);
+
+// Capitalize the first letter of each section for display
+const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 
 // CSS styles in JavaScript
 const linkStyle = {
@@ -180,12 +139,16 @@ const linkStyle = {
   padding: '10px 20px',
   borderRadius: '5px',
   transition: 'color 0.3s ease, background-color 0.3s ease',
+  color: '#fff',
 };
 
 const socialIconStyle = {
   width: '30px',
   height: '30px',
   transition: 'transform 0.3s ease',
+  '&:hover': {
+    transform: 'scale(1.1)',
+  },
 };
 
 const navLinksContainerStyle = {
@@ -201,6 +164,12 @@ const drawerLinkStyle = {
   fontSize: '16px',
   fontWeight: 'bold',
   padding: '12px 0',
+};
+
+// Hover effect for links
+linkStyle['&:hover'] = {
+  backgroundColor: '#444',
+  color: '#ffcc00',
 };
 
 export default Navbar;
