@@ -18,7 +18,7 @@ const Experience = () => {
     >
       <Container>
         <Typography variant="h4" align="center" gutterBottom>
-          Work Experience
+          Experience
         </Typography>
         {Object.entries(workExperienceData).map(([organization, details], index) => (
           <Box
