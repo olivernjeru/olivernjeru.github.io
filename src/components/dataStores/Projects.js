@@ -13,7 +13,7 @@ const projects = [
   },
   {
     name: 'Game Collection',
-    description: 'A collection of games including Random Number Guessing Game, TicTacToe, Rock Paper Scissors, and more.',
+    description: 'A collection of games including TicTacToe, Rock Paper Scissors, and more.',
     technologies: 'Python CLI',
     github: 'https://github.com/olivernjeru/explore-python/tree/main/explore-python',
   },
@@ -26,24 +26,10 @@ const projects = [
       "https://github.com/olivernjeru/explore-python/tree/main/explore-django/multiple-vendors-ecommerce-site",
   },
   {
-    name: "Explore JavaScript",
-    description:
-      "A collection of JavaScript projects including a TicTacToe Game, foundational vanilla JS concepts, and a CRUD app.",
-    technologies: "Vanilla JavaScript, ReactJS, Tailwind, NodeJS",
-    github: "https://github.com/olivernjeru/explore-javascript",
-  },
-  {
     name: "User Experience & Design",
     description:
       "Applied empathetic & creative skills in designs.",
     technologies: "Figma",
-    github: "",
-  },
-  {
-    name: "JPMorgan Chase & Co. Corporate Analyst Development Program (CADP)",
-    description:
-      "Completed a job simulation focused on understanding the Corporate Analyst Development Program at JPMorgan Chase & Co. Built a visualization dashboard using Tableau. Documented a business process and identified and communicated opportunities for improvement. Developed a PowerPoint presentation to communicate key ideas and talking points and tell a compelling story.",
-    technologies: "Tableau, Microsoft PowerPoint",
     github: "",
   },
   {
@@ -67,6 +53,26 @@ const projects = [
       "An app that checks users into a parking lot, captures their information in a database, and calculates owed amounts upon checkout.",
     technologies: "Java, MySQL",
     github: "https://github.com/olivernjeru/parkinglotmanagementsystem",
+  },
+  {
+    name: "Explore JavaScript",
+    description:
+      "A collection of JavaScript projects including a TicTacToe Game, foundational vanilla JS concepts, and a CRUD app.",
+    technologies: "Vanilla JavaScript, ReactJS, Tailwind, NodeJS",
+    github: "https://github.com/olivernjeru/explore-javascript",
+  },
+  {
+    name: "JPMC & Co. Corporate Analyst Development Program (CADP)",
+    description:
+      "Completed a job simulation for JPMorgan Chase's Corporate Analyst Development Program, encompassing Tableau dashboard creation, business process documentation, improvement identification, and impactful PowerPoint presentation development.",
+    technologies: "Tableau, Microsoft PowerPoint",
+    github: "",
+  },
+  {
+    name: 'Guess the Number Game',
+    description: 'This engaging number-guessing game challenges players to identify a randomly selected secret number within a defined range, providing helpful hints after each guess to enhance their logical reasoning and problem-solving skills.',
+    technologies: 'Python',
+    github: 'https://github.com/olivernjeru/explore-python/blob/main/explore-python/randomnumberguessinggame/randomnumberguessinggame.py',
   },
 ];
 
