@@ -18,7 +18,7 @@ export const categorizedCertificates = {
     { name: "Introduction to HTML5", url: "https://www.coursera.org/account/accomplishments/records/TGXEY74SK2GW" },
   ],
   "Finance & Trading Simulations": [
-    { name: "Quant Accelerator Simulation Experience", url: "#" },
+    { name: "AmplifyMe Quant Accelerator Simulation Experience", url: "#" },
     { name: "CME Group: Introduction to Crude Oil", url: "#" },
     { name: "CME Group: Introduction to Precious Metals", url: "#" },
     { name: "CME Group: Introduction to Grains and Oilseeds", url: "#" },
