@@ -41,11 +41,13 @@ const Projects = () => {
                 <Typography variant="caption" display="block" mt={1}>
                   <strong>Technologies:</strong> {project.technologies}
                 </Typography>
-                <Box mt={2} sx={{ display: 'flex', justifyContent: 'space-between' }}> {/* Added flex and gap for spacing */}
-                  <NoUnderlineLink href={project.github}>
-                    GitHub
-                  </NoUnderlineLink>
-                  {project.live && ( // Conditional rendering for the "Live" link
+                <Box mt={2} sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                  {project.github && ( // Render only if GitHub link exists
+                    <NoUnderlineLink href={project.github}>
+                      GitHub
+                    </NoUnderlineLink>
+                  )}
+                  {project.live && ( // Render only if Live Demo link exists
                     <NoUnderlineLink href={project.live}>
                       Live Demo
                     </NoUnderlineLink>

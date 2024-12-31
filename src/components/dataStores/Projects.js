@@ -33,6 +33,20 @@ const projects = [
     github: "https://github.com/olivernjeru/explore-javascript",
   },
   {
+    name: "User Experience & Design",
+    description:
+      "Applied empathetic & creative skills in designs.",
+    technologies: "Figma",
+    github: "",
+  },
+  {
+    name: "JPMorgan Chase & Co. Corporate Analyst Development Program (CADP)",
+    description:
+      "Completed a job simulation focused on understanding the Corporate Analyst Development Program at JPMorgan Chase & Co. Built a visualization dashboard using Tableau. Documented a business process and identified and communicated opportunities for improvement. Developed a PowerPoint presentation to communicate key ideas and talking points and tell a compelling story.",
+    technologies: "Tableau, Microsoft PowerPoint",
+    github: "",
+  },
+  {
     name: "Landing Page Clones",
     description:
       "A collection of landing page clones for popular websites like Microsoft, Hulu, Starbucks, and Netflix, showcasing HTML, CSS, and JavaScript expertise.",
