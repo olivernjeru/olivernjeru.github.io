@@ -43,8 +43,9 @@ const educationData = {
             "Fixed Income",
         ],
         achievements: [
-            "Ranked first in Sales & Trading",
+            "Flagged as a High Potential Candidate in AmplifyMe's Finance Accelerator Experience",
             "Sponsored by AmplifyMe in partnership with Morgan Stanley",
+            "Ranked first in AmplifyMe's simulation",
         ],
         activities: [],
     },

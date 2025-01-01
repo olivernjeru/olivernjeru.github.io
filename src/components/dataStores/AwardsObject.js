@@ -7,7 +7,7 @@ export const categorizedAwards = {
     hackathonsCompetitions: [
         "JP Morgan Chase Code For Good Africa Virtual Hackathon, September 2023 (Team Lead)",
         "CME Group FX Trading Challenge ranked top 25%, August 2023",
-        "Ranked first in Sales & Trading at the Investment Bank Global Markets Trading Academy by AmplifyMe, 2023",
+        "Ranked first AmplifyMe's simulation, 2023",
         "Hult Prize USIU-Africa Innovation Week First Runners Up, 2022",
     ],
     photographyAchievements: [
