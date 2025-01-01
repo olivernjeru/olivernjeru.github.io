@@ -110,7 +110,7 @@ const Education = () => {
                   </NoUnderlineLink>
                   {publication.description}
                   {publication.conference && (
-                    <> (Presented at {publication.conference.name}, {publication.conference.date}).</>
+                    <> (Presented at the {publication.conference.name}, {publication.conference.date}).</>
                   )}
                 </Typography>
               </ListItem>
