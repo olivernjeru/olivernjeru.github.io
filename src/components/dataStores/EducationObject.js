@@ -67,7 +67,7 @@ const publications = [
     {
         title: "SPARK: Harnessing Human-Centered Workflows with Biomedical Foundation Models for Drug Discovery. ",
         description:
-            "Peer-reviewed publication, Authors: Bum Chul Kwon, Simona Rabinovici-Cohen, Beldine Moturi, Ruth Mwaura, Kezia Wahome, Oliver Njeru, et al.",
+            "Peer-reviewed publication, Authors: Bum Chul Kwon, Simona Rabinovici-Cohen, Beldine Moturi, Ruth Mwaura, Kezia Wahome, Oliver Njeru, Miguel Shinyenyi, Catherine Wanjiru, Sekou Remy, William Ogallo, Itai Guez, Partha Suryanarayanan, Joseph Morrone, Shreyans Sethi, Seung-Gu Kang, Tien Huynh, Kenney Ng, Diwakar Mahajan, Hongyang Li, Matan Ninio , Shervin Ayati, Efrat Hexter, Wendy Cornell.",
         link: "https://www.ijcai.org/proceedings/2024/1015.pdf",
         conference: {
             name: "International Joint Conference on Artificial Intelligence",
