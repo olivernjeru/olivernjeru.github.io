@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+import { CssBaseline, ThemeProvider, createTheme, GlobalStyles } from "@mui/material";
 import Navbar from "./components/Navbar";
 import HomePage from "./components/HomePage";
 import Education from "./components/Education";
@@ -84,6 +84,38 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <GlobalStyles
+        styles={{
+          "*": {
+            scrollbarWidth: "thin",
+            scrollbarColor:
+              theme.palette.mode === "dark"
+                ? `${theme.palette.grey[700]} ${theme.palette.background.default}`
+                : `${theme.palette.grey[400]} ${theme.palette.background.default}`,
+          },
+          "*::-webkit-scrollbar": {
+            width: "2px",
+            height: "2px",
+          },
+          "*::-webkit-scrollbar-track": {
+            backgroundColor: theme.palette.background.default,
+            borderRadius: "10px",
+          },
+          "*::-webkit-scrollbar-thumb": {
+            backgroundColor:
+              theme.palette.mode === "dark"
+                ? theme.palette.grey[600]
+                : theme.palette.grey[500],
+            borderRadius: "10px",
+          },
+          "*::-webkit-scrollbar-thumb:hover": {
+            backgroundColor:
+              theme.palette.mode === "dark"
+                ? theme.palette.grey[500]
+                : theme.palette.grey[500],
+          },
+        }}
+      />
       <div style={{ overflowX: "hidden", marginTop: "50px" }}>
         <Navbar />
         <HomePage />
