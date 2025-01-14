@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CssBaseline, ThemeProvider, createTheme, GlobalStyles } from "@mui/material";
+import { CssBaseline, ThemeProvider, createTheme, GlobalStyles, useMediaQuery } from "@mui/material";
 import Navbar from "./components/Navbar";
 import HomePage from "./components/HomePage";
 import Education from "./components/Education";
@@ -39,12 +39,19 @@ function App() {
     };
   }, []);
 
-  // Create theme dynamically
-  const theme = createTheme({
-    palette: {
-      mode: themeMode,
-    },
-  });
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: prefersDarkMode ? 'dark' : 'light',
+          primary: { main: prefersDarkMode ? '#90caf9' : '#1976d2' },
+          background: { default: prefersDarkMode ? '#121212' : '#ffffff' },
+        },
+      }),
+    [prefersDarkMode]
+  );
 
   useEffect(() => {
     // Add styles to prevent overflow and make Watson Assistant responsive
@@ -86,33 +93,20 @@ function App() {
       <CssBaseline />
       <GlobalStyles
         styles={{
-          "*": {
-            scrollbarWidth: "thin",
-            scrollbarColor:
-              theme.palette.mode === "dark"
-                ? `${theme.palette.grey[700]} ${theme.palette.background.default}`
-                : `${theme.palette.grey[400]} ${theme.palette.background.default}`,
+          '*::-webkit-scrollbar': {
+            width: 4,
+            height: 4,
           },
-          "*::-webkit-scrollbar": {
-            width: "2px",
-            height: "2px",
+          '*::-webkit-scrollbar-thumb': {
+            backgroundColor: prefersDarkMode ? '#90caf9' : '#1976d2',
+            borderRadius: '8px',
           },
-          "*::-webkit-scrollbar-track": {
-            backgroundColor: theme.palette.background.default,
-            borderRadius: "10px",
+          '*::-webkit-scrollbar-thumb:hover': {
+            backgroundColor: prefersDarkMode ? '#64b5f6' : '#1565c0',
           },
-          "*::-webkit-scrollbar-thumb": {
-            backgroundColor:
-              theme.palette.mode === "dark"
-                ? theme.palette.grey[600]
-                : theme.palette.grey[500],
-            borderRadius: "10px",
-          },
-          "*::-webkit-scrollbar-thumb:hover": {
-            backgroundColor:
-              theme.palette.mode === "dark"
-                ? theme.palette.grey[500]
-                : theme.palette.grey[500],
+          '*::-webkit-scrollbar-track': {
+            backgroundColor: prefersDarkMode ? '#1e1e1e' : '#f4f4f4',
+            borderRadius: '8px',
           },
         }}
       />
