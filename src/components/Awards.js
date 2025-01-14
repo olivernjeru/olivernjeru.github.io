@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Box, Container, Grid, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
+import { Typography, Box, Container, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
 import SchoolIcon from "@mui/icons-material/School";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
