@@ -53,7 +53,7 @@ const Navbar = () => {
           <Box sx={{ display: 'flex', justifyContent: 'left', width: '100%' }}>
             <div className="nav-links" style={{ margin: 0, padding: 0 }}>
               <div style={navLinksContainerStyle}>
-                {['home', 'education', 'work', 'projects', 'skills', 'awards', 'certificates'].map((section) => (
+                {['home', 'education', 'work', 'projects', 'skills', 'awards', 'certificates', 'art'].map((section) => (
                   <a
                     href={`#${section}`}
                     style={linkStyle}
@@ -100,7 +100,7 @@ const Navbar = () => {
 
           {/* Drawer Links */}
           <List>
-            {['education', 'work', 'projects', 'skills', 'awards', 'certificates'].map((section) => (
+            {['education', 'work', 'projects', 'skills', 'awards', 'certificates', 'art'].map((section) => (
               <ListItem button onClick={() => handleNavigation(section)} key={section}>
                 <ListItemText primary={capitalizeFirstLetter(section)} sx={drawerLinkStyle} />
               </ListItem>

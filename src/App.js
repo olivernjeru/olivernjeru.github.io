@@ -8,6 +8,7 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Awards from "./components/Awards";
 import Certificates from "./components/Certificates";
+import ArtGallery from "./components/ArtGallery";
 import Footer from "./components/Footer";
 import Divider from "@mui/material/Divider";
 
@@ -125,6 +126,8 @@ function App() {
         <Awards />
         <Divider />
         <Certificates />
+        <Divider />
+        <ArtGallery />
         <Divider />
         <Footer />
       </div>
