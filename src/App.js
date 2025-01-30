@@ -13,15 +13,11 @@ import Footer from "./components/Footer";
 import Divider from "@mui/material/Divider";
 
 function App() {
-  const [themeMode, setThemeMode] = useState(() => {
-    // Check if there's a saved theme in localStorage
+  const setThemeMode = useState(() => {
     const savedTheme = localStorage.getItem("themeMode");
     if (savedTheme) return savedTheme;
-
-    // If not, check the system's color scheme
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    return mediaQuery.matches ? "dark" : "light";
-  });
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  })[1]; // Only keep the setter function
 
   useEffect(() => {
     // Detect system color scheme and set theme
