@@ -34,7 +34,7 @@ function App() {
     return () => {
       mediaQuery.removeEventListener("change", handleChange);
     };
-  }, []);
+  }, [setThemeMode]); // Include setThemeMode in the dependency array
 
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
