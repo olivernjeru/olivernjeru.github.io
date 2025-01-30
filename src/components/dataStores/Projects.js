@@ -14,7 +14,7 @@ const projects = [
   {
     name: 'Game Collection',
     description: 'A collection of games including TicTacToe, Rock Paper Scissors, and more.',
-    technologies: 'Python CLI',
+    technologies: 'Python',
     github: 'https://github.com/olivernjeru/explore-python/tree/main/explore-python',
   },
   {
