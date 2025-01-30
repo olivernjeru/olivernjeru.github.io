@@ -23,10 +23,12 @@ const ArtGallery = () => {
 
     // Determine the number of columns based on the screen size
     let cols = 1;
-    if (isMediumScreen) {
-        cols = 2;  // For tablets (medium screens)
+    if (isSmallScreen) {
+        cols = 1;  // Keep it single column for small screens
+    } else if (isMediumScreen) {
+        cols = 2;  // Use two columns for tablets
     } else if (isLargeScreen) {
-        cols = 3;  // For desktops (large screens)
+        cols = 3;  // Use three columns for desktops
     }
 
     return (
