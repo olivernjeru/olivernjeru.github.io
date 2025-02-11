@@ -1,16 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, Box, Container, Grid, Paper, Skeleton } from '@mui/material';
+import { Typography, Box, Container, Skeleton, Paper } from '@mui/material';
+import { useTheme, useMediaQuery } from '@mui/material';
 import { projects } from './dataStores/Projects';
 import { NoUnderlineLink } from './utilities/formats/NoUnderlineLink';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 
 const Projects = () => {
   const [loading, setLoading] = useState(true);
+  const theme = useTheme();
+
+  // Media queries to detect screen sizes
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm')); // Mobile (xs)
+  const isMediumScreen = useMediaQuery(theme.breakpoints.between('sm', 'md')); // Tablet (sm to md)
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg')); // Desktop (lg and above)
 
   useEffect(() => {
     // Simulate a loading delay of 2 seconds
     const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
+
+  // Determine the number of columns based on the screen size
+  let cols = 1;
+  if (isSmallScreen) {
+    cols = 1; // Keep it single column for small screens
+  } else if (isMediumScreen) {
+    cols = 2; // Use two columns for tablets
+  } else if (isLargeScreen) {
+    cols = 3; // Use three columns for desktops
+  }
 
   return (
     <Box
@@ -29,26 +48,28 @@ const Projects = () => {
           Projects
         </Typography>
 
-        <Grid container spacing={2}>
+        {/* ImageList with dynamic columns based on screen size */}
+        <ImageList variant="masonry" cols={cols} gap={8}>
           {loading
             ? Array.from(new Array(6)).map((_, index) => (
-                <Grid item xs={12} sm={6} md={4} key={index}>
+                <ImageListItem key={index}>
                   <Skeleton
                     variant="rectangular"
                     height={200}
                     animation="wave"
                     sx={{ borderRadius: 1 }}
                   />
-                </Grid>
+                </ImageListItem>
               ))
             : projects.map((project, index) => (
-                <Grid item xs={12} sm={6} md={4} key={index}>
+                <ImageListItem key={index}>
                   <Paper
                     elevation={3}
                     sx={{
                       padding: 2,
-                      backgroundColor: 'background.paper', // Dark mode-compatible paper background
-                      color: 'text.primary', // Ensure text is visible in dark mode
+                      backgroundColor: 'background.paper',
+                      color: 'text.primary',
+                      borderRadius: 1, // Optional: rounding corners for visual appeal
                     }}
                   >
                     <Typography variant="h6" gutterBottom>
@@ -61,21 +82,17 @@ const Projects = () => {
                       <strong>Technologies:</strong> {project.technologies}
                     </Typography>
                     <Box mt={2} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                      {project.github && ( // Render only if GitHub link exists
-                        <NoUnderlineLink href={project.github}>
-                          GitHub
-                        </NoUnderlineLink>
+                      {project.github && (
+                        <NoUnderlineLink href={project.github}>GitHub</NoUnderlineLink>
                       )}
-                      {project.live && ( // Render only if Live Demo link exists
-                        <NoUnderlineLink href={project.live}>
-                          Live Demo
-                        </NoUnderlineLink>
+                      {project.live && (
+                        <NoUnderlineLink href={project.live}>Live Demo</NoUnderlineLink>
                       )}
                     </Box>
                   </Paper>
-                </Grid>
+                </ImageListItem>
               ))}
-        </Grid>
+        </ImageList>
       </Container>
     </Box>
   );
