@@ -1,6 +1,6 @@
 {
   "homepage": "https://olivernjeru.github.io",
-  "name": "Oliver Njeru Portfolio",
+  "name": "Oliver Njeru Lounge",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -19,9 +19,10 @@
     "start": "react-scripts start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "build": "react-scripts build",
+    "build": "react-scripts build && npm run obfuscate",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "obfuscate": "javascript-obfuscator ./build/static/js --output ./build/static/js"
   },
   "eslintConfig": {
     "extends": [
@@ -42,6 +43,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "gh-pages": "^6.3.0",
+    "javascript-obfuscator": "^4.1.1"
   }
 }

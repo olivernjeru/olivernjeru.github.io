@@ -1,0 +1,16 @@
+{
+    "compact": true,
+    "controlFlowFlattening": true,
+    "deadCodeInjection": true,
+    "debugProtection": true,
+    "disableConsoleOutput": true,
+    "log": false,
+    "renameGlobals": true,
+    "rotateStringArray": true,
+    "selfDefending": true,
+    "stringArray": true,
+    "stringArrayEncoding": [
+        "base64"
+    ],
+    "stringArrayThreshold": 0.75
+}
