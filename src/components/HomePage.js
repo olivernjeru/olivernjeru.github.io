@@ -66,10 +66,10 @@ const HomePage = () => {
                 ) : (
                     <>
                         <Typography variant="h3" gutterBottom>
-                            Hi there! I am Oliver Njeru.
+                            Yoh! I'm Oliver Njeru.
                         </Typography>
                         <Typography variant="h5" gutterBottom>
-                            A Software Engineer, Research Enthusiast, and Innovator.
+                            A Research Enthusiast.
                         </Typography>
                         <Typography variant="body1" paragraph>
                             I am very much interested in Research in the following areas: Optimization, Game Theory, Machine Learning, Algorithmic Economics, and Stochastic Optimization. I enjoy diverse interactions and thrive in collaboration and teamwork. In my free time, you’ll often find me traveling, swimming, gaming, or simply seeking inspiration from the world around me. Feel free to explore my experience, projects, and more below!
