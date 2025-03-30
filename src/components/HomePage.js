@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Typography, Box, Button, Grid, Container, Skeleton } from "@mui/material";
+import { Typography, Box, Button, Grid2, Container, Skeleton } from "@mui/material";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import ArticleIcon from "@mui/icons-material/Article";
 
@@ -69,10 +69,10 @@ const HomePage = () => {
                             Yoh! I'm Oliver Njeru.
                         </Typography>
                         <Typography variant="h5" gutterBottom>
-                            A Research Enthusiast.
+                            A Founding Engineer at Replicant Trader and Research Enthusiast.
                         </Typography>
-                        <Typography variant="body1" paragraph>
-                            I am very much interested in Research in the following areas: Optimization, Game Theory, Machine Learning, Algorithmic Economics, and Stochastic Optimization. I enjoy diverse interactions and thrive in collaboration and teamwork. In my free time, you’ll often find me traveling, swimming, gaming, or simply seeking inspiration from the world around me. Feel free to explore my experience, projects, and more below!
+                        <Typography variant="body1">
+                            I am very much interested in Research in the following areas: Optimization, Game Theory, Machine Learning, Algorithmic Economics, and Stochastic Optimization. I enjoy participating in intellectually stimulating conversations and thrive in collaboration and teamwork. In my free time, you’ll often find me travelling, swimming, gaming, or simply seeking inspiration from the world around me. Wannna see some cool stuff about me? Feel free to explore my experience, skills and more below!
                         </Typography>
                         {/* Resume Button */}
                         <Box sx={{ margin: "1rem 0" }}>
@@ -90,7 +90,7 @@ const HomePage = () => {
                     </>
                 )}
                 {/* Scroll Arrow */}
-                <Grid container justifyContent="center" sx={{ position: "absolute", bottom: "20px", left: "50%", transform: "translateX(-50%)" }}>
+                <Grid2 container justifyContent="center" sx={{ position: "absolute", bottom: "20px", left: "50%", transform: "translateX(-50%)" }}>
                     <ArrowDownwardIcon
                         fontSize="large"
                         sx={{
@@ -98,8 +98,8 @@ const HomePage = () => {
                             animation: "bounce 2s infinite", // Bounce animation
                         }}
                     />
-                </Grid>
-                {/* Adding keyframes for the bounce animation */}
+                </Grid2>
+                {/* Keyframes for bounce animation */}
                 <style>
                     {`
           @keyframes bounce {
