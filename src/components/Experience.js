@@ -73,7 +73,7 @@ const Experience = () => {
                         </Typography>
                       }
                       subheader={
-                        <Stack direction="row" spacing={1} alignItems="center">
+                        <Stack direction="row" spacing={1} alignItems="center" sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                           <Chip
                             label={details.title}
                             size="small"
