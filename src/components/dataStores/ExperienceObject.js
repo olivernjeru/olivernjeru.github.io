@@ -14,8 +14,8 @@ export const workExperienceData = {
     duration: "Oct 2023 - Current",
     responsibilities: ["Machine Learning"],
   },
-  "IBM": {
-    title: "Software Engineer Intern - IBM Research",
+  "IBM Research": {
+    title: "Software Engineer Intern",
     duration: "Jun 2023 - Aug 2023",
     responsibilities: [
       "Created a sophisticated state-of-the-art User Interface for IBM's Foundation Models.",
