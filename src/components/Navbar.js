@@ -135,7 +135,6 @@ const Navbar = ({ themeMode, toggleTheme }) => {
             display: 'flex',
             alignItems: 'center',
             gap: { xs: 0.5, sm: 1 },
-            pr: isMobile ? 1 : 3
           }}>
             {loading
               ? SOCIALS.map((_, i) => (
