@@ -42,7 +42,7 @@ export const categorizedAwards = {
         {
             role: "Fundraising Volunteer",
             organization: "Mji wa Huruma Nyumba ya Wazee",
-            period: "Sep 2024 - Dec 2024 · 4 mos",
+            period: "Sep 2024 - Dec 2024",
             details: [
                 "Raised funds to support the elderly.",
                 "Facilitated community service manual hours.",
