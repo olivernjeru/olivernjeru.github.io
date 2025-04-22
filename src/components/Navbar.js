@@ -16,7 +16,8 @@ import {
   Button,
   Link,
 } from '@mui/material';
-
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
@@ -34,8 +35,8 @@ const SECTIONS = [
 ];
 
 const SOCIALS = [
-  { href: 'https://github.com/olivernjeru', src: '/assets/socials/github.png', alt: 'GitHub' },
-  { href: 'https://linkedin.com/in/olivernjeru', src: '/assets/socials/linkedin.svg', alt: 'LinkedIn' },
+  { href: 'https://github.com/olivernjeru', icon: <GitHubIcon />, alt: 'GitHub' },
+  { href: 'https://linkedin.com/in/olivernjeru', icon: <LinkedInIcon />, alt: 'LinkedIn' },
   { href: 'https://figma.com/@olivernjeru', src: '/assets/socials/figma.svg', alt: 'Figma' },
   { href: 'https://scholar.google.com/citations?user=V9-eteEAAAAJ&hl=en', src: '/assets/socials/google-scholar.svg', alt: 'Google Scholar' },
   { href: 'https://unsplash.com/olivernjeru', src: '/assets/socials/unsplash.svg', alt: 'Unsplash' },
@@ -152,27 +153,31 @@ const Navbar = ({ themeMode, toggleTheme }) => {
                   href={s.href}
                   target="_blank"
                   rel="noopener"
+                  aria-label={s.alt}
                   sx={{
-                    width: { xs: 28, sm: 32 },
-                    height: { xs: 28, sm: 32 },
+                    width: { xs: 22, sm: 25 },
+                    height: { xs: 22, sm: 25 },
                     p: 0,
                     transition: 'all 0.3s ease',
                     '&:hover': {
                       transform: 'scale(1.1)'
-                    }
+                    },
+                    color: 'inherit'
                   }}
                 >
-                  <Box
-                    component="img"
-                    src={s.src}
-                    alt={s.alt}
-                    sx={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'contain',
-                      p: { xs: 0.5, sm: 0 }, // Adjust padding for different sizes. Larger numbers equal smaller img sizes
-                    }}
-                  />
+                  {s.icon ? s.icon : (
+                    <Box
+                      component="img"
+                      src={s.src}
+                      alt={s.alt}
+                      sx={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'contain',
+                        p: { xs: 0.5, sm: 0 }, // Adjust padding for different sizes. Larger numbers equal smaller img sizes
+                      }}
+                    />
+                  )}
                 </IconButton>
               ))}
 
