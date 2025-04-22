@@ -23,7 +23,7 @@ export const workExperienceData = {
   },
   "USIU-Africa SST": {
     title: "Teaching Assistant",
-    duration: "Mar 2023 - Mar 2023 (1 month)",
+    duration: "Mar 2023 - Mar 2023",
     responsibilities: [
       "Served as a Teaching Assistant for the Business Data Analytics class.",
     ],
