@@ -17,9 +17,7 @@ import {
   useTheme,
   Avatar,
 } from '@mui/material';
-import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
+import { CheckCircleOutlined, HourglassEmptyOutlined, WorkOutlineOutlined } from '@mui/icons-material';
 import SectionHeader from './SectionHeader';
 import { workExperienceData } from './dataStores/ExperienceObject';
 
@@ -37,7 +35,7 @@ const Experience = () => {
     >
       <Container maxWidth="lg">
         <SectionHeader
-          icon={WorkOutlineIcon}
+          icon={WorkOutlineOutlined}
           title="Experience"
           subtitle="Where I am Making an Impact"
           delay={800}
@@ -105,12 +103,12 @@ const Experience = () => {
                           <ListItem key={idx}>
                             <ListItemIcon>
                               {isOngoing ? (
-                                <HourglassEmptyIcon
+                                <HourglassEmptyOutlined
                                   color="warning"
                                   fontSize="small"
                                 />
                               ) : (
-                                <CheckCircleIcon
+                                <CheckCircleOutlined
                                   color="primary"
                                   fontSize="small"
                                 />
