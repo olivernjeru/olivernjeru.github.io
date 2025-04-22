@@ -14,9 +14,7 @@ import {
   Grow,
   useTheme,
 } from '@mui/material';
-import SchoolIcon from '@mui/icons-material/School';
-import ArticleIcon from '@mui/icons-material/Article';
-import DescriptionIcon from '@mui/icons-material/Description';
+import { ArticleOutlined, DescriptionOutlined, SchoolOutlined } from '@mui/icons-material';
 import SectionHeader from './SectionHeader';
 import { educationData, publications } from './dataStores/EducationObject';
 import { NoUnderlineLink } from './utilities/formats/NoUnderlineLink';
@@ -36,7 +34,7 @@ const Education = () => {
       <Container maxWidth="lg">
         {/* Education Header */}
         <SectionHeader
-          icon={SchoolIcon}
+          icon={SchoolOutlined}
           title="Education and Research"
           delay={800}
         />
@@ -58,7 +56,7 @@ const Education = () => {
               }}
             >
               <CardHeader
-                avatar={<SchoolIcon color="primary" />}
+                avatar={<SchoolOutlined color="primary" />}
                 title={
                   <Typography variant="h6" fontWeight={700}>
                     <NoUnderlineLink href={education.link} color="inherit">
@@ -158,7 +156,7 @@ const Education = () => {
         {/* Publications */}
         <Box id="publications" sx={{ mt: 6 }}>
           <SectionHeader
-            icon={DescriptionIcon}
+            icon={DescriptionOutlined}
             title="Publications"
             delay={1200}
           />
@@ -170,7 +168,7 @@ const Education = () => {
                 sx={{ p: 2, mb: 2, borderRadius: 2 }}
               >
                 <Box display="flex" alignItems="flex-start">
-                  <ArticleIcon
+                  <ArticleOutlined
                     sx={{ mr: 1, mt: 0.5 }}
                     color="secondary"
                   />
