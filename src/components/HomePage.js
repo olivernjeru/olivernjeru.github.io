@@ -66,7 +66,7 @@ const HomePage = () => {
                 ) : (
                     <>
                         <Typography variant="h3" gutterBottom>
-                            Yoh! I'm Oliver Njeru.
+                            Yo! I'm Oliver Njeru.
                         </Typography>
                         <Typography variant="h5" gutterBottom>
                             A Founding Engineer at Replicant Trader and Research Enthusiast.
