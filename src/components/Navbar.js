@@ -66,14 +66,14 @@ const Navbar = ({ themeMode, toggleTheme }) => {
 
   return (
     <>
-      <AppBar position="fixed" sx={{ top: 0, zIndex: theme.zIndex.drawer + 1 }}>
+      <AppBar position="fixed" sx={{ top: 0 }}>
         <Toolbar>
           {/* Mobile: hamburger */}
           {isMobile && (
             <IconButton
               edge="start"
               color="inherit"
-              onClick={() => setDrawerOpen(true)}
+              onClick={() => setDrawerOpen(!drawerOpen)}
             >
               <MenuIcon />
             </IconButton>
@@ -174,9 +174,22 @@ const Navbar = ({ themeMode, toggleTheme }) => {
       <Drawer
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
-        ModalProps={{ keepMounted: true }}
+        ModalProps={{
+          keepMounted: true,
+          sx: {
+            zIndex: theme.zIndex.modal + 1, // Higher than default modal z-index
+          }
+        }}
+        slotPropos={{
+          paper: {
+            sx: {
+              width: 240,
+              zIndex: (theme) => theme.zIndex.modal + 2, // Ensure paper is above the modal backdrop
+            },
+          },
+        }}
       >
-        <Box sx={{ width: 240 }} role="presentation">
+        <Box sx={{ height: '100%' }} role="presentation">
           <Box
             sx={{
               display: 'flex',
