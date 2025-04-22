@@ -30,9 +30,6 @@ const Education = () => {
       sx={{
         minHeight: "100vh", // Full viewport height
         padding: { xs: "1rem", md: "2rem" }, // Padding for mobile and desktop
-        display: "flex", // Flexbox for centering content
-        flexDirection: "column", // Stack children vertically
-        justifyContent: "flex-start", // Start content at the top
         background: `linear-gradient(135deg, ${theme.palette.background.paper} 0%, ${theme.palette.background.default} 100%)`,
       }}
     >
