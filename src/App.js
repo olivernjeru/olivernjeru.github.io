@@ -1,5 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { CssBaseline, ThemeProvider, createTheme, GlobalStyles, useMediaQuery } from "@mui/material";
+import React, { useEffect, useMemo, useState,  } from "react";
+import {
+  CssBaseline,
+  GlobalStyles,
+  ThemeProvider,
+  createTheme,
+} from "@mui/material";
+
 import Navbar from "./components/Navbar";
 import HomePage from "./components/HomePage";
 import Education from "./components/Education";
@@ -13,45 +19,45 @@ import Footer from "./components/Footer";
 import Divider from "@mui/material/Divider";
 
 function App() {
-  const setThemeMode = useState(() => {
-    const savedTheme = localStorage.getItem("themeMode");
-    if (savedTheme) return savedTheme;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  })[1]; // Only keep the setter function
+  // Initialize themeMode from localStorage or system preference
+  const [themeMode, setThemeMode] = useState(() => {
+    const saved = localStorage.getItem("themeMode");
+    if (saved === "light" || saved === "dark") {
+      return saved;
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  });
 
-  useEffect(() => {
-    // Detect system color scheme and set theme
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleChange = () => {
-      const newTheme = mediaQuery.matches ? "dark" : "light";
-      setThemeMode(newTheme);
-      localStorage.setItem("themeMode", newTheme); // Save to localStorage
-    };
+  // Toggle handler: flip mode & persist
+  const toggleTheme = () => {
+    setThemeMode((prev) => {
+      const next = prev === "light" ? "dark" : "light";
+      localStorage.setItem("themeMode", next);
+      return next;
+    });
+  };
 
-    handleChange(); // Set initial theme based on system preference
-    mediaQuery.addEventListener("change", handleChange);
-
-    return () => {
-      mediaQuery.removeEventListener("change", handleChange);
-    };
-  }, [setThemeMode]); // Include setThemeMode in the dependency array
-
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-
-  const theme = React.useMemo(
+  // Build MUI theme based on themeMode
+  const theme = useMemo(
     () =>
       createTheme({
         palette: {
-          mode: prefersDarkMode ? 'dark' : 'light',
-          primary: { main: prefersDarkMode ? '#90caf9' : '#1976d2' },
-          background: { default: prefersDarkMode ? '#121212' : '#ffffff' },
+          mode: themeMode,
+          primary: {
+            main: themeMode === "dark" ? "#90caf9" : "#1976d2",
+          },
+          background: {
+            default: themeMode === "dark" ? "#121212" : "#ffffff",
+          },
         },
       }),
-    [prefersDarkMode]
+    [themeMode]
   );
 
+  // Global scrollbar styles + Watson CSS
   useEffect(() => {
-    // Add styles to prevent overflow and make Watson Assistant responsive
     const style = document.createElement("style");
     style.innerHTML = `
       html, body {
@@ -90,41 +96,54 @@ function App() {
       <CssBaseline />
       <GlobalStyles
         styles={{
-          '*::-webkit-scrollbar': {
+          "*::-webkit-scrollbar": {
             width: 4,
             height: 4,
           },
-          '*::-webkit-scrollbar-thumb': {
-            backgroundColor: prefersDarkMode ? '#90caf9' : '#1976d2',
-            borderRadius: '8px',
+          "*::-webkit-scrollbar-thumb": {
+            backgroundColor: theme.palette.primary.main,
+            borderRadius: "8px",
           },
-          '*::-webkit-scrollbar-thumb:hover': {
-            backgroundColor: prefersDarkMode ? '#64b5f6' : '#1565c0',
+          "*::-webkit-scrollbar-thumb:hover": {
+            backgroundColor:
+              themeMode === "dark" ? "#64b5f6" : "#1565c0",
           },
-          '*::-webkit-scrollbar-track': {
-            backgroundColor: prefersDarkMode ? '#1e1e1e' : '#f4f4f4',
-            borderRadius: '8px',
+          "*::-webkit-scrollbar-track": {
+            backgroundColor:
+              themeMode === "dark" ? "#1e1e1e" : "#f4f4f4",
+            borderRadius: "8px",
           },
         }}
       />
+
       <div style={{ overflowX: "hidden", marginTop: "50px" }}>
-        <Navbar />
+        {/* Pass themeMode + toggleTheme down to Navbar */}
+        <Navbar themeMode={themeMode} toggleTheme={toggleTheme} />
+
         <HomePage />
         <Divider />
+
         <Education />
         <Divider />
+
         <Experience />
         <Divider />
+
         <Projects />
         <Divider />
+
         <Skills />
         <Divider />
+
         <Awards />
         <Divider />
+
         <Certificates />
         <Divider />
+
         <ArtGallery />
         <Divider />
+
         <Footer />
       </div>
     </ThemeProvider>
