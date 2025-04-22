@@ -86,7 +86,6 @@ const Navbar = ({ themeMode, toggleTheme }) => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: isMobile ? 'space-between' : 'flex-start',
-              px: isMobile ? 1 : 3,
             }}
           >
             {isMobile ? (
@@ -119,9 +118,9 @@ const Navbar = ({ themeMode, toggleTheme }) => {
                     sx={{
                       color: '#fff',
                       fontWeight: 600,
-                      mx: 1.5,
+                      mx: 0.5,
                       '&:hover': { backgroundColor: 'rgba(255,255,255,0.1)' },
-                      px: 1,
+                      px: 0.3,
                     }}
                   >
                     {sec.charAt(0).toUpperCase() + sec.slice(1)}
@@ -132,10 +131,20 @@ const Navbar = ({ themeMode, toggleTheme }) => {
           </Box>
 
           {/* Theme toggle + Social icons */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, pr: isMobile ? 1 : 3 }}>
+          <Box sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: { xs: 0.5, sm: 1 },
+            pr: isMobile ? 1 : 3
+          }}>
             {loading
               ? SOCIALS.map((_, i) => (
-                <Skeleton key={i} variant="circular" width={32} height={32} />
+                <Skeleton
+                  key={i}
+                  variant="circular"
+                  width={{ xs: 28, sm: 32 }}
+                  height={{ xs: 28, sm: 32 }}
+                />
               ))
               : SOCIALS.map((s) => (
                 <IconButton
@@ -145,9 +154,13 @@ const Navbar = ({ themeMode, toggleTheme }) => {
                   target="_blank"
                   rel="noopener"
                   sx={{
-                    width: 32,
-                    height: 32,
+                    width: { xs: 28, sm: 32 },
+                    height: { xs: 28, sm: 32 },
                     p: 0,
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      transform: 'scale(1.1)'
+                    }
                   }}
                 >
                   <Box
@@ -158,13 +171,25 @@ const Navbar = ({ themeMode, toggleTheme }) => {
                       width: '100%',
                       height: '100%',
                       objectFit: 'contain',
+                      p: { xs: 0.5, sm: 0 }, // Adjust padding for different sizes. Larger numbers equal smaller img sizes
                     }}
                   />
                 </IconButton>
               ))}
 
-            <IconButton color="inherit" onClick={toggleTheme}>
-              {themeMode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+            <IconButton
+              color="inherit"
+              onClick={toggleTheme}
+              sx={{
+                width: { xs: 34, sm: 40 },
+                height: { xs: 34, sm: 40 }
+              }}
+            >
+              {themeMode === 'dark' ? (
+                <Brightness7Icon fontSize={isMobile ? 'small' : 'medium'} />
+              ) : (
+                <Brightness4Icon fontSize={isMobile ? 'small' : 'medium'} />
+              )}
             </IconButton>
           </Box>
         </Toolbar>
