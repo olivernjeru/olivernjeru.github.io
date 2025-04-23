@@ -26,11 +26,11 @@ const ArtGallery = () => {
   const [loading, setLoading] = useState(true);
   const [lightbox, setLightbox] = useState({ open: false, src: '', title: '', description: '' });
 
-    useEffect(() => {
-        // Simulate a loading delay of 2 seconds
-        const timer = setTimeout(() => setLoading(false), 2000);
-        return () => clearTimeout(timer);
-    }, []);
+  useEffect(() => {
+    // Simulate a loading delay of 2 seconds
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleOpen = (item) => {
     setLightbox({
@@ -54,7 +54,7 @@ const ArtGallery = () => {
         <SectionHeader
           icon={require('@mui/icons-material/PhotoCamera').default}
           title="Art Gallery"
-          subtitle="A Showcase of My Work"
+          subtitle="A Showcase of My Artistic Photography Work"
           delay={800}
         />
 
