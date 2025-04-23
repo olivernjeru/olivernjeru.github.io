@@ -43,18 +43,16 @@ const SOCIALS = [
 ];
 
 const ICON_BUTTON_SIZE = 'large';   // uniform size
+const ICON_DIM = '1.5rem';          // uniform icon dimension
 
-const ICON_DIM = '1.5rem';          // uniform icon width/height
-
-const Navbar = ({ themeMode, toggleTheme }) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // Check for mobile screen size
-
+export default function Navbar({ themeMode, toggleTheme }) {
+  const theme = useTheme();                                                        // useTheme for palette access
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));                    // responsive check
   const [loading, setLoading] = useState(true);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [active, setActive] = useState('home');                                    // track active section
 
   useEffect(() => {
-    // simulate loading
     const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
@@ -63,14 +61,15 @@ const Navbar = ({ themeMode, toggleTheme }) => {
     const section = document.getElementById(sectionId);
     if (section) {
       const offset = section.offsetTop - 64;
-      window.scrollTo({ top: Math.max(offset, 0), behavior: 'smooth' });
+      window.scrollTo({ top: offset > 0 ? offset : 0, behavior: 'smooth' });         // smooth scrolling
     }
+    setActive(sectionId);                                                           // update active on click
     setDrawerOpen(false);
   };
 
   return (
     <>
-      <AppBar position="fixed" sx={{ top: 0 }}>
+      <AppBar position="fixed" sx={{ top: 0 }}>                                     {/* AppBar component */}
         <Toolbar>
           {/* Mobile: hamburger */}
           {isMobile && (
@@ -78,13 +77,14 @@ const Navbar = ({ themeMode, toggleTheme }) => {
               edge="start"
               color="inherit"
               size={ICON_BUTTON_SIZE}
-              onClick={() => setDrawerOpen(!drawerOpen)}
+              onClick={() => setDrawerOpen(true)}
+              aria-label="Open navigation menu"
             >
               <MenuIcon fontSize="inherit" />
             </IconButton>
           )}
 
-          {/* Desktop nav links or mobile “Home” + icons */}
+          {/* Desktop nav links or mobile “Home” + icon */}
           <Box
             sx={{
               flexGrow: 1,
@@ -95,7 +95,7 @@ const Navbar = ({ themeMode, toggleTheme }) => {
           >
             {isMobile ? (
               loading ? (
-                <Skeleton variant="rectangular" width={ICON_DIM} height={ICON_DIM} />
+                <Skeleton variant="rectangular" width={ICON_DIM} height={ICON_DIM} />  // Skeleton while loading
               ) : (
                 <Button
                   onClick={() => handleNavigation('home')}
@@ -122,11 +122,18 @@ const Navbar = ({ themeMode, toggleTheme }) => {
                     onClick={() => handleNavigation(sec)}
                     sx={{
                       color: '#fff',
-                      fontWeight: 600,
-                      mx: 0.5,
-                      px: 0.3,
-                      '&:hover': { backgroundColor: 'rgba(255,255,255,0.1)' },
+                      fontWeight: active === sec ? 600 : 500,                  // bold active link
+                      borderBottom: active === sec
+                        ? `2px solid ${theme.palette.secondary.main}`        // bottom border for active
+                        : '2px solid transparent',
+                      mx: 1,
+                      px: 0.5,
+                      py: 0.5,
+                      '&:hover': {
+                        borderColor: theme.palette.secondary.light,          // hover border color
+                      },
                     }}
+                    aria-current={active === sec ? 'page' : undefined}       // accessibility attribute
                   >
                     {sec.charAt(0).toUpperCase() + sec.slice(1)}
                   </Link>
@@ -139,12 +146,7 @@ const Navbar = ({ themeMode, toggleTheme }) => {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             {loading
               ? SOCIALS.map((_, i) => (
-                <Skeleton
-                  key={i}
-                  variant="circular"
-                  width={ICON_DIM}
-                  height={ICON_DIM}
-                />
+                <Skeleton key={i} variant="circular" width={ICON_DIM} height={ICON_DIM} />
               ))
               : SOCIALS.map((s) => (
                 <IconButton
@@ -156,7 +158,6 @@ const Navbar = ({ themeMode, toggleTheme }) => {
                   aria-label={s.alt}
                   size={ICON_BUTTON_SIZE}
                   sx={{
-                    p: 0,                 // remove extra padding
                     width: ICON_DIM,
                     height: ICON_DIM,
                     '&:hover': { transform: 'scale(1.1)' },
@@ -186,33 +187,28 @@ const Navbar = ({ themeMode, toggleTheme }) => {
                 height: ICON_DIM,
                 '&:hover': { transform: 'scale(1.1)' },
               }}
+              aria-label="Toggle light/dark mode"
             >
-              {themeMode === 'dark' ? (
-                <Brightness7Icon fontSize="inherit" />
-              ) : (
-                <Brightness4Icon fontSize="inherit" />
-              )}
+              {themeMode === 'dark'
+                ? <Brightness7Icon fontSize="inherit" />
+                : <Brightness4Icon fontSize="inherit" />}
             </IconButton>
           </Box>
         </Toolbar>
       </AppBar>
 
+      {/* Mobile drawer */}
       <Drawer
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
-        ModalProps={{
-          keepMounted: true,
-          sx: { zIndex: theme.zIndex.modal + 1 }, // Higher than default modal z-index
-        }}
-        slotPropos={{
-          paper: {
-            sx: {
-              width: 240,
-              zIndex: (theme) => theme.zIndex.modal + 2, // Ensure paper is above the modal backdrop
-            },
+        ModalProps={{ keepMounted: true }}
+        sx={{
+          '& .MuiDrawer-paper': {
+            width: 240,
+            zIndex: theme.zIndex.drawer + 1,
           },
         }}
-      >
+      >                                                                               {/* Drawer component */}
         <Box sx={{ height: '100%' }} role="presentation">
           <Box
             sx={{
@@ -225,38 +221,26 @@ const Navbar = ({ themeMode, toggleTheme }) => {
             }}
           >
             <Typography variant="h6">Oliver Njeru</Typography>
-            <IconButton size={ICON_BUTTON_SIZE} onClick={() => setDrawerOpen(false)}>
+            <IconButton size={ICON_BUTTON_SIZE} onClick={() => setDrawerOpen(false)} aria-label="Close menu">
               <CloseIcon fontSize="inherit" />
             </IconButton>
           </Box>
           <List>
-            {loading
-              ? SECTIONS.slice(1).map((_, i) => (
-                <Skeleton
-                  key={i}
-                  variant="rectangular"
-                  width="80%"
-                  height={32}
-                  sx={{ m: 1 }}
-                />
-              ))
-              : SECTIONS.slice(1).map((sec) => (
-                <ListItem key={sec} disablePadding>
-                  <ListItemButton onClick={() => handleNavigation(sec)}>
-                    <ListItemText
-                      primary={sec.charAt(0).toUpperCase() + sec.slice(1)}
-                      slotProps={{
-                        primary: { sx: { fontWeight: 600 } },
-                      }}
-                    />
-                  </ListItemButton>
-                </ListItem>
-              ))}
+            {SECTIONS.slice(1).map((sec) => (                                  // omit “home” in drawer
+              <ListItem key={sec} disablePadding>
+                <ListItemButton onClick={() => handleNavigation(sec)}>
+                  <ListItemText
+                    primary={sec.charAt(0).toUpperCase() + sec.slice(1)}
+                    slotProps={{
+                      primary: { sx: { fontWeight: active === sec ? 600 : 500 } }
+                    }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            ))}
           </List>
         </Box>
       </Drawer>
     </>
   );
-};
-
-export default Navbar;
+}
