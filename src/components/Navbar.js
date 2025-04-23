@@ -42,15 +42,15 @@ const SOCIALS = [
   { href: 'https://unsplash.com/olivernjeru', src: '/assets/socials/unsplash.svg', alt: 'Unsplash' },
 ];
 
-const ICON_BUTTON_SIZE = 'large';   // uniform size
-const ICON_DIM = '1.5rem';          // uniform icon dimension
+const ICON_BUTTON_SIZE = 'large'; // uniform size
+const ICON_DIM = '1.5rem'; // uniform icon dimension
 
 export default function Navbar({ themeMode, toggleTheme }) {
-  const theme = useTheme();                                                        // useTheme for palette access
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));                    // responsive check
+  const theme = useTheme(); // useTheme for palette access
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // responsive check
   const [loading, setLoading] = useState(true);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [active, setActive] = useState('home');                                    // track active section
+  const [active, setActive] = useState('home'); // track active section
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2000);
@@ -61,17 +61,23 @@ export default function Navbar({ themeMode, toggleTheme }) {
     const section = document.getElementById(sectionId);
     if (section) {
       const offset = section.offsetTop - 64;
-      window.scrollTo({ top: offset > 0 ? offset : 0, behavior: 'smooth' });         // smooth scrolling
+      window.scrollTo({ top: Math.max(offset, 0), behavior: 'smooth' }); // smooth scrolling
     }
-    setActive(sectionId);                                                           // update active on click
+    setActive(sectionId); // update active on click
     setDrawerOpen(false);
   };
 
   return (
     <>
-      <AppBar position="fixed" sx={{ top: 0 }}>                                     {/* AppBar component */}
+      <AppBar
+        position="fixed"
+        color="default" // use default color prop so we can override
+        elevation={1}
+        sx={{
+          backgroundColor: theme.palette.background.paper, // match the page background in light mode
+        }}
+      >
         <Toolbar>
-          {/* Mobile: hamburger */}
           {isMobile && (
             <IconButton
               edge="start"
@@ -95,11 +101,11 @@ export default function Navbar({ themeMode, toggleTheme }) {
           >
             {isMobile ? (
               loading ? (
-                <Skeleton variant="rectangular" width={ICON_DIM} height={ICON_DIM} />  // Skeleton while loading
+                <Skeleton variant="rectangular" width={ICON_DIM} height={ICON_DIM} /> // Skeleton while loading
               ) : (
                 <Button
                   onClick={() => handleNavigation('home')}
-                  sx={{ color: '#fff', textTransform: 'none' }}
+                  sx={{ color: theme.palette.text.primary, textTransform: 'none' }} // dark text in light mode
                 >
                   Home
                 </Button>
@@ -121,19 +127,20 @@ export default function Navbar({ themeMode, toggleTheme }) {
                     underline="none"
                     onClick={() => handleNavigation(sec)}
                     sx={{
-                      color: '#fff',
-                      fontWeight: active === sec ? 600 : 500,                  // bold active link
-                      borderBottom: active === sec
-                        ? `2px solid ${theme.palette.secondary.main}`        // bottom border for active
-                        : '2px solid transparent',
+                      color: theme.palette.text.primary, // dark text on light background
+                      fontWeight: active === sec ? 600 : 500,
+                      borderBottom:
+                        active === sec
+                          ? `2px solid ${theme.palette.secondary.main}`
+                          : '2px solid transparent',
                       mx: 1,
                       px: 0.5,
                       py: 0.5,
                       '&:hover': {
-                        borderColor: theme.palette.secondary.light,          // hover border color
+                        borderColor: theme.palette.secondary.light,
                       },
                     }}
-                    aria-current={active === sec ? 'page' : undefined}       // accessibility attribute
+                    aria-current={active === sec ? 'page' : undefined}
                   >
                     {sec.charAt(0).toUpperCase() + sec.slice(1)}
                   </Link>
@@ -160,6 +167,7 @@ export default function Navbar({ themeMode, toggleTheme }) {
                   sx={{
                     width: ICON_DIM,
                     height: ICON_DIM,
+                    color: theme.palette.text.primary,
                     '&:hover': { transform: 'scale(1.1)' },
                   }}
                 >
@@ -185,6 +193,7 @@ export default function Navbar({ themeMode, toggleTheme }) {
               sx={{
                 width: ICON_DIM,
                 height: ICON_DIM,
+                color: theme.palette.text.primary,
                 '&:hover': { transform: 'scale(1.1)' },
               }}
               aria-label="Toggle light/dark mode"
@@ -194,10 +203,9 @@ export default function Navbar({ themeMode, toggleTheme }) {
                 : <Brightness4Icon fontSize="inherit" />}
             </IconButton>
           </Box>
-        </Toolbar>
-      </AppBar>
+        </Toolbar >
+      </AppBar >
 
-      {/* Mobile drawer */}
       <Drawer
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
@@ -208,7 +216,8 @@ export default function Navbar({ themeMode, toggleTheme }) {
             zIndex: theme.zIndex.drawer + 1,
           },
         }}
-      >                                                                               {/* Drawer component */}
+      >
+        {/* Drawer component */}
         <Box sx={{ height: '100%' }} role="presentation">
           <Box
             sx={{
@@ -221,18 +230,25 @@ export default function Navbar({ themeMode, toggleTheme }) {
             }}
           >
             <Typography variant="h6">Oliver Njeru</Typography>
-            <IconButton size={ICON_BUTTON_SIZE} onClick={() => setDrawerOpen(false)} aria-label="Close menu">
+            <IconButton
+              size={ICON_BUTTON_SIZE}
+              onClick={() => setDrawerOpen(false)}
+              aria-label="Close menu"
+            >
               <CloseIcon fontSize="inherit" />
             </IconButton>
           </Box>
           <List>
-            {SECTIONS.slice(1).map((sec) => (                                  // omit “home” in drawer
+            {SECTIONS.slice(1).map((sec) => (
               <ListItem key={sec} disablePadding>
                 <ListItemButton onClick={() => handleNavigation(sec)}>
                   <ListItemText
                     primary={sec.charAt(0).toUpperCase() + sec.slice(1)}
                     slotProps={{
-                      primary: { sx: { fontWeight: active === sec ? 600 : 500 } }
+                      primary: {
+                        fontWeight: active === sec ? 600 : 500,
+                        color: theme.palette.text.primary,
+                      },
                     }}
                   />
                 </ListItemButton>
