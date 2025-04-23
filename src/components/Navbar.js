@@ -186,25 +186,31 @@ export default function Navbar({ themeMode, toggleTheme }) {
                 </IconButton>
               ))}
 
-            <IconButton
-              color="inherit"
-              onClick={toggleTheme}
-              size={ICON_BUTTON_SIZE}
-              sx={{
-                width: ICON_DIM,
-                height: ICON_DIM,
-                color: theme.palette.text.primary,
-                '&:hover': { transform: 'scale(1.1)' },
-              }}
-              aria-label="Toggle light/dark mode"
-            >
-              {themeMode === 'dark'
-                ? <Brightness7Icon fontSize="inherit" />
-                : <Brightness4Icon fontSize="inherit" />}
-            </IconButton>
+            {loading ? (
+              <Skeleton variant="circular" width={ICON_DIM} height={ICON_DIM} />
+            ) : (
+              <IconButton
+                color="inherit"
+                onClick={toggleTheme}
+                size={ICON_BUTTON_SIZE}
+                sx={{
+                  width: ICON_DIM,
+                  height: ICON_DIM,
+                  color: theme.palette.text.primary,
+                  '&:hover': { transform: 'scale(1.1)' },
+                }}
+                aria-label="Toggle light/dark mode"
+              >
+                {themeMode === 'dark' ? (
+                  <Brightness7Icon fontSize="inherit" />
+                ) : (
+                  <Brightness4Icon fontSize="inherit" />
+                )}
+              </IconButton>
+            )}
           </Box>
-        </Toolbar >
-      </AppBar >
+        </Toolbar>
+      </AppBar>
 
       <Drawer
         open={drawerOpen}
