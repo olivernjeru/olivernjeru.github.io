@@ -35,12 +35,16 @@ const SECTIONS = [
 ];
 
 const SOCIALS = [
-  { href: 'https://github.com/olivernjeru', icon: <GitHubIcon />, alt: 'GitHub' },
-  { href: 'https://linkedin.com/in/olivernjeru', icon: <LinkedInIcon />, alt: 'LinkedIn' },
+  { href: 'https://github.com/olivernjeru', icon: <GitHubIcon fontSize="inherit" />, alt: 'GitHub' },
+  { href: 'https://linkedin.com/in/olivernjeru', icon: <LinkedInIcon fontSize="inherit" />, alt: 'LinkedIn' },
   { href: 'https://figma.com/@olivernjeru', src: '/assets/socials/figma.svg', alt: 'Figma' },
   { href: 'https://scholar.google.com/citations?user=V9-eteEAAAAJ&hl=en', src: '/assets/socials/google-scholar.svg', alt: 'Google Scholar' },
   { href: 'https://unsplash.com/olivernjeru', src: '/assets/socials/unsplash.svg', alt: 'Unsplash' },
 ];
+
+const ICON_BUTTON_SIZE = 'large';   // uniform size
+
+const ICON_DIM = '1.5rem';          // uniform icon width/height
 
 const Navbar = ({ themeMode, toggleTheme }) => {
   const theme = useTheme();
@@ -58,9 +62,8 @@ const Navbar = ({ themeMode, toggleTheme }) => {
   const handleNavigation = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      const navbarHeight = 64;
-      const offset = section.offsetTop - navbarHeight;
-      window.scrollTo({ top: offset > 0 ? offset : 0, behavior: 'smooth' });
+      const offset = section.offsetTop - 64;
+      window.scrollTo({ top: Math.max(offset, 0), behavior: 'smooth' });
     }
     setDrawerOpen(false);
   };
@@ -74,9 +77,10 @@ const Navbar = ({ themeMode, toggleTheme }) => {
             <IconButton
               edge="start"
               color="inherit"
+              size={ICON_BUTTON_SIZE}
               onClick={() => setDrawerOpen(!drawerOpen)}
             >
-              <MenuIcon />
+              <MenuIcon fontSize="inherit" />
             </IconButton>
           )}
 
@@ -91,7 +95,7 @@ const Navbar = ({ themeMode, toggleTheme }) => {
           >
             {isMobile ? (
               loading ? (
-                <Skeleton variant="rectangular" width={80} height={32} />
+                <Skeleton variant="rectangular" width={ICON_DIM} height={ICON_DIM} />
               ) : (
                 <Button
                   onClick={() => handleNavigation('home')}
@@ -106,8 +110,8 @@ const Navbar = ({ themeMode, toggleTheme }) => {
                   <Skeleton
                     key={sec}
                     variant="rectangular"
-                    width={60}
-                    height={32}
+                    width={ICON_DIM}
+                    height={ICON_DIM}
                     sx={{ mx: 1 }}
                   />
                 ) : (
@@ -120,8 +124,8 @@ const Navbar = ({ themeMode, toggleTheme }) => {
                       color: '#fff',
                       fontWeight: 600,
                       mx: 0.5,
-                      '&:hover': { backgroundColor: 'rgba(255,255,255,0.1)' },
                       px: 0.3,
+                      '&:hover': { backgroundColor: 'rgba(255,255,255,0.1)' },
                     }}
                   >
                     {sec.charAt(0).toUpperCase() + sec.slice(1)}
@@ -132,18 +136,14 @@ const Navbar = ({ themeMode, toggleTheme }) => {
           </Box>
 
           {/* Theme toggle + Social icons */}
-          <Box sx={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: { xs: 0.5, sm: 1 },
-          }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             {loading
               ? SOCIALS.map((_, i) => (
                 <Skeleton
                   key={i}
                   variant="circular"
-                  width={{ xs: 28, sm: 32 }}
-                  height={{ xs: 28, sm: 32 }}
+                  width={ICON_DIM}
+                  height={ICON_DIM}
                 />
               ))
               : SOCIALS.map((s) => (
@@ -154,27 +154,23 @@ const Navbar = ({ themeMode, toggleTheme }) => {
                   target="_blank"
                   rel="noopener"
                   aria-label={s.alt}
+                  size={ICON_BUTTON_SIZE}
                   sx={{
-                    width: { xs: 22, sm: 25 },
-                    height: { xs: 22, sm: 25 },
-                    p: 0,
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      transform: 'scale(1.1)'
-                    },
-                    color: 'inherit'
+                    p: 0,                 // remove extra padding
+                    width: ICON_DIM,
+                    height: ICON_DIM,
+                    '&:hover': { transform: 'scale(1.1)' },
                   }}
                 >
-                  {s.icon ? s.icon : (
+                  {s.icon || (
                     <Box
                       component="img"
                       src={s.src}
                       alt={s.alt}
                       sx={{
-                        width: '100%',
-                        height: '100%',
+                        width: ICON_DIM,
+                        height: ICON_DIM,
                         objectFit: 'contain',
-                        p: { xs: 0.5, sm: 0 }, // Adjust padding for different sizes. Larger numbers equal smaller img sizes
                       }}
                     />
                   )}
@@ -184,30 +180,29 @@ const Navbar = ({ themeMode, toggleTheme }) => {
             <IconButton
               color="inherit"
               onClick={toggleTheme}
+              size={ICON_BUTTON_SIZE}
               sx={{
-                width: { xs: 34, sm: 40 },
-                height: { xs: 34, sm: 40 }
+                width: ICON_DIM,
+                height: ICON_DIM,
+                '&:hover': { transform: 'scale(1.1)' },
               }}
             >
               {themeMode === 'dark' ? (
-                <Brightness7Icon fontSize={isMobile ? 'small' : 'medium'} />
+                <Brightness7Icon fontSize="inherit" />
               ) : (
-                <Brightness4Icon fontSize={isMobile ? 'small' : 'medium'} />
+                <Brightness4Icon fontSize="inherit" />
               )}
             </IconButton>
           </Box>
         </Toolbar>
       </AppBar>
 
-      {/* Mobile drawer */}
       <Drawer
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
         ModalProps={{
           keepMounted: true,
-          sx: {
-            zIndex: theme.zIndex.modal + 1, // Higher than default modal z-index
-          }
+          sx: { zIndex: theme.zIndex.modal + 1 }, // Higher than default modal z-index
         }}
         slotPropos={{
           paper: {
@@ -230,14 +225,20 @@ const Navbar = ({ themeMode, toggleTheme }) => {
             }}
           >
             <Typography variant="h6">Oliver Njeru</Typography>
-            <IconButton onClick={() => setDrawerOpen(false)}>
-              <CloseIcon />
+            <IconButton size={ICON_BUTTON_SIZE} onClick={() => setDrawerOpen(false)}>
+              <CloseIcon fontSize="inherit" />
             </IconButton>
           </Box>
           <List>
             {loading
               ? SECTIONS.slice(1).map((_, i) => (
-                <Skeleton key={i} variant="rectangular" width="80%" height={32} sx={{ m: 1 }} />
+                <Skeleton
+                  key={i}
+                  variant="rectangular"
+                  width="80%"
+                  height={32}
+                  sx={{ m: 1 }}
+                />
               ))
               : SECTIONS.slice(1).map((sec) => (
                 <ListItem key={sec} disablePadding>
