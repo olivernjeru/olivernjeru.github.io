@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -42,26 +42,54 @@ const SOCIALS = [
   { href: 'https://unsplash.com/olivernjeru', src: '/assets/socials/unsplash.svg', alt: 'Unsplash' },
 ];
 
-const ICON_BUTTON_SIZE = 'large'; // uniform size
+const ICON_BUTTON_SIZE = 'large';  // uniform size
 const ICON_DIM = '1.5rem'; // uniform icon dimension
+const NAVBAR_HEIGHT = 64; // match AppBar height
 
 export default function Navbar({ themeMode, toggleTheme }) {
-  const theme = useTheme(); // useTheme for palette access
+  const theme = useTheme();  // useTheme for palette access
   const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // responsive check
   const [loading, setLoading] = useState(true);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [active, setActive] = useState('home'); // track active section
+  const [active, setActive] = useState('home');  // track active section
+  const observerRef = useRef(null);
 
+  // skeleton-loading simulation
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000);
     return () => clearTimeout(timer);
   }, []);
 
+  // IntersectionObserver: trigger at section top crossing just below navbar
+  useEffect(() => {
+    const handleIntersections = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActive(entry.target.id);
+        }
+      });
+    };
+
+    observerRef.current = new IntersectionObserver(handleIntersections, {
+      root: null,
+      threshold: 0,
+      rootMargin: `-${NAVBAR_HEIGHT}px 0px -50% 0px`,
+    });
+
+    SECTIONS.forEach(sec => {
+      const el = document.getElementById(sec);
+      if (el) observerRef.current.observe(el);
+    });
+
+    return () => observerRef.current?.disconnect();
+  }, []);
+
+  // scroll + close drawer
   const handleNavigation = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      const offset = section.offsetTop - 64;
-      window.scrollTo({ top: Math.max(offset, 0), behavior: 'smooth' }); // smooth scrolling
+    const el = document.getElementById(sectionId);
+    if (el) {
+      const y = el.offsetTop - NAVBAR_HEIGHT;
+      window.scrollTo({ top: y, behavior: 'smooth' }); // smooth scrolling
     }
     setActive(sectionId); // update active on click
     setDrawerOpen(false);
@@ -91,14 +119,12 @@ export default function Navbar({ themeMode, toggleTheme }) {
           )}
 
           {/* Desktop nav links or mobile “Home” + icon */}
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: isMobile ? 'space-between' : 'flex-start',
-            }}
-          >
+          <Box sx={{
+            flexGrow: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: isMobile ? 'space-between' : 'flex-start',
+          }}>
             {isMobile ? (
               loading ? (
                 <Skeleton variant="rectangular" width={ICON_DIM} height={ICON_DIM} /> // Skeleton while loading
@@ -111,7 +137,7 @@ export default function Navbar({ themeMode, toggleTheme }) {
                 </Button>
               )
             ) : (
-              SECTIONS.map((sec) =>
+              SECTIONS.map(sec =>
                 loading ? (
                   <Skeleton
                     key={sec}
@@ -129,16 +155,11 @@ export default function Navbar({ themeMode, toggleTheme }) {
                     sx={{
                       color: theme.palette.text.primary, // dark text on light background
                       fontWeight: active === sec ? 600 : 500,
-                      borderBottom:
-                        active === sec
-                          ? `2px solid ${theme.palette.secondary.main}`
-                          : '2px solid transparent',
-                      mx: 1,
-                      px: 0.5,
-                      py: 0.5,
-                      '&:hover': {
-                        borderColor: theme.palette.secondary.light,
-                      },
+                      borderBottom: active === sec
+                        ? `2px solid ${theme.palette.secondary.main}`
+                        : '2px solid transparent',
+                      mx: 1, px: 0.5, py: 0.5,
+                      '&:hover': { borderColor: theme.palette.secondary.light },
                     }}
                     aria-current={active === sec ? 'page' : undefined}
                   >
@@ -149,13 +170,13 @@ export default function Navbar({ themeMode, toggleTheme }) {
             )}
           </Box>
 
-          {/* Theme toggle + Social icons */}
+          {/* social icons + theme toggle */}
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             {loading
               ? SOCIALS.map((_, i) => (
                 <Skeleton key={i} variant="circular" width={ICON_DIM} height={ICON_DIM} />
               ))
-              : SOCIALS.map((s) => (
+              : SOCIALS.map(s => (
                 <IconButton
                   key={s.alt}
                   component="a"
@@ -176,16 +197,12 @@ export default function Navbar({ themeMode, toggleTheme }) {
                       component="img"
                       src={s.src}
                       alt={s.alt}
-                      sx={{
-                        width: ICON_DIM,
-                        height: ICON_DIM,
-                        objectFit: 'contain',
-                      }}
+                      sx={{ width: ICON_DIM, height: ICON_DIM, objectFit: 'contain' }}
                     />
                   )}
                 </IconButton>
-              ))}
-
+              ))
+            }
             {loading ? (
               <Skeleton variant="circular" width={ICON_DIM} height={ICON_DIM} />
             ) : (
@@ -201,11 +218,9 @@ export default function Navbar({ themeMode, toggleTheme }) {
                 }}
                 aria-label="Toggle light/dark mode"
               >
-                {themeMode === 'dark' ? (
-                  <Brightness7Icon fontSize="inherit" />
-                ) : (
-                  <Brightness4Icon fontSize="inherit" />
-                )}
+                {themeMode === 'dark'
+                  ? <Brightness7Icon fontSize="inherit" />
+                  : <Brightness4Icon fontSize="inherit" />}
               </IconButton>
             )}
           </Box>
@@ -223,15 +238,13 @@ export default function Navbar({ themeMode, toggleTheme }) {
           },
         }}
       >
-        {/* Drawer component */}
         <Box sx={{ height: '100%' }} role="presentation">
           <Box
             sx={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              px: 2,
-              py: 1.5,
+              px: 2, py: 1.5,
               borderBottom: `1px solid ${theme.palette.divider}`,
             }}
           >
@@ -245,7 +258,7 @@ export default function Navbar({ themeMode, toggleTheme }) {
             </IconButton>
           </Box>
           <List>
-            {SECTIONS.slice(1).map((sec) => (
+            {SECTIONS.slice(1).map(sec => (
               <ListItem key={sec} disablePadding>
                 <ListItemButton onClick={() => handleNavigation(sec)}>
                   <ListItemText
