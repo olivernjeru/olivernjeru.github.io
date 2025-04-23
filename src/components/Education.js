@@ -85,7 +85,7 @@ const Education = () => {
                     </Typography>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                       {education.classes.map((c, i) => (
-                        <Chip key={i} label={c} size="small" />
+                        <Chip key={i} label={c} size="small" color="secondary" />
                       ))}
                     </Box>
                   </Box>
