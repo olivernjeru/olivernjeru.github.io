@@ -84,7 +84,7 @@ const HomePage = () => {
                                 startIcon={<ArticleIcon />}
                                 sx={{ padding: "1rem 2rem" }}
                             >
-                                Resume
+                                Résumé
                             </Button>
                         </Box>
                     </>
