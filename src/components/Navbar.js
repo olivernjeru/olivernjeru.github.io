@@ -22,6 +22,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 const SECTIONS = [
   'home',
@@ -47,20 +48,20 @@ const ICON_DIM = '1.5rem'; // uniform icon dimension
 const NAVBAR_HEIGHT = 64; // match AppBar height
 
 export default function Navbar({ themeMode, toggleTheme }) {
-  const theme = useTheme();  // useTheme for palette access
+  const theme = useTheme(); // useTheme for palette access
   const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // responsive check
   const [loading, setLoading] = useState(true);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [active, setActive] = useState('home');  // track active section
+  const [active, setActive] = useState('home'); // track active section
   const observerRef = useRef(null);
 
-  // skeleton-loading simulation
+  // Simulate loading
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000);
     return () => clearTimeout(timer);
   }, []);
 
-  // IntersectionObserver: trigger at section top crossing just below navbar
+  // IntersectionObserver to set `active`
   useEffect(() => {
     const handleIntersections = (entries) => {
       entries.forEach(entry => {
@@ -84,12 +85,12 @@ export default function Navbar({ themeMode, toggleTheme }) {
     return () => observerRef.current?.disconnect();
   }, []);
 
-  // scroll + close drawer
+  // Smooth scroll
   const handleNavigation = (sectionId) => {
     const el = document.getElementById(sectionId);
     if (el) {
-      const y = el.offsetTop - NAVBAR_HEIGHT;
-      window.scrollTo({ top: y, behavior: 'smooth' }); // smooth scrolling
+      const offsetY = el.offsetTop - NAVBAR_HEIGHT;
+      window.scrollTo({ top: offsetY, behavior: 'smooth' }); // smooth scrolling
     }
     setActive(sectionId); // update active on click
     setDrawerOpen(false);
@@ -226,6 +227,25 @@ export default function Navbar({ themeMode, toggleTheme }) {
           </Box>
         </Toolbar>
       </AppBar>
+
+      {/* Floating “Back to Top” arrow on left */}
+      {active !== 'home' && (
+        <IconButton
+          onClick={() => handleNavigation('home')}
+          sx={{
+            position: 'fixed',
+            left: 16,
+            bottom: 24,
+            bgcolor: theme.palette.background.paper,
+            boxShadow: theme.shadows[3],
+            '&:hover': { boxShadow: theme.shadows[6] },
+            zIndex: theme.zIndex.appBar + 1,
+          }}
+          aria-label="Back to Home"
+        >
+          <ArrowUpwardIcon />
+        </IconButton>
+      )}
 
       <Drawer
         open={drawerOpen}
