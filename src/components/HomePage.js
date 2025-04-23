@@ -35,19 +35,24 @@ const HomePage = () => {
                     '40%': { transform: 'translateY(-10px)' },
                     '60%': { transform: 'translateY(-5px)' },
                 },
-            }} />
+            }}
+            />
 
+            {/* Hero Section */}
             <Box
                 id="home"
                 component="section"
                 sx={{
-                    minHeight: "100vh", // Full viewport height
-                    display: "flex", // Flexbox for centering
-                    flexDirection: "column", // Stack content vertically
-                    justifyContent: "center", // Center content vertically
-                    alignItems: "center", // Center content horizontally
-                    textAlign: "center",
-                    padding: "2rem",
+                    position: 'relative', // anchor for absolute-positioned arrow
+                    minHeight: '100vh', // full viewport height
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    px: { xs: 2, sm: 4 }, // responsive horizontal padding
+                    backgroundColor: theme.palette.background.default,
+                    color: theme.palette.text.primary,
                 }}
             >
                 {/* Centers content horizontally */}
@@ -56,8 +61,18 @@ const HomePage = () => {
                         <Stack spacing={2}>
                             <Skeleton variant="text" width="70%" height={isSmUp ? 60 : 40} />
                             <Skeleton variant="text" width="50%" height={isSmUp ? 40 : 30} />
-                            <Skeleton variant="rectangular" width="100%" height={100} sx={{ borderRadius: 1 }} />
-                            <Skeleton variant="rectangular" width={150} height={48} sx={{ borderRadius: 2 }} />
+                            <Skeleton
+                                variant="rectangular"
+                                width="100%"
+                                height={100}
+                                sx={{ borderRadius: 1 }}
+                            />
+                            <Skeleton
+                                variant="rectangular"
+                                width={150}
+                                height={48}
+                                sx={{ borderRadius: 2 }}
+                            />
                         </Stack>
                     ) : (
                         <Stack spacing={3}>
@@ -71,20 +86,19 @@ const HomePage = () => {
                             </Fade>
 
                             <Fade in timeout={700}>
-                                <Typography
-                                    variant={isSmUp ? 'h5' : 'subtitle1'}
-                                >
+                                <Typography variant={isSmUp ? 'h5' : 'subtitle1'}>
                                     A Founding Engineer at Replicant Trader and Research Enthusiast.
                                 </Typography>
                             </Fade>
 
                             <Fade in timeout={900}>
-                                <Typography variant="body1">
-                                    I am passionate about Artificial Intelligence, Optimization, Game Theory, Machine Learning,
-                                    Algorithmic Economics, and Stochastic Optimization. I love
-                                    collaborating on cutting-edge research and building solutions
-                                    that make a difference. Outside work, I am often traveling,
-                                    swimming, or gaming and always seeking new inspiration.
+                                <Typography variant="body1" sx={{ mx: { xs: 0, sm: 10 } }}>
+                                    I am passionate about Artificial Intelligence, Optimization,
+                                    Game Theory, Machine Learning, Algorithmic Economics, and
+                                    Stochastic Optimization. I love collaborating on cutting-edge
+                                    research and building solutions that make a difference.
+                                    Outside work, I’m often traveling, swimming, or gaming and
+                                    always seeking new inspiration.
                                 </Typography>
                             </Fade>
 
@@ -97,7 +111,11 @@ const HomePage = () => {
                                         target="_blank"
                                         rel="noopener"
                                         startIcon={<ArticleIcon />}
-                                        sx={{ padding: "1rem 2rem" }}
+                                        sx={{
+                                            px: 4,
+                                            py: 1.5,
+                                            typography: { xs: 'button', sm: 'h6' }, // responsive text size
+                                        }}
                                     >
                                         Résumé
                                     </Button>
@@ -105,34 +123,36 @@ const HomePage = () => {
                             </Fade>
                         </Stack>
                     )}
-
-                    {/* Scroll Arrow */}
-                    {!loading && (
-                        <IconButton
-                            onClick={() => {
-                                const next = document.getElementById('education');
-                                if (next) {
-                                    window.scrollTo({
-                                        top: next.offsetTop - 64,
-                                        behavior: 'smooth',
-                                    });
-                                }
-                            }}
-                            sx={{
-                                position: 'absolute',
-                                bottom: theme.spacing(4),
-                                left: '49%',
-                                transform: 'translateX(-50%)',
-                                animation: 'bounce 2s infinite',
-                                bgcolor: 'rgba(0,0,0,0.3)',
-                                '&:hover': { bgcolor: 'rgba(0,0,0,0.5)' },
-                            }}
-                            aria-label="Scroll to Education"
-                        >
-                            <ArrowDownwardIcon fontSize="large" />
-                        </IconButton>
-                    )}
                 </Container>
+
+                {/* Scroll Arrow */}
+                {!loading && (
+                    <IconButton
+                        onClick={() => {
+                            const next = document.getElementById('education');
+                            if (next) {
+                                window.scrollTo({
+                                    top: next.offsetTop - 64,
+                                    behavior: 'smooth',
+                                });
+                            }
+                        }}
+                        sx={{
+                            position: 'absolute',
+                            bottom: theme.spacing(4),
+                            left: 0,
+                            right: 0,
+                            mx: 'auto', // perfectly centers horizontally
+                            animation: 'bounce 2s infinite',
+                            bgcolor: 'rgba(0,0,0,0.3)',
+                            color: theme.palette.common.white,
+                            '&:hover': { bgcolor: 'rgba(0,0,0,0.5)' },
+                        }}
+                        aria-label="Scroll to Education"
+                    >
+                        <ArrowDownwardIcon fontSize="large" />
+                    </IconButton>
+                )}
             </Box>
         </>
     );
