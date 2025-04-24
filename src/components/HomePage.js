@@ -81,7 +81,7 @@ const HomePage = () => {
                                     variant={isSmUp ? 'h2' : 'h4'}
                                     sx={{ fontWeight: 700 }}
                                 >
-                                    Yo! I'm Oliver Njeru.
+                                    Yo! I am Oliver Njeru.
                                 </Typography>
                             </Fade>
 
