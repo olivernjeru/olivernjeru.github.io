@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState,  } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   CssBaseline,
   GlobalStyles,
@@ -101,7 +101,7 @@ function App() {
             height: 4,
           },
           "*::-webkit-scrollbar-thumb": {
-            backgroundColor: theme.palette.primary.main,
+            backgroundColor: theme.palette.secondary.main,
             borderRadius: "8px",
           },
           "*::-webkit-scrollbar-thumb:hover": {
