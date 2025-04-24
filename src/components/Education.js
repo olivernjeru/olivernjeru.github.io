@@ -36,6 +36,7 @@ const Education = () => {
         <SectionHeader
           icon={SchoolOutlined}
           title="Education and Research"
+          subtitle="Hello World!"
           delay={800}
         />
 
