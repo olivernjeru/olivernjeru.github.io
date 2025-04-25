@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Container,
+  Stack,
   Card,
   CardHeader,
   CardContent,
@@ -12,11 +13,17 @@ import {
   ListItemText,
   Divider,
   Grow,
-  Stack,
-  useTheme,
+  Skeleton,
   Avatar,
+  useTheme,
 } from '@mui/material';
-import { CameraAltOutlined, EmojiEventsOutlined, EventOutlined, SchoolOutlined, VolunteerActivismOutlined } from '@mui/icons-material';
+import {
+  CameraAltOutlined,
+  EmojiEventsOutlined,
+  EventOutlined,
+  SchoolOutlined,
+  VolunteerActivismOutlined,
+} from '@mui/icons-material';
 import SectionHeader from './SectionHeader';
 import { categorizedAwards } from './dataStores/AwardsObject';
 import { NoUnderlineLink } from './utilities/formats/NoUnderlineLink';
@@ -56,6 +63,13 @@ const awardSections = [
 
 const Awards = () => {
   const theme = useTheme();
+  const [loading, setLoading] = useState(true);
+
+  // Disable skeletons after 1 second
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <Box
@@ -66,17 +80,33 @@ const Awards = () => {
       }}
     >
       <Container maxWidth="lg">
-        <SectionHeader
-          icon={EmojiEventsOutlined}
-          title="Awards and Honors"
-          subtitle="Recognitions & Contributions"
-          delay={800}
-        />
+        {/* Section Header */}
+        {loading ? (
+          <Skeleton variant="text" width="30%" height={40} sx={{ mb: 4 }} />
+        ) : (
+          <SectionHeader
+            icon={EmojiEventsOutlined}
+            title="Awards and Honors"
+            subtitle="Recognitions & Contributions"
+            delay={800}
+          />
+        )}
 
         <Stack spacing={4}>
           {awardSections.map((section, idx) => {
             const Icon = section.icon;
             const data = categorizedAwards[section.key];
+
+            if (loading) {
+              return (
+                <Skeleton
+                  key={section.key}
+                  variant="rectangular"
+                  height={150}
+                  sx={{ mb: 4, borderRadius: 3 }}
+                />
+              );
+            }
 
             return (
               <Grow in timeout={1000 + idx * 200} key={section.key}>
@@ -140,7 +170,8 @@ const Awards = () => {
                               color="text.secondary"
                               sx={{ mb: 1 }}
                             >
-                              {entry.organization} {entry.period && `(${entry.period})`}
+                              {entry.organization}{' '}
+                              {entry.period && `(${entry.period})`}
                             </Typography>
                           )}
 
@@ -149,7 +180,7 @@ const Awards = () => {
                               {entry.details.map((detail, j) => (
                                 <ListItem key={j}>
                                   <ListItemIcon>
-                                    <section.icon color="action" />
+                                    <Icon color="action" />
                                   </ListItemIcon>
                                   <ListItemText primary={detail} />
                                 </ListItem>
