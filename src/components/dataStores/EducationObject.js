@@ -27,7 +27,9 @@ const educationData = {
             "Business Data Analytics",
             "Software Design & Architecture",
         ],
-        achievements: [],
+        achievements: [
+            "Honors"
+        ],
         activities: [],
     },
     libf: {
