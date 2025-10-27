@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -28,6 +28,7 @@ const SECTIONS = [
   'home',
   'education',
   'work',
+  'academics',
   'projects',
   'skills',
   'awards',
@@ -53,7 +54,7 @@ export default function Navbar({ themeMode, toggleTheme }) {
   const [loading, setLoading] = useState(true);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [active, setActive] = useState('home'); // track active section
-  const observerRef = useRef(null);
+  // IntersectionObserver not used; using scroll-based tracking instead
 
   // Simulate loading
   useEffect(() => {
@@ -61,28 +62,26 @@ export default function Navbar({ themeMode, toggleTheme }) {
     return () => clearTimeout(timer);
   }, []);
 
-  // IntersectionObserver to set `active`
+  // Robust active-section tracking using scroll position
   useEffect(() => {
-    const handleIntersections = (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setActive(entry.target.id);
+    const updateActive = () => {
+      const scrollY = window.scrollY + NAVBAR_HEIGHT + 1;
+      let current = 'home';
+      for (const sec of SECTIONS) {
+        const el = document.getElementById(sec);
+        if (el && el.offsetTop <= scrollY) {
+          current = sec;
         }
-      });
+      }
+      setActive(current);
     };
-
-    observerRef.current = new IntersectionObserver(handleIntersections, {
-      root: null,
-      threshold: 0,
-      rootMargin: `-${NAVBAR_HEIGHT}px 0px -50% 0px`,
-    });
-
-    SECTIONS.forEach(sec => {
-      const el = document.getElementById(sec);
-      if (el) observerRef.current.observe(el);
-    });
-
-    return () => observerRef.current?.disconnect();
+    updateActive();
+    window.addEventListener('scroll', updateActive, { passive: true });
+    window.addEventListener('resize', updateActive);
+    return () => {
+      window.removeEventListener('scroll', updateActive);
+      window.removeEventListener('resize', updateActive);
+    };
   }, []);
 
   // Smooth scroll
@@ -95,6 +94,8 @@ export default function Navbar({ themeMode, toggleTheme }) {
     setActive(sectionId); // update active on click
     setDrawerOpen(false);
   };
+
+  // Removed Relevant Courses navigation handler
 
   return (
     <>
@@ -138,7 +139,8 @@ export default function Navbar({ themeMode, toggleTheme }) {
                 </Button>
               )
             ) : (
-              SECTIONS.map(sec =>
+              <>
+              {SECTIONS.map(sec =>
                 loading ? (
                   <Skeleton
                     key={sec}
@@ -167,7 +169,9 @@ export default function Navbar({ themeMode, toggleTheme }) {
                     {sec.charAt(0).toUpperCase() + sec.slice(1)}
                   </Link>
                 )
-              )
+              )}
+              {/* Relevant Courses menu removed */}
+              </>
             )}
           </Box>
 
@@ -293,6 +297,7 @@ export default function Navbar({ themeMode, toggleTheme }) {
                 </ListItemButton>
               </ListItem>
             ))}
+            {/* Relevant Courses drawer section removed */}
           </List>
         </Box>
       </Drawer>

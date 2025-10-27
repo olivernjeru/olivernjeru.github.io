@@ -14,6 +14,7 @@ import {
   Grow,
   Skeleton,
   useTheme,
+  Tooltip,
 } from '@mui/material';
 import { ArticleOutlined, DescriptionOutlined, SchoolOutlined } from '@mui/icons-material';
 import SectionHeader from './SectionHeader';
@@ -24,6 +25,25 @@ const Education = () => {
   const theme = useTheme();
   const [loading, setLoading] = useState(true);
 
+  // Map USIU-Africa "Relevant Courses" to anchor IDs in the Academics section
+  const usiuCourseToAnchor = {
+    'Data Structures & Algorithms': 'academics-APT2060',
+    'Operating Systems': 'academics-APT2040',
+    'Mobile Programming': 'academics-APT3060',
+    'Applied Machine Learning': 'academics-APT3025',
+  };
+
+  const NAVBAR_HEIGHT = 84; // increased offset to avoid cropping
+
+  const handleCourseChipClick = (label) => {
+    const id = usiuCourseToAnchor[label] || 'academics';
+    const el = document.getElementById(id);
+    if (el) {
+      const targetY = el.getBoundingClientRect().top + window.scrollY - NAVBAR_HEIGHT;
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
+    }
+  };
+
   // Toggle loading off after 1 second
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000);
@@ -31,6 +51,8 @@ const Education = () => {
   }, []);
 
   const educationList = Object.values(educationData);
+
+  // NAVBAR_HEIGHT defined above
 
   return (
     <Box
@@ -106,9 +128,28 @@ const Education = () => {
                         Relevant Courses
                       </Typography>
                       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                        {education.classes.map((c, i) => (
-                          <Chip key={i} label={c} size="small" color="secondary" />
-                        ))}
+                        {education.classes.map((c, i) => {
+                          const isUSIU = education.name === 'United States International University-Africa';
+                          const targetId = isUSIU ? usiuCourseToAnchor[c] : undefined;
+                          const isClickable = Boolean(targetId);
+                          const chip = (
+                            <Chip
+                              key={i}
+                              label={c}
+                              size="small"
+                              color={isClickable ? 'secondary' : 'secondary'}
+                              clickable={isClickable}
+                              onClick={isClickable ? () => handleCourseChipClick(c) : undefined}
+                            />
+                          );
+                          return isClickable ? (
+                            <Tooltip key={i} title="View in Academics">
+                              <span>{chip}</span>
+                            </Tooltip>
+                          ) : (
+                              chip
+                          );
+                        })}
                       </Box>
                     </Box>
                   )}
