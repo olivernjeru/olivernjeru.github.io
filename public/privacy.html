@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#c96442" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://olivernjeru.github.io/privacy.html" />
+
+  <title>Privacy — Oliver Njeru</title>
+  <meta name="description"
+    content="Privacy practices for olivernjeru.github.io: no analytics, no third-party scripts, no tracking." />
+
+  <link rel="icon" type="image/svg+xml" href="/brand/favicons/favicon-dark.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicons/favicon-32.png" />
+
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('hearthTheme');
+        var initial = (saved === 'light' || saved === 'dark')
+          ? saved
+          : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', initial);
+        var ico = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
+        if (ico) ico.href = initial === 'dark' ? '/brand/favicons/favicon-dark.svg' : '/brand/favicons/favicon.svg';
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
+
+  <style>
+    [data-theme="dark"] {
+      --bg: #16140f;
+      --bg-alt: #1f1c16;
+      --text: #efe7d6;
+      --text-soft: rgba(239, 231, 214, 0.85);
+      --muted: rgba(239, 231, 214, 0.55);
+      --hair: rgba(239, 231, 214, 0.10);
+      --faint: rgba(239, 231, 214, 0.05);
+      --accent: #e07c5a;
+      --bg-glass: rgba(22, 20, 15, 0.78);
+    }
+
+    [data-theme="light"] {
+      --bg: #f4efe5;
+      --bg-alt: #ece5d6;
+      --text: #1a1715;
+      --text-soft: #3a322c;
+      --muted: rgba(26, 23, 21, 0.58);
+      --hair: rgba(26, 23, 21, 0.14);
+      --faint: rgba(26, 23, 21, 0.06);
+      --accent: #c96442;
+      --bg-glass: rgba(244, 239, 229, 0.78);
+    }
+
+    @supports (color: color-mix(in oklab, red, blue)) {
+      [data-theme="dark"] {
+        --bg-glass: color-mix(in oklab, #16140f 78%, transparent);
+      }
+      [data-theme="light"] {
+        --bg-glass: color-mix(in oklab, #f4efe5 78%, transparent);
+      }
+    }
+
+    /* Font faces are emitted by Vite from the React bundle for the main site.
+       Privacy is a static page, so it relies on system fallbacks plus the
+       families set below. They match the React app's font stack. */
+    :root {
+      --font-serif: "Newsreader", "Newsreader Variable", Georgia, serif;
+      --font-sans: "Inter Tight", "Inter Tight Variable", "Inter", system-ui, -apple-system, sans-serif;
+      --font-mono: "JetBrains Mono", "JetBrains Mono Variable", ui-monospace, "SF Mono", Menlo, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-serif);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      transition: background 200ms ease, color 200ms ease;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--hair);
+    }
+
+    a:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    nav.site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--hair);
+      padding: 14px 22px;
+      background: var(--bg-glass);
+      backdrop-filter: saturate(140%) blur(10px);
+      -webkit-backdrop-filter: saturate(140%) blur(10px);
+    }
+
+    nav.site-nav .inner {
+      max-width: 760px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    nav.site-nav a {
+      color: var(--muted);
+      border-bottom: none;
+    }
+
+    .theme-toggle {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid var(--hair);
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .theme-toggle svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 44px 22px 80px;
+    }
+
+    .kicker {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-weight: 500;
+      letter-spacing: -1.4px;
+      font-size: 48px;
+      line-height: 1.02;
+      margin: 0 0 12px;
+    }
+
+    h1 em {
+      font-style: italic;
+    }
+
+    h2 {
+      font-family: var(--font-serif);
+      font-weight: 500;
+      letter-spacing: -0.4px;
+      font-size: 22px;
+      line-height: 1.2;
+      margin: 36px 0 10px;
+    }
+
+    p,
+    li {
+      color: var(--text-soft);
+    }
+
+    .meta {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.92em;
+      background: var(--bg-alt);
+      padding: 1px 6px;
+      color: var(--text);
+    }
+
+    ul {
+      padding-left: 22px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="site-nav">
+    <div class="inner">
+      <a href="/">← Back to the lounge</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="kicker">House rules</div>
+    <h1>Privacy, <em>plainly stated</em>.</h1>
+    <p class="meta">Last updated: 16 May 2026</p>
+
+    <p>
+      This site is the personal portfolio of Oliver Njeru. It runs no analytics,
+      no third-party scripts, no advertising trackers, and no fingerprinting.
+    </p>
+
+    <h2>What is stored on your device</h2>
+    <ul>
+      <li>
+        <strong>Theme preference.</strong> Light or dark mode is saved to your
+        browser&rsquo;s <code>localStorage</code> under the key
+        <code>hearthTheme</code>. The value never leaves your device.
+      </li>
+    </ul>
+
+    <h2>External links</h2>
+    <p>
+      Links to GitHub, LinkedIn, Google Scholar, Unsplash, Figma, and other
+      sites open with <code>rel="noopener noreferrer"</code> so those
+      destinations cannot read this site&rsquo;s context. Their own privacy
+      policies apply once you click through.
+    </p>
+
+    <h2>Fonts</h2>
+    <p>
+      Newsreader, Inter Tight, and JetBrains Mono are bundled with the site and
+      served from the same origin (no third-party font CDN, no cookies).
+    </p>
+
+    <h2>Hosting</h2>
+    <p>
+      Served as static files from GitHub Pages. GitHub may collect server
+      access logs as described in
+      <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
+        target="_blank" rel="noopener noreferrer">GitHub&rsquo;s privacy statement</a>.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions about this notice can be sent to
+      <a href="mailto:onjeru@usiu.ac.ke">onjeru@usiu.ac.ke</a>.
+    </p>
+  </main>
+
+  <script>
+    (function () {
+      var SUN = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-label="Sun"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>';
+      var MOON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-label="Moon"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path></svg>';
+
+      function setIcon(mode) {
+        var btn = document.getElementById('themeToggle');
+        if (!btn) return;
+        btn.innerHTML = mode === 'dark' ? SUN : MOON;
+        btn.setAttribute('aria-label', mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+
+      function setFavicon(mode) {
+        var ico = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
+        if (ico) ico.href = mode === 'dark' ? '/brand/favicons/favicon-dark.svg' : '/brand/favicons/favicon.svg';
+      }
+
+      function apply(mode) {
+        document.documentElement.setAttribute('data-theme', mode);
+        setIcon(mode);
+        setFavicon(mode);
+        try { localStorage.setItem('hearthTheme', mode); } catch (e) { /* ignore */ }
+      }
+
+      var current = document.documentElement.getAttribute('data-theme') || 'dark';
+      setIcon(current);
+
+      document.getElementById('themeToggle').addEventListener('click', function () {
+        current = current === 'dark' ? 'light' : 'dark';
+        apply(current);
+      });
+
+      window.addEventListener('storage', function (e) {
+        if (e.key === 'hearthTheme' && (e.newValue === 'light' || e.newValue === 'dark')) {
+          current = e.newValue;
+          apply(current);
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>

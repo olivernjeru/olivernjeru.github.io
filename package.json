@@ -1,34 +1,25 @@
 {
   "homepage": "https://olivernjeru.github.io",
   "name": "Oliver Njeru Lounge",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": true,
+  "type": "module",
   "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
-    "@mui/icons-material": "^6.2.0",
-    "@mui/lab": "^6.0.0-beta.23",
-    "@mui/material": "^6.4.0",
-    "cra-template": "1.2.0",
+    "@fontsource-variable/inter-tight": "^5.1.1",
+    "@fontsource-variable/jetbrains-mono": "^5.1.1",
+    "@fontsource-variable/newsreader": "^5.1.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^4.2.4"
+    "react-dom": "^18.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "build": "react-scripts build && npm run obfuscate",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "obfuscate": "javascript-obfuscator ./build/static/js --output ./build/static/js"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "deploy": "gh-pages -d dist"
   },
   "browserslist": {
     "production": [
@@ -43,7 +34,18 @@
     ]
   },
   "devDependencies": {
+    "@prerenderer/renderer-puppeteer": "^1.2.4",
+    "@prerenderer/rollup-plugin": "^0.3.12",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@vitejs/plugin-react": "^4.3.4",
     "gh-pages": "^6.3.0",
-    "javascript-obfuscator": "^4.1.1"
+    "jsdom": "^25.0.1",
+    "puppeteer": "^22.15.0",
+    "vite": "^5.4.10",
+    "vitest": "^2.1.8"
+  },
+  "overrides": {
+    "puppeteer": "^22.15.0"
   }
 }

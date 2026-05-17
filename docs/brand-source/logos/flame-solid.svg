@@ -1,0 +1,6 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 96" width="68" height="96" role="img" aria-label="Oliver Njeru">
+  <path d="M34,8 C42,22 52,30 52,50 C52,66 44,80 34,80 C24,80 16,66 16,50 C16,34 26,28 34,8 Z" fill="#1a1715"></path>
+  <path d="M34,28 C40,38 44,44 44,54 C44,64 40,72 34,72 C28,72 24,64 24,54 C24,44 28,38 34,28 Z" fill="#c96442"></path>
+  <ellipse cx="34" cy="58" rx="3" ry="6" fill="#f4efe5"></ellipse>
+</svg>

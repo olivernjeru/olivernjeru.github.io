@@ -1,0 +1,6 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="Oliver Njeru">
+  <circle cx="50" cy="50" r="46" fill="#1a1715"></circle>
+  <path d="M50,20 C57,32 65,40 65,56 C65,70 59,80 50,80 C41,80 35,70 35,56 C35,42 43,34 50,20 Z" fill="none" stroke="#f4efe5" stroke-width="2.4" stroke-linejoin="round"></path>
+  <ellipse cx="50" cy="60" rx="6" ry="10" fill="#c96442"></ellipse>
+</svg>

@@ -1,3 +1,5 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /components/
+
+Sitemap: https://olivernjeru.github.io/sitemap.xml

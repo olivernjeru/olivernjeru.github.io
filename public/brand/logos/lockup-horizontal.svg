@@ -1,0 +1,12 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 96" width="360" height="96" role="img" aria-label="Oliver Njeru">
+  
+  <g transform="translate(8,8)">
+    <path d="M34,8 C42,22 52,30 52,50 C52,66 44,80 34,80 C24,80 16,66 16,50 C16,34 26,28 34,8 Z" fill="none" stroke="#1a1715" stroke-width="2.6" stroke-linejoin="round"></path>
+    <ellipse cx="34" cy="56" rx="7" ry="12" fill="#c96442" opacity="0.7"></ellipse>
+    <line x1="34" y1="86" x2="34" y2="94" stroke="#1a1715" stroke-width="2.2"></line>
+  </g>
+  
+  <text x="86" y="56" font-family="Newsreader, Georgia, serif" font-size="38" font-weight="500" fill="#1a1715" letter-spacing="-1.4">Oliver Njeru</text>
+  <text x="86" y="78" font-family="JetBrains Mono, ui-monospace, monospace" font-size="10" letter-spacing="1.4" fill="#5a4f3e" text-transform="uppercase">FOUNDING ENGINEER · NAIROBI</text>
+</svg>

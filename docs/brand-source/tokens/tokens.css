@@ -1,0 +1,68 @@
+/* Hearth design tokens — drop into the global <style> of any page.
+   Two themes available. Default is dark. Add `data-theme="light"` to
+   the <html> element (or any container) to flip. */
+
+:root,
+[data-theme="dark"] {
+  /* Surfaces */
+  --bg:          #16140f;
+  --bg-alt:      #1f1c16;
+  --bg-card:     #1a1812;
+  --bg-inverse:  #f4efe5;
+
+  /* Text */
+  --text:        #efe7d6;
+  --text-soft:   rgba(239,231,214,0.85);
+  --text-on-acc: #16140f;
+  --muted:       rgba(239,231,214,0.55);
+  --faint:       rgba(239,231,214,0.05);
+  --hair:        rgba(239,231,214,0.10);
+
+  /* Brand */
+  --accent:      #e07c5a;
+  --accent-deep: #ffa483;
+  --accent-soft: rgba(224,124,90,0.16);
+
+  /* Chrome */
+  --chrome-bg:   #211e18;
+  --chrome-fg:   #a89c84;
+  --chrome-bar:  #0e0d09;
+}
+
+[data-theme="light"] {
+  --bg:          #f4efe5;
+  --bg-alt:      #ece5d6;
+  --bg-card:     #fbf7ee;
+  --bg-inverse:  #16140f;
+
+  --text:        #1a1715;
+  --text-soft:   #3a322c;
+  --text-on-acc: #1a1715;
+  --muted:       rgba(26,23,21,0.58);
+  --faint:       rgba(26,23,21,0.06);
+  --hair:        rgba(26,23,21,0.14);
+
+  --accent:      #c96442;
+  --accent-deep: #a64f33;
+  --accent-soft: rgba(201,100,66,0.14);
+
+  --chrome-bg:   #e6dfd0;
+  --chrome-fg:   #5a4f3e;
+  --chrome-bar:  #fbf7ee;
+}
+
+/* Type families */
+:root {
+  --font-serif: "Newsreader", Georgia, serif;
+  --font-sans:  "Inter Tight", "Inter", system-ui, sans-serif;
+  --font-mono:  "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* Base */
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-serif);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
