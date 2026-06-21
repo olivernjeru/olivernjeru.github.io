@@ -18,7 +18,7 @@ const SITEMAP = [
 const ROLES = [
   { label: "Founding Engineer", org: "Replicant Trader" },
   { label: "Founder", org: "Black Eternum Capital" },
-  { label: "Research Assistant", org: "USIU-Africa SST" },
+  { label: "Researcher", org: "Independent" },
 ];
 
 const ELSEWHERE = [

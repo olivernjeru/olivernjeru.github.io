@@ -3,7 +3,7 @@ import { HeroFlame } from "./icons/Flame";
 import { ArrowRight, ArrowDown } from "./icons/UIIcons";
 
 const STATS = [
-  { kicker: "ROLES", number: "03", caption: "active — Replicant Trader, Black Eternum Capital, USIU-Africa SST" },
+  { kicker: "ROLES", number: "03", caption: "active — Replicant Trader, Black Eternum Capital, independent research" },
   { kicker: "PUBLICATIONS", number: "02", caption: "IJCAI 2024 · IST-Africa 2024" },
   { kicker: "PHOTOGRAPHY", number: "1M+", caption: "Unsplash views · 4,000+ uses across platforms" },
   { kicker: "ISSUE", number: "MMXXVI", caption: "the current pressing" },
@@ -45,8 +45,8 @@ export default function Hero() {
             }}
           >
             Founding engineer at <strong style={{ fontWeight: 500, fontStyle: "normal" }}>Replicant Trader</strong>,
-            founder of <strong style={{ fontWeight: 500, fontStyle: "normal" }}>Black Eternum Capital</strong>, and a
-            research assistant at <strong style={{ fontWeight: 500, fontStyle: "normal" }}>USIU&ndash;Africa</strong>.
+            founder of <strong style={{ fontWeight: 500, fontStyle: "normal" }}>Black Eternum Capital</strong>, and an
+            independent researcher in <strong style={{ fontWeight: 500, fontStyle: "normal" }}>Multi-Agent Reinforcement Learning</strong>.
             Writing from <span className="italic">Nairobi</span>.
           </p>
 

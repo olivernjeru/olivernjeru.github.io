@@ -2,16 +2,21 @@ export const workExperienceData = {
   "Black Eternum Capital": {
     title: "Founder",
     duration: "Aug 2024 - Current",
-    responsibilities: ["Our mission is to empower traders and investors by providing access to essential resources and knowledge tailored to Kenya’s dynamic market."],
+    responsibilities: ["Software and tools. We build, and earn the right to do more."],
   },
   "Replicant Trader": {
     title: "Founding Engineer",
     duration: "Feb 2024 - Current",
-    responsibilities: ["Our mission is to democratize access to high-quality trading simulations and financial tools, enabling users to build trading confidence, understand market dynamics, and enhance their strategies."],
+    responsibilities: ["Simulated environment(s) with fully synthetic data."],
+  },
+  "Independent Research": {
+    title: "Researcher",
+    duration: "Jun 2026 - Current",
+    responsibilities: ["Multi-Agent Reinforcement Learning research."],
   },
   "USIU-Africa School of Science and Technology": {
     title: "Research Assistant",
-    duration: "Oct 2023 - Current",
+    duration: "Oct 2023 - May 2026",
     responsibilities: ["Machine Learning"],
   },
   "IBM Research": {

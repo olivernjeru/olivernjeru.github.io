@@ -79,7 +79,7 @@ export default function ReadingReferences() {
               {s.achievements?.length > 0 && (
                 <div>
                   <div className="kicker" style={{ marginTop: 8, marginBottom: 6 }}>
-                    Honours
+                    Honors
                   </div>
                   {s.achievements.map((a) => (
                     <div

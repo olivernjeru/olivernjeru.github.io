@@ -5,7 +5,7 @@ import { workExperienceData } from "../data/experience";
 const FEATURED = [
   { key: "Replicant Trader", number: "01" },
   { key: "Black Eternum Capital", number: "02" },
-  { key: "USIU-Africa School of Science and Technology", number: "03" },
+  { key: "Independent Research", number: "03" },
 ];
 
 export default function ThreeRoles() {

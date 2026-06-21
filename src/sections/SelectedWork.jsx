@@ -7,7 +7,7 @@ import { workExperienceData } from "../data/experience";
 const CURRENT_KEYS = new Set([
   "Black Eternum Capital",
   "Replicant Trader",
-  "USIU-Africa School of Science and Technology",
+  "Independent Research",
 ]);
 
 const orderExperience = (entries) => {

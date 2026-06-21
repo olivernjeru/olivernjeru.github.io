@@ -1,6 +1,6 @@
 # Oliver Njeru — The Hearth
 
-Personal portfolio of **Oliver Njeru** — Founding Engineer at Replicant Trader, founder of Black Eternum Capital, and research assistant at USIU-Africa.
+Personal portfolio of **Oliver Njeru** — Founding Engineer at Replicant Trader, founder of Black Eternum Capital, and an independent Multi-Agent Reinforcement Learning researcher.
 
 Designed around the [Hearth design system](./docs/design-system.md): warm cream/amber palette, Newsreader serif with italic flourishes, sharp corners, hairline dividers, a flame as the single anchoring motif.
 
@@ -82,7 +82,7 @@ The build step pulls Chromium for the prerender plugin on first install (~170MB)
 `src/data/` files use ES module exports — edit those to update content without touching components. The page sections, in order, are:
 
 1. Hero, NowStrip
-2. ThreeRoles (Founding Engineer / Founder / Research Assistant)
+2. ThreeRoles (Founding Engineer / Founder / Researcher)
 3. About (interests + off-the-clock)
 4. SelectedWork (publications + collapsible experience timeline)
 5. Skills

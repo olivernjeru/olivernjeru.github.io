@@ -43,7 +43,7 @@ export default function NowStrip() {
             color: "var(--text-soft)",
           }}
         >
-          Creating knowledge at USIU-Africa SST under the supervision of Paul Okanda, Phd &mdash; shipping the next iteration of <span style={{ color: "var(--text)" }}>Replicant Trader</span> &mdash;
+          Pursuing Multi-Agent Reinforcement Learning research &mdash; shipping the next iteration of <span style={{ color: "var(--text)" }}>Replicant Trader</span> &mdash;
           and quietly building <span style={{ color: "var(--text)" }}>Black Eternum Capital</span>.
         </div>
 

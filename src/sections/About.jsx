@@ -2,11 +2,10 @@ import React from "react";
 import { Pill, SectionHeader } from "../components/primitives.jsx";
 
 const INTERESTS = [
-  "Artificial Intelligence",
+  "Multi-Agent Reinforcement Learning",
   "Optimisation",
   "Game Theory",
-  "Machine Learning",
-  "Algorithmic Economics",
+  "Simulations",
   "Stochastic Optimisation",
   "Research",
   "Entrepreneurship",
