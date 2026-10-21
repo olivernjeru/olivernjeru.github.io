@@ -22,7 +22,7 @@ export const imageList = [
     {
         img: 'components/art/assets/Bridge-by-the-ocean2.jpg',
         title: 'Bridge by the Ocean 2',
-        description: 'Sea‑side bridge with calm waters beneath',
+        description: 'Seaside bridge with calm waters beneath',
     },
     {
         img: 'components/art/assets/defense-watch-tower..jpg',
@@ -32,7 +32,7 @@ export const imageList = [
     {
         img: 'components/art/assets/Detailed-floor.jpeg',
         title: 'Detailed Floor',
-        description: 'Close‑up of an intricately patterned floor',
+        description: 'Close-up of an intricately patterned floor',
     },
     {
         img: 'components/art/assets/Detailed-mall-wall.jpg',
@@ -52,7 +52,7 @@ export const imageList = [
     {
         img: 'components/art/assets/Imani-Collective.jpeg',
         title: 'Imani Collective',
-        description: 'Creative co‑working space at Imani Collective',
+        description: 'Creative co-working space at Imani Collective',
     },
     {
         img: 'components/art/assets/Mall-Wall.jpg',
@@ -81,13 +81,13 @@ export const imageList = [
     },
     {
         img: 'components/art/assets/Petrol-Station.jpg',
-        title: 'Petrol Station',
-        description: 'Retro petrol station in the middle of the night',
+        title: 'Gas Station',
+        description: 'Retro gas station in the middle of the night',
     },
     {
         img: 'components/art/assets/Red-brick-wall.jpeg',
         title: 'Red Brick Wall',
-        description: 'A rugged red‑brick wall with weathered texture',
+        description: 'A rugged red-brick wall with weathered texture',
     },
     {
         img: 'components/art/assets/Restaurant.jpg',

@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Pill, SectionHeader } from "../components/primitives.jsx";
+import { Card, Pill, SectionHeader, Style } from "../components/primitives.jsx";
 import { categorizedSkills } from "../data/skills";
 
 const TITLES = {
@@ -48,14 +48,14 @@ export default function Skills() {
         })}
       </div>
 
-      <style>{`
+      <Style css={`
         @media (max-width: 1100px) {
           .skills-grid { grid-template-columns: 1fr 1fr !important; }
         }
         @media (max-width: 600px) {
           .skills-grid { grid-template-columns: 1fr !important; }
         }
-      `}</style>
+      `} />
     </section>
   );
 }

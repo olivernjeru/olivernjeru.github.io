@@ -1,12 +1,12 @@
 import React from "react";
-import { Pill, SectionHeader } from "../components/primitives.jsx";
+import { Pill, SectionHeader, Style } from "../components/primitives.jsx";
 
 const INTERESTS = [
   "Multi-Agent Reinforcement Learning",
-  "Optimisation",
+  "Optimization",
   "Game Theory",
   "Simulations",
-  "Stochastic Optimisation",
+  "Stochastic Optimization",
   "Research",
   "Entrepreneurship",
 ];
@@ -82,11 +82,11 @@ export default function About() {
         </div>
       </div>
 
-      <style>{`
+      <Style css={`
         @media (max-width: 880px) {
           .about-grid { grid-template-columns: 1fr !important; gap: 18px !important; }
         }
-      `}</style>
+      `} />
     </section>
   );
 }

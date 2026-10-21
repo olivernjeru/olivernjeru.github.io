@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, ListRow, SectionHeader } from "../components/primitives.jsx";
+import { Card, ListRow, SectionHeader, Style } from "../components/primitives.jsx";
 import { Lamp } from "../components/icons/Lamp";
 import { ExternalLink } from "../components/icons/UIIcons";
 import { educationData } from "../data/education";
@@ -123,11 +123,11 @@ export default function ReadingReferences() {
           ))}
         </div>
 
-        <style>{`
+        <Style css={`
           @media (max-width: 960px) {
             .education-grid { grid-template-columns: 1fr !important; }
           }
-        `}</style>
+        `} />
       </div>
     </section>
   );

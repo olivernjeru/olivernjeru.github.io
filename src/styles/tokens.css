@@ -16,10 +16,6 @@
   --accent-deep: #ffa483;
   --accent-soft: rgba(224, 124, 90, 0.16);
 
-  --chrome-bg: #211e18;
-  --chrome-fg: #a89c84;
-  --chrome-bar: #0e0d09;
-
   /* Precomputed translucent surfaces (RGBA fallback, no color-mix) */
   --bg-glass: rgba(22, 20, 15, 0.78);
   --scrim: rgba(22, 20, 15, 0.90);
@@ -44,10 +40,6 @@
   --accent: #c96442;
   --accent-deep: #a64f33;
   --accent-soft: rgba(201, 100, 66, 0.14);
-
-  --chrome-bg: #e6dfd0;
-  --chrome-fg: #5a4f3e;
-  --chrome-bar: #fbf7ee;
 
   --bg-glass: rgba(244, 239, 229, 0.78);
   --scrim: rgba(244, 239, 229, 0.90);
@@ -104,6 +96,9 @@ body {
 
 html {
   color-scheme: dark light;
+  /* Native jumps to /#section stop below the sticky header.
+     Keep equal to HEADER_OFFSET in src/lib/scroll.js. */
+  scroll-padding-top: 70px;
 }
 
 [data-theme="light"] html,
@@ -339,6 +334,79 @@ img {
 .link:hover {
   color: var(--accent);
   border-bottom-color: var(--accent);
+}
+
+/* Long-form text (privacy page). */
+.prose {
+  max-width: 680px;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-soft);
+}
+
+.prose h2 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: -0.4px;
+  line-height: 1.2;
+  color: var(--text);
+  margin: 36px 0 10px;
+}
+
+.prose p,
+.prose ul {
+  margin: 0 0 14px;
+}
+
+.prose ul {
+  padding-left: 22px;
+}
+
+.prose strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.prose a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--hair);
+  transition: border-color 120ms ease;
+}
+
+.prose a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: var(--bg-alt);
+  color: var(--text);
+  padding: 1px 6px;
+}
+
+.prose-meta {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Read by screen readers, not shown. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .live-dot {

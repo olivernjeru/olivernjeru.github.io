@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, SectionHeader } from "../components/primitives.jsx";
+import { Card, SectionHeader, Style } from "../components/primitives.jsx";
 import { ExternalLink } from "../components/icons/UIIcons";
 import { categorizedCertificates } from "../data/certificates";
 
@@ -101,11 +101,11 @@ export default function Certifications() {
           ))}
         </div>
 
-        <style>{`
+        <Style css={`
           @media (max-width: 1000px) {
             .certs-grid { grid-template-columns: 1fr !important; }
           }
-        `}</style>
+        `} />
       </div>
     </section>
   );

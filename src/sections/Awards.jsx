@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, ListRow, SectionHeader } from "../components/primitives.jsx";
+import { Card, ListRow, SectionHeader, Style } from "../components/primitives.jsx";
 import { categorizedAwards } from "../data/awards";
 
 export default function Awards() {
@@ -23,7 +23,7 @@ export default function Awards() {
         className="awards-grid"
       >
         <Card style={{ display: "grid", gap: 8 }}>
-          <div className="kicker">Academic honours</div>
+          <div className="kicker">Academic honors</div>
           <h3 className="serif-h4" style={{ marginBottom: 6 }}>
             School laurels.
           </h3>
@@ -60,11 +60,11 @@ export default function Awards() {
         </div>
       </Card>
 
-      <style>{`
+      <Style css={`
         @media (max-width: 900px) {
           .awards-grid { grid-template-columns: 1fr !important; }
         }
-      `}</style>
+      `} />
     </section>
   );
 }

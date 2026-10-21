@@ -1,9 +1,23 @@
 import React, { useState } from "react";
-import { SectionHeader } from "../components/primitives.jsx";
+import { SectionHeader, Style } from "../components/primitives.jsx";
 import Lightbox from "../components/Lightbox.jsx";
 import { imageList } from "../data/artGallery";
+import { galleryThumbs } from "../data/galleryThumbs.js";
+import { gallerySizes, srcSet } from "../lib/images.js";
 
+// Wide (2:1) tiles at positions 3 and 6 of every 8; the rest are square.
+// Changing this pattern or the grid CSS means updating gallerySizes() too.
 const SPANS = [1, 1, 2, 1, 1, 2, 1, 1];
+
+// Tiles show WebP thumbnails; the lightbox shows the untouched original.
+// Throws rather than silently showing a 4 MB original in a small tile.
+const thumbsFor = (img) => {
+  const thumbs = galleryThumbs[img];
+  if (!thumbs) {
+    throw new Error(`No thumbnails for ${img} in src/data/galleryThumbs.js`);
+  }
+  return thumbs;
+};
 
 const NowShowing = ({ item, onOpen, onClear }) => {
   if (!item) return null;
@@ -37,8 +51,9 @@ const NowShowing = ({ item, onOpen, onClear }) => {
         }}
       >
         <img
-          src={item.img}
+          src={thumbsFor(item.img).variants[0].src}
           alt={item.title}
+          decoding="async"
           style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
         />
       </button>
@@ -92,12 +107,12 @@ const NowShowing = ({ item, onOpen, onClear }) => {
         Clear
       </button>
 
-      <style>{`
+      <Style css={`
         @media (max-width: 720px) {
           .now-showing { grid-template-columns: auto 1fr !important; }
           .now-showing > button:last-child { grid-column: 1 / -1; justify-self: end; }
         }
-      `}</style>
+      `} />
     </aside>
   );
 };
@@ -116,7 +131,7 @@ export default function ArtGallery() {
       <SectionHeader
         kicker="A million views"
         title="Photography,"
-        italic="quietly catalogued"
+        italic="quietly cataloged"
         hint="A selection from the Unsplash room. Twenty-something titles, four thousand uses, one stubborn habit. Tap any tile — the caption settles below."
       />
 
@@ -131,6 +146,7 @@ export default function ArtGallery() {
         {imageList.map((item, idx) => {
           const span = SPANS[idx % SPANS.length];
           const isActive = active && active.img === item.img;
+          const thumbs = thumbsFor(item.img);
           return (
             <button
               key={idx}
@@ -151,9 +167,12 @@ export default function ArtGallery() {
               className="gallery-tile"
             >
               <img
-                src={item.img}
+                src={thumbs.variants[0].src}
+                srcSet={srcSet(thumbs.variants)}
+                sizes={gallerySizes(thumbs, span)}
                 alt={item.title}
                 loading="lazy"
+                decoding="async"
                 style={{
                   position: "absolute",
                   inset: 0,
@@ -219,12 +238,12 @@ export default function ArtGallery() {
         title={lightbox?.title}
       />
 
-      <style>{`
+      <Style css={`
         @media (max-width: 900px) {
           .gallery-grid { grid-template-columns: 1fr 1fr !important; }
           .gallery-tile { grid-column: span 1 !important; aspect-ratio: 1 / 1 !important; }
         }
-      `}</style>
+      `} />
     </section>
   );
 }

@@ -1,10 +1,20 @@
 import React from "react";
 import { HeroFlame } from "./icons/Flame";
 import { ArrowRight, ArrowDown } from "./icons/UIIcons";
+import { publications } from "../data/publications.js";
+import { EMAIL } from "../data/profiles.js";
+import { yearOf } from "../lib/format.js";
+import { scrollToSection } from "../lib/scroll.js";
+import { Style } from "./primitives.jsx";
 
 const STATS = [
   { kicker: "ROLES", number: "03", caption: "active — Replicant Trader, Black Eternum Capital, independent research" },
-  { kicker: "PUBLICATIONS", number: "02", caption: "IJCAI 2024 · IST-Africa 2024" },
+  {
+    // Derived from the data, so adding a paper updates the count and venues.
+    kicker: "PUBLICATIONS",
+    number: String(publications.length).padStart(2, "0"),
+    caption: publications.map((p) => `${p.venueShort} ${yearOf(p.date)}`).join(" · "),
+  },
   { kicker: "PHOTOGRAPHY", number: "1M+", caption: "Unsplash views · 4,000+ uses across platforms" },
   { kicker: "ISSUE", number: "MMXXVI", caption: "the current pressing" },
 ];
@@ -54,7 +64,7 @@ export default function Hero() {
             <a className="btn btn--primary" href="/assets/Resume/Oliver Njeru Résumé.pdf" target="_blank" rel="noopener noreferrer">
               Résumé <ArrowRight size={13} />
             </a>
-            <a className="btn" href="mailto:onjeru@usiu.ac.ke">
+            <a className="btn" href={`mailto:${EMAIL}`}>
               Write to me <ArrowRight size={13} />
             </a>
           </div>
@@ -120,12 +130,7 @@ export default function Hero() {
       </div>
 
       <button
-        onClick={() => {
-          const next = document.getElementById("now");
-          if (next) {
-            window.scrollTo({ top: next.getBoundingClientRect().top + window.scrollY - 70, behavior: "smooth" });
-          }
-        }}
+        onClick={() => scrollToSection("now")}
         aria-label="Scroll to Now"
         style={{
           marginTop: 36,
@@ -145,13 +150,13 @@ export default function Hero() {
         <ArrowDown size={12} /> Read on
       </button>
 
-      <style>{`
+      <Style css={`
         @media (max-width: 880px) {
           .hero-flame-wrap { position: absolute; right: var(--section-x); top: 40px; opacity: 0.7; }
           .hero-flame-wrap svg { width: 130px !important; height: auto !important; }
           .hero-stats { grid-template-columns: 1fr 1fr !important; }
         }
-      `}</style>
+      `} />
     </section>
   );
 }

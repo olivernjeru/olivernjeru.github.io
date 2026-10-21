@@ -9,7 +9,7 @@ export const categorizedCertificates = {
     { name: "Introduction to Bash Shell Scripting", url: "https://www.coursera.org/account/accomplishments/records/MHW3G9HQYRQY" },
     { name: "IBM Learning: Introduction to Open Source", url: "#" },
     { name: "J.P. Morgan - Software Engineering Job Simulation", url: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/J.P.%20Morgan/R5iK7HMxJGBgaSbvk_J.P.%20Morgan_cmq5Hpw99mdHAm5wy_1695224034892_completion_certificate.pdf" },
-    { name: "J.P.Morgan Chase & Co. - Software Engineering Lite Job Simulation", url: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/J.P.%20Morgan/Wb4yEmHvZrC2qxiyX_JPMorgan%20Chase%20&%20Co._cmq5Hpw99mdHAm5wy_1696340758177_completion_certificate.pdf" },
+    { name: "JPMorgan Chase & Co. - Software Engineering Lite Job Simulation", url: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/J.P.%20Morgan/Wb4yEmHvZrC2qxiyX_JPMorgan%20Chase%20&%20Co._cmq5Hpw99mdHAm5wy_1696340758177_completion_certificate.pdf" },
     { name: "Start the UX Design Process: Empathize, Define, and Ideate", url: "https://www.coursera.org/account/accomplishments/records/Z3WZ2JZLMHWG" },
     { name: "Foundations of User Experience (UX) Design", url: "https://www.coursera.org/account/accomplishments/records/7JGZWDNDVX6N" },
     { name: "Machine Learning for All", url: "https://www.coursera.org/account/accomplishments/records/CPGQDQJ2G3C9" },
@@ -25,7 +25,6 @@ export const categorizedCertificates = {
     { name: "CME Group: Micro FX Futures", url: "#" },
     { name: "CME Group: Intro To FX", url: "#" },
     { name: "AmplifyMe Finance Accelerator Simulation Experience in Partnership with Morgan Stanley", url: "https://my.amplifyme.com/certificate/76b17038-9711-4d4a-9c9b-e4ed73a5bfcd/" },
-    { name: "J.P.Morgan Chase & Co. - Agile Job Simulation", url: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/J.P.%20Morgan/5QiaMtZ4k8ngYKn4D_JPMorgan%20Chase%20&%20Co._cmq5Hpw99mdHAm5wy_1696353311675_completion_certificate.pdf" },
   ],
   "Professional Development": [
     { name: "McKinsey Forward Program", url: "https://www.credly.com/badges/f8d52c6e-8f93-4520-8529-587da7592fb3/public_url" },

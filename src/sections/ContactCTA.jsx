@@ -1,12 +1,15 @@
 import React from "react";
 import { ArrowRight } from "../components/icons/UIIcons";
+import { EMAIL, PROFILES } from "../data/profiles.js";
+import { Style } from "../components/primitives.jsx";
 
 const ROWS = [
-  { key: "Email", value: "onjeru@usiu.ac.ke", href: "mailto:onjeru@usiu.ac.ke" },
-  { key: "GitHub", value: "github.com/olivernjeru", href: "https://github.com/olivernjeru" },
-  { key: "LinkedIn", value: "linkedin.com/in/olivernjeru", href: "https://linkedin.com/in/olivernjeru" },
-  { key: "Scholar", value: "Oliver Njeru", href: "https://scholar.google.com/citations?user=V9-eteEAAAAJ&hl=en" },
-  { key: "Unsplash", value: "@olivernjeru", href: "https://unsplash.com/@olivernjeru" },
+  { key: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
+  ...["github", "linkedin", "scholar", "orcid", "unsplash"].map((name) => ({
+    key: PROFILES[name].label,
+    value: PROFILES[name].handle,
+    href: PROFILES[name].href,
+  })),
 ];
 
 export default function ContactCTA() {
@@ -63,7 +66,7 @@ export default function ContactCTA() {
           </p>
 
           <a
-            href="mailto:onjeru@usiu.ac.ke"
+            href={`mailto:${EMAIL}`}
             className="btn btn--primary"
             style={{ marginTop: 26 }}
           >
@@ -119,11 +122,11 @@ export default function ContactCTA() {
         </div>
       </div>
 
-      <style>{`
+      <Style css={`
         @media (max-width: 960px) {
           .contact-grid { grid-template-columns: 1fr !important; padding: 56px var(--section-x) !important; }
         }
-      `}</style>
+      `} />
     </section>
   );
 }

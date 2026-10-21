@@ -1,5 +1,8 @@
 import React from "react";
 import { Flame } from "../components/icons/Flame";
+import { PROFILES } from "../data/profiles.js";
+import { scrollToSection } from "../lib/scroll.js";
+import { Style } from "../components/primitives.jsx";
 
 const SITEMAP = [
   { id: "work", label: "Work" },
@@ -21,12 +24,13 @@ const ROLES = [
   { label: "Researcher", org: "Independent" },
 ];
 
-const ELSEWHERE = [
-  { label: "GitHub", href: "https://github.com/olivernjeru" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/olivernjeru" },
-  { label: "Scholar", href: "https://scholar.google.com/citations?user=V9-eteEAAAAJ&hl=en" },
-  { label: "Unsplash", href: "https://unsplash.com/olivernjeru" },
-  { label: "Figma", href: "https://figma.com/@olivernjeru" },
+const ELSEWHERE = ["github", "linkedin", "scholar", "orcid", "unsplash", "figma"].map(
+  (key) => PROFILES[key]
+);
+
+const PAGE_LINKS = [
+  { page: "publications", href: "/publications.html", label: "Publications" },
+  { page: "privacy", href: "/privacy.html", label: "Privacy" },
 ];
 
 const colTitle = {
@@ -48,7 +52,10 @@ const linkStyle = {
   textDecoration: "none",
 };
 
-export default function Footer() {
+// page: "home" | "publications" | "privacy" | "notFound".
+// On home, sitemap links scroll in place; elsewhere they go to /#id.
+export default function Footer({ page = "home" }) {
+  const isHome = page === "home";
   const year = new Date().getFullYear();
 
   return (
@@ -81,7 +88,7 @@ export default function Footer() {
             style={{ margin: 0, maxWidth: 360, color: "var(--muted)", fontSize: 15 }}
           >
             By the <span className="italic">fire</span>. Calm work on AI,
-            optimisation, and a lounge built around a flame.
+            optimization, and a lounge built around a flame.
           </p>
         </div>
 
@@ -90,18 +97,16 @@ export default function Footer() {
           {SITEMAP.map((s) => (
             <a
               key={s.id}
-              href={`#${s.id}`}
+              href={isHome ? `#${s.id}` : `/#${s.id}`}
               style={linkStyle}
-              onClick={(e) => {
-                e.preventDefault();
-                const el = document.getElementById(s.id);
-                if (el) {
-                  window.scrollTo({
-                    top: el.getBoundingClientRect().top + window.scrollY - 70,
-                    behavior: "smooth",
-                  });
-                }
-              }}
+              onClick={
+                isHome
+                  ? (e) => {
+                      e.preventDefault();
+                      scrollToSection(s.id);
+                    }
+                  : undefined
+              }
             >
               {s.label}
             </a>
@@ -162,20 +167,34 @@ export default function Footer() {
           color: "var(--muted)",
         }}
       >
-        <span>Built by Oliver Njeru · all rights reserved © 2020 – {year}</span>
-        <a href="/privacy.html" style={{ color: "var(--muted)", textDecoration: "none" }}>
-          Privacy
-        </a>
+        {/* Built-in year in the prerendered HTML, current year after hydration
+            (single text child, so React can replace it without an error). */}
+        <span suppressHydrationWarning>{`Built by Oliver Njeru · all rights reserved © 2020 – ${year}`}</span>
+        <span style={{ display: "flex", gap: 16 }}>
+          {PAGE_LINKS.map((l) => (
+            <a
+              key={l.page}
+              href={l.href}
+              aria-current={l.page === page ? "page" : undefined}
+              style={{
+                color: l.page === page ? "var(--accent)" : "var(--muted)",
+                textDecoration: "none",
+              }}
+            >
+              {l.label}
+            </a>
+          ))}
+        </span>
       </div>
 
-      <style>{`
+      <Style css={`
         @media (max-width: 960px) {
           .footer-grid { grid-template-columns: 1fr 1fr !important; }
         }
         @media (max-width: 600px) {
           .footer-grid { grid-template-columns: 1fr !important; }
         }
-      `}</style>
+      `} />
     </footer>
   );
 }

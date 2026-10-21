@@ -4,17 +4,17 @@ on:
   push:
     branches: [main]
     paths-ignore:
-      - '**.md'
-      - 'LICENSE'
-      - '.gitignore'
-      - '.vscode/**'
+      - "**.md"
+      - "LICENSE"
+      - ".gitignore"
+      - ".vscode/**"
   pull_request:
     branches: [main]
     paths-ignore:
-      - '**.md'
-      - 'LICENSE'
-      - '.gitignore'
-      - '.vscode/**'
+      - "**.md"
+      - "LICENSE"
+      - ".gitignore"
+      - ".vscode/**"
   workflow_dispatch:
 
 permissions:
@@ -37,13 +37,11 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci --prefer-offline --no-audit --no-fund
-        env:
-          PUPPETEER_SKIP_DOWNLOAD: 'true'
 
       - name: Run tests
         run: npm test
@@ -60,20 +58,14 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Cache Puppeteer Chromium
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/puppeteer
-          key: puppeteer-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            puppeteer-${{ runner.os }}-
+          node-version: "20"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci --prefer-offline --no-audit --no-fund
 
+      # Client build, server build, then scripts/prerender.mjs writes each
+      # page's server-rendered HTML into dist/ (see package.json "build").
       - name: Build
         run: npm run build
 

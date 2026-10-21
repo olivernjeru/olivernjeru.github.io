@@ -1,8 +1,50 @@
 import React from "react";
-import { Card, SectionHeader } from "../components/primitives.jsx";
+import { Card, SectionHeader, Style } from "../components/primitives.jsx";
 import { ExternalLink } from "../components/icons/UIIcons";
-import { publications } from "../data/education";
+import { publications } from "../data/publications.js";
 import { workExperienceData } from "../data/experience";
+import {
+  capitalize,
+  formatDate,
+  fullName,
+  numberWord,
+  parseMonthYear,
+  yearsSince,
+} from "../lib/format.js";
+
+const TYPE_LABEL = {
+  journal: "Peer-reviewed journal article",
+  conference: "Peer-reviewed conference paper",
+};
+
+// The card links to the version of record when there is one, else the first link.
+const primaryHref = (p) => (p.links.find((l) => l.kind === "published") ?? p.links[0]).href;
+
+const describe = (p) => {
+  const authors = p.authors.map(fullName).join(", ");
+  const manuscript = p.links.some((l) => l.kind === "manuscript")
+    ? " Free accepted manuscript on the Publications page."
+    : "";
+  return `${TYPE_LABEL[p.type]}. Authors: ${authors}.${manuscript}`;
+};
+
+const plural = (n, word) => `${numberWord(n)} ${n === 1 ? word : `${word}s`}`;
+
+// Earliest start date across every role ("Mar 2018 - Sep 2018" -> Mar 2018).
+const CAREER_START = Object.values(workExperienceData)
+  .map((role) => parseMonthYear(role.duration.split(" - ")[0]))
+  .reduce((a, b) => (a.year * 12 + a.month <= b.year * 12 + b.month ? a : b));
+
+// Both counts come from the data. The years depend on today's date: the
+// prerendered HTML has the build-time value and React swaps in the current one
+// during hydration, which needs the span's single text child.
+const Hint = () => (
+  <>
+    {`${capitalize(plural(publications.length, "publication"))} on one side, `}
+    <span suppressHydrationWarning>{`${plural(yearsSince(CAREER_START), "year")} of jobs`}</span>
+    {" on the other. Click any role to read what it actually involved."}
+  </>
+);
 
 const CURRENT_KEYS = new Set([
   "Black Eternum Capital",
@@ -23,7 +65,7 @@ const PublicationCard = ({ p }) => (
   <Card style={{ display: "grid", gap: 12 }}>
     <div className="kicker kicker--accent">Publication</div>
     <a
-      href={p.link}
+      href={primaryHref(p)}
       target="_blank"
       rel="noopener noreferrer"
       style={{
@@ -34,7 +76,7 @@ const PublicationCard = ({ p }) => (
       }}
     >
       <h3 className="serif-h4" style={{ lineHeight: 1.25 }}>
-        {p.title.trim()}
+        {p.title}.
       </h3>
       <p
         style={{
@@ -45,25 +87,23 @@ const PublicationCard = ({ p }) => (
           margin: 0,
         }}
       >
-        {p.description}
+        {describe(p)}
       </p>
-      {p.conference && (
-        <div
-          style={{
-            fontFamily: "var(--font-mono)",
-            fontSize: 10.5,
-            letterSpacing: 0.6,
-            textTransform: "uppercase",
-            color: "var(--text-soft)",
-            display: "flex",
-            alignItems: "center",
-            gap: 6,
-          }}
-        >
-          {p.conference.name} · {p.conference.date}
-          <ExternalLink size={11} />
-        </div>
-      )}
+      <div
+        style={{
+          fontFamily: "var(--font-mono)",
+          fontSize: 10.5,
+          letterSpacing: 0.6,
+          textTransform: "uppercase",
+          color: "var(--text-soft)",
+          display: "flex",
+          alignItems: "center",
+          gap: 6,
+        }}
+      >
+        {p.venue} · {formatDate(p.date)}
+        <ExternalLink size={11} />
+      </div>
     </a>
   </Card>
 );
@@ -188,7 +228,7 @@ export default function SelectedWork() {
           kicker="From the workshop"
           title="Selected"
           italic="work"
-          hint="Two publications on one side, eight years of jobs on the other. Click any role to read what it actually involved."
+          hint={<Hint />}
         />
 
         <div
@@ -201,8 +241,21 @@ export default function SelectedWork() {
         >
           <div style={{ display: "grid", gap: 14, gridAutoRows: "max-content" }}>
             {publications.map((p) => (
-              <PublicationCard key={p.title} p={p} />
+              <PublicationCard key={p.id} p={p} />
             ))}
+            <a
+              href="/publications.html"
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 11,
+                letterSpacing: 0.6,
+                textTransform: "uppercase",
+                color: "var(--muted)",
+                textDecoration: "none",
+              }}
+            >
+              All publications, with free PDFs →
+            </a>
           </div>
 
           <div>
@@ -223,14 +276,14 @@ export default function SelectedWork() {
           </div>
         </div>
 
-        <style>{`
+        <Style css={`
           @media (max-width: 960px) {
             .selectedwork-grid { grid-template-columns: 1fr !important; }
           }
           .exp-row > summary::-webkit-details-marker { display: none; }
           .exp-row[open] > summary .exp-caret { transform: rotate(45deg); }
           .exp-row > summary:hover { background: var(--faint); }
-        `}</style>
+        `} />
       </div>
     </section>
   );

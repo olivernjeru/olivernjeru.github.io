@@ -1,6 +1,5 @@
 import React from "react";
-import { Card, Pill, SectionHeader } from "../components/primitives.jsx";
-import { ExternalLink } from "../components/icons/UIIcons";
+import { Card, LinkPill, Pill, SectionHeader, Style } from "../components/primitives.jsx";
 import { academics } from "../data/academics";
 
 const Achievement = ({ ach }) => (
@@ -33,31 +32,9 @@ const Achievement = ({ ach }) => (
     {ach.links?.length > 0 && (
       <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 2 }}>
         {ach.links.map((l) => (
-          <a
-            key={l.href}
-            href={l.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 6,
-              padding: "3px 10px",
-              borderRadius: 999,
-              border: "1px solid var(--accent)",
-              color: "var(--accent-deep)",
-              background: "var(--accent-soft)",
-              fontFamily: "var(--font-mono)",
-              fontSize: 10.5,
-              fontWeight: 500,
-              letterSpacing: 0.6,
-              textTransform: "uppercase",
-              textDecoration: "none",
-              lineHeight: 1,
-            }}
-          >
-            {l.label} <ExternalLink size={11} />
-          </a>
+          <LinkPill key={l.href} href={l.href}>
+            {l.label}
+          </LinkPill>
         ))}
       </div>
     )}
@@ -164,11 +141,11 @@ export default function Coursework() {
           })}
         </div>
 
-        <style>{`
+        <Style css={`
           @media (max-width: 900px) {
             .coursework-grid { grid-template-columns: 1fr !important; }
           }
-        `}</style>
+        `} />
       </div>
     </section>
   );

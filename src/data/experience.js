@@ -28,7 +28,7 @@ export const workExperienceData = {
   },
   "USIU-Africa SST": {
     title: "Teaching Assistant",
-    duration: "Mar 2023 - Mar 2023",
+    duration: "Mar 2023",
     responsibilities: [
       "Served as a Teaching Assistant for the Business Data Analytics class.",
     ],
@@ -37,9 +37,9 @@ export const workExperienceData = {
     title: "Campus Work Study",
     duration: "Jan 2022 - Apr 2024",
     responsibilities: [
-      "Listed approximately a little above 50% of Professor Paul Tiyambe Zeleza's $1 Million personal library donation in a team of three as of December 2022.",
+      "Listed just over 50% of Professor Paul Tiyambe Zeleza's $1 million personal library donation as part of a team of three (as of December 2022).",
       "Performed Exploratory Data Analysis and Visualization with Microsoft Excel.",
-      "Digitized records of Journal Articles, reports, reviews, and USIU-Africa’s alumni Masters Thesis.",
+      "Digitized records of journal articles, reports, reviews, and USIU-Africa alumni master's theses.",
       "Organized and sorted files efficiently, reducing physical search time by 90%.",
       "Managed office tasks such as printing, sorting, filing, and photocopying effectively.",
       "Engaged in productive conversations to assist students and parents seeking financial aid.",

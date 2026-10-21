@@ -1,13 +1,10 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { FAVICON_DARK, FAVICON_LIGHT, THEME_STORAGE_KEY as STORAGE_KEY } from "./themeConfig.js";
 
 export const ThemeContext = createContext({
   mode: "dark",
-  toggle: () => {},
+  toggle: () => { },
 });
-
-const STORAGE_KEY = "hearthTheme";
-const FAVICON_LIGHT = "/brand/favicons/favicon.svg";
-const FAVICON_DARK = "/brand/favicons/favicon-dark.svg";
 
 const readInitial = () => {
   if (typeof window === "undefined") return "dark";
@@ -41,6 +38,18 @@ export const ThemeProvider = ({ children }) => {
       /* ignore */
     }
   }, [mode]);
+
+  // Keeps open tabs in sync: the browser fires "storage" in every other tab of
+  // this origin when one tab saves a new theme.
+  useEffect(() => {
+    const onStorage = (e) => {
+      if (e.key === STORAGE_KEY && (e.newValue === "light" || e.newValue === "dark")) {
+        setMode(e.newValue);
+      }
+    };
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
+  }, []);
 
   const toggle = useCallback(() => {
     setMode((prev) => (prev === "dark" ? "light" : "dark"));

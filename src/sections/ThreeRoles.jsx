@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, SectionHeader } from "../components/primitives.jsx";
+import { Card, SectionHeader, Style } from "../components/primitives.jsx";
 import { workExperienceData } from "../data/experience";
 
 const FEATURED = [
@@ -81,11 +81,11 @@ export default function ThreeRoles() {
         })}
       </div>
 
-      <style>{`
+      <Style css={`
         @media (max-width: 960px) {
           .threeroles-grid { grid-template-columns: 1fr !important; }
         }
-      `}</style>
+      `} />
     </section>
   );
 }

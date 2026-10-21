@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, SectionHeader } from "../components/primitives.jsx";
+import { Card, SectionHeader, Style } from "../components/primitives.jsx";
 import { ExternalLink } from "../components/icons/UIIcons";
 import { categorizedAwards } from "../data/awards";
 
@@ -163,11 +163,11 @@ export default function EventsVolunteering() {
         </Card>
       </div>
 
-      <style>{`
+      <Style css={`
         @media (max-width: 960px) {
           .events-grid { grid-template-columns: 1fr !important; }
         }
-      `}</style>
+      `} />
     </section>
   );
 }

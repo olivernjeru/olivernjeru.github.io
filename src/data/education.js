@@ -66,27 +66,5 @@ const educationData = {
     },
 };
 
-const publications = [
-    {
-        title: "SPARK: Harnessing Human-Centered Workflows with Biomedical Foundation Models for Drug Discovery. ",
-        description:
-            "Peer-reviewed publication, Authors: Bum Chul Kwon, Simona Rabinovici-Cohen, Beldine Moturi, Ruth Mwaura, Kezia Wahome, Oliver Njeru, Miguel Shinyenyi, Catherine Wanjiru, Sekou Remy, William Ogallo, Itai Guez, Partha Suryanarayanan, Joseph Morrone, Shreyans Sethi, Seung-Gu Kang, Tien Huynh, Kenney Ng, Diwakar Mahajan, Hongyang Li, Matan Ninio , Shervin Ayati, Efrat Hexter, Wendy Cornell.",
-        link: "https://www.ijcai.org/proceedings/2024/1015.pdf",
-        conference: {
-            name: "International Joint Conference on Artificial Intelligence",
-            date: "Aug 8, 2024",
-        },
-    },
-    {
-        title: "DbAPI: A Backend-as-a-Service Platform for Rapid Deployment of Cloud Services. ",
-        description:
-            "Peer-reviewed publication, Authors: Paul Okanda, Ankit Chhatbar, Oliver Njeru.",
-        link: "http://www.ist-africa.org/Conference2025/outbox/ISTAfrica_Paper_ref_87_13712.pdf",
-        conference: {
-            name: "International Science and Technology for Africa",
-            date: "May 22, 2024",
-        },
-    },
-];
-
-export { educationData, publications };
+// Publications live in ./publications.js.
+export { educationData };

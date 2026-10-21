@@ -5,6 +5,8 @@ node_modules
 
 # Vite build output
 /dist
+# Server build used only to prerender pages (scripts/prerender.mjs deletes it)
+/dist-ssr
 
 # Legacy CRA output (kept ignored for clean checkouts)
 /build
@@ -15,7 +17,7 @@ node_modules
 # Vitest cache
 .vitest
 
-# Puppeteer Chromium cache (when running prerender locally)
+# Tool caches
 .cache/
 
 # Env

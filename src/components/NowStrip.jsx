@@ -1,5 +1,6 @@
 import React from "react";
 import { Flame } from "./icons/Flame";
+import { Style } from "./primitives.jsx";
 
 const monthYear = () => {
   const d = new Date();
@@ -47,7 +48,11 @@ export default function NowStrip() {
           and quietly building <span style={{ color: "var(--text)" }}>Black Eternum Capital</span>.
         </div>
 
+        {/* The prerendered HTML holds the build month; on a later visit React
+            swaps in the current one during hydration. That only works for a
+            single text child, hence the template string. */}
         <div
+          suppressHydrationWarning
           style={{
             fontFamily: "var(--font-mono)",
             fontSize: 10.5,
@@ -57,15 +62,15 @@ export default function NowStrip() {
             textAlign: "right",
           }}
         >
-          Nairobi · {monthYear()}
+          {`Nairobi · ${monthYear()}`}
         </div>
       </div>
-      <style>{`
+      <Style css={`
         @media (max-width: 720px) {
           .now-grid { grid-template-columns: 1fr !important; gap: 8px !important; }
           .now-grid > div:last-child { text-align: left !important; }
         }
-      `}</style>
+      `} />
     </section>
   );
 }

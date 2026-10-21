@@ -14,7 +14,7 @@
   "scripts": {
     "dev": "vite",
     "start": "vite",
-    "build": "vite build",
+    "build": "vite build && vite build --ssr src/entry-server.jsx && node scripts/prerender.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -34,18 +34,12 @@
     ]
   },
   "devDependencies": {
-    "@prerenderer/renderer-puppeteer": "^1.2.4",
-    "@prerenderer/rollup-plugin": "^0.3.12",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@vitejs/plugin-react": "^4.3.4",
     "gh-pages": "^6.3.0",
     "jsdom": "^25.0.1",
-    "puppeteer": "^22.15.0",
     "vite": "^5.4.10",
     "vitest": "^2.1.8"
-  },
-  "overrides": {
-    "puppeteer": "^22.15.0"
   }
 }

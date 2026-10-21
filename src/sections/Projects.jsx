@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-import { Card, Pill, SectionHeader } from "../components/primitives.jsx";
+import { Card, Pill, SectionHeader, Style } from "../components/primitives.jsx";
 import Lightbox from "../components/Lightbox.jsx";
 import { ArrowRight, ExternalLink, GitHub } from "../components/icons/UIIcons";
 import { projects } from "../data/projects";
-
-const resolveImg = (img) => {
-  if (!img) return null;
-  return img.startsWith("data:") ? img : `data:image/png;base64,${img}`;
-};
 
 const ImageHeader = ({ src, alt, idx, onOpen }) => (
   <button
@@ -160,7 +155,8 @@ export default function Projects() {
         className="projects-grid"
       >
         {projects.map((proj, idx) => {
-          const src = resolveImg(proj.img);
+          // Image URL imported in src/data/projects.js (a file in src/assets/projects/).
+          const src = proj.img || null;
           const techs = proj.technologies
             ? proj.technologies.split(",").map((t) => t.trim()).filter(Boolean)
             : [];
@@ -279,7 +275,7 @@ export default function Projects() {
         title={lightbox?.title}
       />
 
-      <style>{`
+      <Style css={`
         @media (max-width: 1100px) {
           .projects-grid { grid-template-columns: 1fr 1fr !important; }
         }
@@ -288,7 +284,7 @@ export default function Projects() {
         }
         .project-card { transition: border-color 160ms ease, transform 200ms ease; }
         .project-card:hover { border-color: var(--accent); }
-      `}</style>
+      `} />
     </section>
   );
 }

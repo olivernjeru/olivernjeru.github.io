@@ -1,19 +1,19 @@
 export const categorizedAwards = {
     academicHonors: [
-        "Dean's List (Honors Roll Student)",
+        "Dean's List (Honor Roll Student)",
         "Junior Achievement Africa Scholarship Recipient",
-        "Vice Chancellor's Grant Recepient",
+        "Vice Chancellor's Grant Recipient",
     ],
     hackathonsCompetitions: [
-        "JP Morgan Chase Code For Good Africa Virtual Hackathon, September 2023 (Team Lead)",
+        "JPMorgan Chase Code for Good Africa Virtual Hackathon, September 2023 (Team Lead)",
         "CME Group FX Trading Challenge ranked top 25%, August 2023",
         "Ranked first in AmplifyMe's simulation, 2023",
-        "Hult Prize USIU-Africa Innovation Week First Runners Up, 2022",
+        "Hult Prize USIU-Africa Innovation Week First Runner-Up, 2022",
     ],
     photographyAchievements: [
-        "My Photography works of art got used 25 times on popular platforms such as Notion, Figma, Squarespace, Wix, Padlet, PicsArt, Wordpress & Trello from 2021 - present",
-        "Achieved 1 Million Views for my Photography works of art on Unsplash, July 20th 2022",
-        "Achieved over 4,000 uses of my Photography works of art on Unsplash globally from 2021 - present",
+        "My Photography works of art got used 25 times on popular platforms such as Notion, Figma, Squarespace, Wix, Padlet, PicsArt, WordPress & Trello since 2021",
+        "Achieved 1 million views for my Photography works of art on Unsplash, July 20, 2022",
+        "Achieved over 4,000 uses of my Photography works of art on Unsplash globally since 2021",
         "11-time feature on Unsplash, 2021-2022",
     ],
     invitedEvents: [

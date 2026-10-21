@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect } from "react";
 import { Close } from "./icons/UIIcons";
+import { Style } from "./primitives.jsx";
 
 export default function Lightbox({ open, onClose, src, alt, title }) {
   const close = useCallback(() => onClose?.(), [onClose]);
@@ -88,7 +89,7 @@ export default function Lightbox({ open, onClose, src, alt, title }) {
         }}
       />
 
-      <style>{`
+      <Style css={`
         @keyframes lightbox-rise {
           from { opacity: 0; transform: translateY(12px) scale(0.985); }
           to   { opacity: 1; transform: translateY(0) scale(1); }
@@ -116,7 +117,7 @@ export default function Lightbox({ open, onClose, src, alt, title }) {
             max-height: calc(100dvh - var(--safe-top) - var(--safe-bottom));
           }
         }
-      `}</style>
+      `} />
     </div>
   );
 }

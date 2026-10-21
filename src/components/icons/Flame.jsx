@@ -29,14 +29,18 @@ export const HeroFlame = ({ width = 240 }) => (
     role="img"
     aria-label="The Hearth"
   >
+    {/* The glow is an ellipse that fits inside the 240x320 viewBox (x 0-240,
+        y 70-320), and its gradient reaches zero opacity exactly at the ellipse's
+        edge (objectBoundingBox, r=50%). Nothing is drawn past the SVG's bounds,
+        so the glow cannot be clipped into a box. */}
     <defs>
-      <radialGradient id="heroFlameGlow" cx="50%" cy="65%" r="55%">
+      <radialGradient id="heroFlameGlow" cx="50%" cy="50%" r="50%">
         <stop offset="0%" stopColor="#ffd9a0" stopOpacity="0.9" />
         <stop offset="55%" stopColor="var(--accent)" stopOpacity="0.55" />
         <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
       </radialGradient>
     </defs>
-    <circle cx="120" cy="190" r="160" fill="url(#heroFlameGlow)" />
+    <ellipse cx="120" cy="195" rx="120" ry="125" fill="url(#heroFlameGlow)" />
     <path
       d="M120,18 C148,72 188,108 188,188 C188,242 158,288 120,288 C82,288 52,242 52,188 C52,138 76,108 120,18 Z"
       fill="none"
