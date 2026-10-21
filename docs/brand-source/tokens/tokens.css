@@ -22,11 +22,6 @@
   --accent:      #e07c5a;
   --accent-deep: #ffa483;
   --accent-soft: rgba(224,124,90,0.16);
-
-  /* Chrome */
-  --chrome-bg:   #211e18;
-  --chrome-fg:   #a89c84;
-  --chrome-bar:  #0e0d09;
 }
 
 [data-theme="light"] {
@@ -45,10 +40,6 @@
   --accent:      #c96442;
   --accent-deep: #a64f33;
   --accent-soft: rgba(201,100,66,0.14);
-
-  --chrome-bg:   #e6dfd0;
-  --chrome-fg:   #5a4f3e;
-  --chrome-bar:  #fbf7ee;
 }
 
 /* Type families */

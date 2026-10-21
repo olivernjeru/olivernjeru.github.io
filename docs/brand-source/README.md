@@ -1,14 +1,15 @@
 # Oliver Njeru — Brand Kit
 
-The complete brand package for **The Hearth** — Oliver Njeru's personal site.
+The brand package for **The Hearth** — Oliver Njeru's personal site, <https://olivernjeru.github.io>.
+
+The live site in this repository is the reference implementation: where this kit and the site differ, the site's files win (`src/styles/tokens.css`, `config/sharedHead.js`, `public/brand/`).
 
 ---
 
 ## What's in here
 
-```
-brand/
-├── DESIGN-SYSTEM.md         ← Full spec. Hand to another LLM to reproduce the site.
+```text
+docs/brand-source/
 ├── README.md                ← This file.
 │
 ├── logos/
@@ -23,7 +24,7 @@ brand/
 │   └── lockup-stacked.svg         Flame above wordmark, centered. Square use.
 │
 ├── favicons/
-│   ├── favicon.svg                Modern browsers — scalable, theme-aware.
+│   ├── favicon.svg                Modern browsers — scalable. Light-theme variant.
 │   ├── favicon-16.png             16×16
 │   ├── favicon-32.png             32×32
 │   ├── favicon-48.png             48×48
@@ -32,13 +33,15 @@ brand/
 │   ├── icon-512.png               512×512 — web manifest "any".
 │   ├── icon-maskable-512.png      512×512 — web manifest "maskable" (safe-area aware).
 │   ├── og-image.png               1200×630 — Open Graph / Twitter card.
-│   ├── site.webmanifest           PWA manifest. Edit URLs to match your deploy path.
-│   └── HEAD-snippet.html          Copy/paste into <head> of every page.
+│   ├── site.webmanifest           Master copy of the site's public/manifest.json.
+│   └── HEAD-snippet.html          The shared <head> block, for pages outside the build.
 │
 └── tokens/
-    ├── tokens.css                 CSS custom properties for both themes.
-    └── tokens.json                Design-tokens-format JSON for tooling.
+    ├── tokens.css                 Core palette and font stacks for both themes.
+    └── tokens.json                The same, in design-tokens JSON for tooling.
 ```
+
+The dark-theme favicon, `favicon-dark.svg`, exists only in `public/brand/favicons/`.
 
 ---
 
@@ -46,21 +49,24 @@ brand/
 
 ### 1. Add the fonts
 
-In the `<head>` of every page:
+The site self-hosts its fonts; it never calls a font CDN (its privacy page promises this). In a Vite or other bundled project, install and import the same packages the site uses (`src/mount.jsx`):
 
-```html
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&family=Inter+Tight:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+```sh
+npm install @fontsource-variable/newsreader @fontsource-variable/inter-tight @fontsource-variable/jetbrains-mono
 ```
+
+```js
+import "@fontsource-variable/newsreader/opsz.css";
+import "@fontsource-variable/newsreader/opsz-italic.css";
+import "@fontsource-variable/inter-tight/wght.css";
+import "@fontsource-variable/jetbrains-mono/wght.css";
+```
+
+These register the families as "Newsreader Variable", "Inter Tight Variable", and "JetBrains Mono Variable"; the site's font stacks list those names first.
 
 ### 2. Add the tokens
 
-```html
-<link rel="stylesheet" href="/tokens/tokens.css">
-```
-
-Then in your CSS:
+`tokens/tokens.css` carries the core palette and font stacks. The live site's `src/styles/tokens.css` is a superset: it adds translucent surfaces (glass, scrim, inverse), the variable-font names, layout tokens, and shared component classes. Prefer it when you want the site's exact look.
 
 ```css
 .headline { font-family: var(--font-serif); color: var(--text); }
@@ -69,18 +75,11 @@ Then in your CSS:
 
 ### 3. Add the favicons + Open Graph tags
 
-Open `favicons/HEAD-snippet.html` and paste its contents into the `<head>` of every page. Adjust the `/favicons/` prefix to match where you deploy the files.
+In this repository, every page gets them automatically from `config/sharedHead.js`. For a page outside the build, paste `favicons/HEAD-snippet.html` into its `<head>`, right after `<meta charset>`. Its paths assume the files are served from `/brand/favicons/`, as on olivernjeru.github.io.
 
-### 4. Theme toggle
+### 4. Theme
 
-Set `data-theme="light"` or `data-theme="dark"` on `<html>`:
-
-```js
-document.documentElement.setAttribute(
-  'data-theme',
-  localStorage.getItem('theme') ?? 'dark'
-);
-```
+Set `data-theme="light"` or `data-theme="dark"` on `<html>`. The site saves the visitor's choice in `localStorage` under `hearthTheme` and falls back to the OS preference. The snippet's inline script applies it before first paint, so there is no flash of the wrong theme.
 
 ---
 
@@ -106,7 +105,7 @@ document.documentElement.setAttribute(
 | Text         | `#1a1715`  | `#efe7d6`   |
 | Accent       | `#c96442`  | `#e07c5a`   |
 
-Full token reference in `tokens/tokens.css` and `tokens/tokens.json`.
+Full token reference in `tokens/tokens.css` and `tokens/tokens.json` (core) and the site's `src/styles/tokens.css` (complete).
 
 ---
 
@@ -131,10 +130,8 @@ Do not italicize body copy.
 - First-person, conversational openings: "Yo. I'm Oliver."
 - Direct, never marketing: "Shipping the next iteration of Replicant Trader." (NOT "Building the future of trading.")
 - Carry the lounge metaphor: *pull up a chair*, *the fire stays lit*, *off the foyer*.
-- Email is always full and unobfuscated: `oliver@blacketernumcapital.com`.
+- Email is always full and unobfuscated: `onjeru@usiu.ac.ke`.
 - Issue year in Roman numerals (MMXXVI) is an editorial signature — leave it.
-
-Full spec in `DESIGN-SYSTEM.md`.
 
 ---
 
