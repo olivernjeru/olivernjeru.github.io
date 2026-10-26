@@ -68,6 +68,7 @@ Every page shares the same header, footer, theme toggle, fonts, tokens, and `<he
 │   ├── components/blindr/      Standalone demo subproject
 │   ├── components/art/         Gallery photos: assets/ (originals), thumbs/ (WebP thumbnails)
 │   ├── papers/                 Self-hosted accepted manuscripts (PDF)
+│   ├── favicon.ico             Icon for files without a <head> (PDFs, the Blindr demo)
 │   ├── manifest.json           PWA manifest
 │   └── robots.txt, sitemap.xml
 │

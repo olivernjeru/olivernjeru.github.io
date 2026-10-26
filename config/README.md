@@ -24,8 +24,9 @@ A Vite plugin. In every HTML page it replaces `<!-- hearth:shared-head -->` with
 - `X-Content-Type-Options` and `Permissions-Policy` work only as HTTP response headers, and GitHub Pages does not let a site set headers. Their meta-tag versions were removed because they did nothing.
 - GitHub Pages itself sends `Strict-Transport-Security` (checked October 2026). Adding other headers would need a host that supports them (for example a `_headers` file on Netlify or Cloudflare Pages); for a static site with no user data, the CSP covers the main risk.
 
-## Gotcha
+## Gotchas
 
-`injectSharedHead` passes a replacer function to `String.replace`: a replacement string would interpret `$&`-style patterns.
+- `injectSharedHead` passes a replacer function to `String.replace`: a replacement string would interpret `$&`-style patterns.
+- **Files without a `<head>` use `/favicon.ico`.** A PDF opened from the site (the résumé, the papers) gets no favicon links, so the browser shows `public/favicon.ico`. The Blindr demo links the same file. It bundles the 16, 32, and 48 px brand PNGs (`public/brand/favicons/favicon-*.png`, the light-theme flame) and must be rebuilt whenever they change. An `.ico` cannot switch with the theme, so in dark mode PDF tabs show the light-theme flame while the pages show the dark one, and on a dark tab strip that ink flame almost disappears (only the amber core stays visible).
 
 Tests: `config/sharedHead.test.js` covers placeholder handling, the absence of the header-only tags, the theme script's behavior in jsdom, and the contract for every page.

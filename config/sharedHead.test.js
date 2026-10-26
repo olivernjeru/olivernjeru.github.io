@@ -92,9 +92,9 @@ describe('HTML pages', () => {
     expect(fs.existsSync(fromRoot(entry[1]))).toBe(true);
   });
 
-  // Vite copies public/ into dist/ before the prerender runs, so a copy there
-  // would shadow the built page.
-  it.each(PAGES)('%s is not shadowed by a copy in public/', (file) => {
+  // Vite copies public/ into dist/ and then writes the built page over it, so a
+  // copy there would be a dead duplicate that silently goes stale.
+  it.each(PAGES)('%s has no stale duplicate in public/', (file) => {
     expect(fs.existsSync(fromRoot('public', file))).toBe(false);
   });
 
@@ -102,5 +102,25 @@ describe('HTML pages', () => {
     const html = read('404.html');
     expect(html).toContain('<meta name="robots" content="noindex" />');
     expect(html).not.toContain('rel="canonical"');
+  });
+});
+
+// Files without a <head> (PDFs opened from the site, the Blindr demo) show
+// /favicon.ico, so it must carry the brand icons rather than a leftover image.
+describe('/favicon.ico', () => {
+  const ico = fs.readFileSync(fromRoot('public', 'favicon.ico'));
+
+  it('is a real icon file with 16, 32, and 48 px frames', () => {
+    expect(ico.readUInt16LE(0)).toBe(0); // reserved
+    expect(ico.readUInt16LE(2)).toBe(1); // type 1 = icon
+    const count = ico.readUInt16LE(4);
+    // Each 16-byte directory entry starts with width (0 means 256).
+    const widths = Array.from({ length: count }, (_, i) => ico[6 + i * 16] || 256);
+    expect(widths.sort((a, b) => a - b)).toEqual([16, 32, 48]);
+  });
+
+  it('is the icon the Blindr demo links', () => {
+    const blindr = read('public/components/blindr/index.html');
+    expect(blindr).toContain('<link rel="icon" href="/favicon.ico"');
   });
 });
