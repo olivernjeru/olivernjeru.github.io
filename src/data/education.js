@@ -2,7 +2,7 @@ const educationData = {
     usiu: {
         name: "United States International University-Africa",
         degree: "BSc in Applied Computer Technology, Concentration in Software Engineering",
-        link: "https://www.usiu.ac.ke/history/",
+        link: "https://www.usiu.ac.ke/about-us/history/",
         events: [
             {
                 name: "Culture Week",
